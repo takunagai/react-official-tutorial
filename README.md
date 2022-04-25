@@ -1,8 +1,17 @@
 # Getting Started with Create React App
 
-* [Quick Start](https://beta.reactjs.org/learn)を進めていく
-* 2022-04-25 次
-  * https://beta.reactjs.org/learn/thinking-in-react
+* [Quick Start](https://beta.reactjs.org/learn) を進めていく
+  * コンポーネントの基本 (ボタン、条件分岐、状態の持たせ方)
+  * React Developer Tools でコンポーネントの状態やセットされた関数をチェック
+
+
+## Thinking in React
+
+[Thinking in React](https://beta.reactjs.org/learn/thinking-in-react)
+
+* (ステップ0：JSON、モックアップはあるものとする)
+* ステップ1：UIをコンポーネント階層に分割する
+* ステップ2：Reactで静的バージョンをビルドする
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

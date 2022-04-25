@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App'
+import App2 from './App2'
 import reportWebVitals from './reportWebVitals'
 
 const container = document.getElementById('root')
@@ -9,7 +9,8 @@ const root = createRoot(container) // createRoot(container!) if you use TypeScri
 
 root.render(
   <React.StrictMode>
-    <App />
+    {/*<App />*/}
+    <App2 />
   </React.StrictMode>
 )
 
