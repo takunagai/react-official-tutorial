@@ -10,14 +10,49 @@ function MyButton() {
   )
 }
 
+/**
+ * データ
+ */
 const user = {
   name: 'Hedy Lamarr',
   imageUrl: 'https://picsum.photos/600/400.webp',
   imageSize: 200,
 }
 
+/**
+ * 分岐処理
+ */
 const isFlaged = true
 
+/**
+ * リスト x 分岐処理
+ */
+const products = [
+  { title: 'Cabbage', id: 1, isFruit: false },
+  { title: 'Garlic', id: 2, isFruit: false },
+  { title: 'Apple', id: 3, isFruit: true },
+];
+
+function Products() {
+  const listItems = products.map(product =>
+    <li
+      key={product.id}
+      style={{
+        color: product.isFruit ? 'magenta' : 'darkgreen'
+      }}
+    >
+      {product.title}
+    </li>
+  )
+
+  return (
+    <ul>{listItems}</ul>
+  )
+}
+
+/**
+ * レンダリング
+ */
 const App = () => {
   return <>
     <Greeting name="world" />
@@ -32,6 +67,7 @@ const App = () => {
         height: user.imageSize
       }}
     />
+    <Products />
   </>
 }
 
