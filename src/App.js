@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css'
 
 function Greeting({ name }) {
@@ -5,11 +6,12 @@ function Greeting({ name }) {
 }
 
 function MyButton() {
+  const [count, setCount] = useState(0);
   function handleClick() {
-    alert('You clicked me!');
+    setCount(count + 1)
   }
   return ( /* handleClick 関数の最後に括弧がないことに注意 */
-    <button onClick={handleClick}>Click me</button>
+    <button onClick={handleClick}>Clicked {count} times</button>
   )
 }
 
