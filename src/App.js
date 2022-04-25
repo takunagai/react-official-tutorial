@@ -5,6 +5,7 @@ function Greeting({ name }) {
   return <h1>Hello, {name}</h1>
 }
 
+// ボタン - 個々のボタンコンポーネントにデータ
 function MyButton() {
   const [count, setCount] = useState(0);
   function handleClick() {
@@ -12,6 +13,13 @@ function MyButton() {
   }
   return ( /* handleClick 関数の最後に括弧がないことに注意 */
     <button onClick={handleClick}>Clicked {count} times</button>
+  )
+}
+
+// ボタン - App.js にデータを持たせる
+function MyButton2({ count, onClick }) {
+  return ( /* handleClick 関数の最後に括弧がないことに注意 */
+    <button onClick={onClick}>Clicked {count} times</button>
   )
 }
 
@@ -59,10 +67,20 @@ function Products() {
  * レンダリング
  */
 const App = () => {
+  const [count2, setCount2] = useState(0);
+
+  function handleClick2() {
+    setCount2(count2 + 1);
+  }
+
   return <>
     <Greeting name="world" />
+    【個々のボタンコンポーネントにデータ】<br />
     <MyButton /><br />
-    {isFlaged && <MyButton />}
+    {isFlaged && <MyButton />}<br />
+    【App.js にデータを持たせる】<br />
+    <MyButton2 count={count2} onClick={handleClick2} /><br />
+    <MyButton2 count={count2} onClick={handleClick2} /><br />
     <img
       className="avatar"
       src={user.imageUrl}

@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
 * [Quick Start](https://beta.reactjs.org/learn)を進めていく
+* 2022-04-25 次
+  * https://beta.reactjs.org/learn/thinking-in-react
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
