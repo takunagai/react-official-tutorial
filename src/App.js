@@ -14,12 +14,15 @@ const user = {
   name: 'Hedy Lamarr',
   imageUrl: 'https://picsum.photos/600/400.webp',
   imageSize: 200,
-};
+}
+
+const isFlaged = true
 
 const App = () => {
   return <>
     <Greeting name="world" />
-    <MyButton />
+    <MyButton /><br />
+    {isFlaged && <MyButton />}
     <img
       className="avatar"
       src={user.imageUrl}
