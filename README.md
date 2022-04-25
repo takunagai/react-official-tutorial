@@ -26,7 +26,12 @@
       - 例では、ProductTable と SearchBar 共通の親 FilterableProductTable に決定
       - FilterableProductTable で useState() フックを使用し状態を追加する
       - ★★TODO: 続き：https://beta.reactjs.org/learn/thinking-in-react
-        "In the sandbox above," 
+        "In the sandbox above,"
+* ステップ5：逆データフローを追加する
+    - ユーザー入力に応じて状態を変更するには、逆方向に流れるデータをサポートする必要がある
+    - 階層下のフォームコンポーネントは、FilterableProductTableの状態を更新する必要がある
+    - 現在、チェックボックスをチェックしても無効。`value={filterText}` の状態を更新する必要がある
+    - FilterableProductTableの状態を更新させるには、useState の更新用関数をSearchBarに渡す必要がある(onFilterTextChange={setFilterText})
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
