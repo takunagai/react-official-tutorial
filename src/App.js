@@ -5,8 +5,11 @@ function Greeting({ name }) {
 }
 
 function MyButton() {
-  return (
-    <button>Click me</button>
+  function handleClick() {
+    alert('You clicked me!');
+  }
+  return ( /* handleClick 関数の最後に括弧がないことに注意 */
+    <button onClick={handleClick}>Click me</button>
   )
 }
 
