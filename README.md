@@ -25,6 +25,8 @@
       - 状態を所有することが理にかなっているコンポーネントが見つからない場合は、状態を保持するためだけに新しいコンポーネントを作成し、共通の親コンポーネントの上の階層のどこかに追加する
       - 例では、ProductTable と SearchBar 共通の親 FilterableProductTable に決定
       - FilterableProductTable で useState() フックを使用し状態を追加する
+      - ★★TODO: 続き：https://beta.reactjs.org/learn/thinking-in-react
+        "In the sandbox above," 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
