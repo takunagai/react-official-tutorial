@@ -1,4 +1,5 @@
 import Profile from './Profile.js'
+import TodoList from './TodoList.jsx'
 
 export default function App3() {
   return (
@@ -7,6 +8,8 @@ export default function App3() {
       <Profile />
       <Profile />
       <Profile />
+      <hr />
+      <TodoList />
     </section>
   )
 }
