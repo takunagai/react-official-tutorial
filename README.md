@@ -33,6 +33,16 @@
     - 現在、チェックボックスをチェックしても無効。`value={filterText}` の状態を更新する必要がある
     - FilterableProductTableの状態を更新させるには、useState の更新用関数をSearchBarに渡す必要がある(onFilterTextChange={setFilterText})
 
+## Describing the UI (App3.js)
+
+* Reactは、ユーザーインターフェイス（UI）をレンダリングするためのJavaScriptライブラリ
+* UI(ボタン、テキスト、画像などの小さな単位)を組み合わせ、再利用可能でネスト可能なコンポーネントにすることができる
+* 最初のコンポーネント
+    - コンポーネントは、マークアップを振りかけることができるJavaScript関数
+    - コンポーネントは、ボタンのように小さくすることも、ページ全体のように大きくすることもできる
+    - 例：3つのプロファイルコンポーネントをレンダリングするギャラリーコンポーネント
+    - ★★TODO: https://beta.reactjs.org/learn/describing-the-ui から
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
