@@ -1,13 +1,6 @@
-function Profile() {
-  return (
-    <img
-      src="https://i.imgur.com/MK3eW3As.jpg"
-      alt="Katherine Johnson"
-    />
-  )
-}
+import Profile from './Profile.js'
 
-export default function Gallery() {
+export default function App3() {
   return (
     <section>
       <h1>Amazing scientists</h1>
