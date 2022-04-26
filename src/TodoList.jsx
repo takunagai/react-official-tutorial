@@ -1,7 +1,15 @@
+const person = {
+  name: 'Gregorio Y. Zara',
+  theme: {
+    backgroundColor: 'black',
+    color: 'pink'
+  }
+}
+
 export default function TodoList() {
   return (
-    <>
-      <h1>Hedy Lamarr's Todos</h1>
+    <div style={person.theme}>
+      <h1>{person.name}'s Todos</h1>
       <img
         src="https://i.imgur.com/yXOvdOSs.jpg"
         alt="Hedy Lamarr"
@@ -12,6 +20,6 @@ export default function TodoList() {
         <li>Rehearse a movie scene</li>
         <li>Improve spectrum technology</li>
       </ul>
-    </>
+    </div>
   )
 }
