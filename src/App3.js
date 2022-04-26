@@ -35,6 +35,11 @@ function Item({ name, isPacked }) {
   )
 }
 
+// 純粋な関数 (引数は props から受け取ることで、純粋な関数として収まっている)
+function Cup({ guest }) {
+  return <h2>Tea cup for guest #{guest}</h2>;
+}
+
 export default function App3() {
 
   // リストをセット (オブジェクトデータをループ表示)
@@ -91,6 +96,11 @@ export default function App3() {
         <h3>Scientists (オブジェクトデータをループ表示)</h3>
         <ul>{listItems}</ul>
       </div>
+
+      <hr/>
+      <Cup guest={1} />
+      <Cup guest={2} />
+      <Cup guest={3} />
     </section>
   )
 }
