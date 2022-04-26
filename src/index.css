@@ -32,3 +32,13 @@ p, h1, h2, h3, h4, h5, h6 {
 /**
  * Styles
  */
+.card {
+  display: inline-block;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid #E7E7E7;
+  border-radius: .5rem;
+}
+.avatar {
+  border-radius: 50%;
+}
