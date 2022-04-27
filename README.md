@@ -50,8 +50,120 @@
 * コンポーネントを純粋に保つ
     - コンポーネントを厳密に純粋な関数として記述するだけで、クラス全体の不可解なバグや予測できない動作を回避できる
 
-★★TODO: https://beta.reactjs.
-      org/learn/describing-the-ui#rendering-lists から
+## Your First Component (読むだけ)
+
+* Reactを使用すると、アプリのコンポーネント、再利用可能な UI 要素を作成できる
+* Reactアプリでは、UIのすべての部分がコンポーネント
+* Reactコンポーネントは通常のJavaScript関数だが、名前は大文字で始める必要がある。でないと機能しない
+* ルートコンポーネントは、CodeSandbox / Create React App なら、src/App.js、Next.js なら、pages/index.jsで定義される
+* Next.js などのフレームワークは、空のHTMLファイルを使用し JavaScriptでページの管理をReactに「引き継ぐ」のではなく、ReactコンポーネントからHTMLを自動生成する。これにより、JavaScriptコードが読み込まれる前にアプリがコンテンツを表示できる
+
+```js
+// Try out some challenges
+function Profile() {
+  return (
+    <img src="https://picsum.photos/600/400.webp" alt="aaa" />
+  )
+}
+
+export default function Gallery() {
+  return (
+    <>
+      <Profile />
+      <Profile />
+    </>
+  )
+}
+```
+
+## Importing and Exporting Components コンポーネントのインポートとエクスポート (読むだけ)
+
+* コンポーネントの魔法は、その再利用性
+* ルートコンポーネントファイル
+    - CodeSandbox / Create React App：App.js
+    - Next.js：ページごとに異なる
+* コンポーネントの移動 3つのステップ
+    1. コンポーネントを配置するための新しいJSファイルを作成 (2つのコンポーネントファイルに分割)
+    2. コンポーネントのファイルから、関数コンポーネントをエクスポート（default or 名前付きエクスポート）
+    3. コンポーネントを使用するファイルにインポート（default or 名前付きエクスポートをインポート）
+* `import Gallery from './Gallery';` と、拡張子 js を省いて書ける(ES Modules)
+* default エクスポート / 名前付きエクスポート
+  - 同じファイルでそれらの一方または両方を使用できる
+  - ファイルには、デフォルトのエクスポートを1つしか含めることができないが、名前付きのエクスポートをいくつでも含めることができる
+  - コンポーネントをどのようにエクスポートするかによって、コンポーネントをどのようにインポートする必要があるかが決まる
+  - default エクスポート：`export default function Button() {}`
+  - default インポート：`import Button from './button.js';`
+  - ※任意の名前を付けることができる
+  - 名前付き エクスポート：`export function Button() {}`
+  - 名前付き インポート：`import { Button } from './button.js';`
+  - ※名前付きインポートでは、名前は両側で一致する必要がある
+* 1つのコンポーネントのみをエクスポートする場合はデフォルトのエクスポート、複数のコンポーネントと値をエクスポートする場合は名前付きエクスポートを使用
+* `export default（）=> {}` のような名前のないコンポーネントは、デバッグが難しくなるため使わない
+* ↓ Try out some challenges (コンポーネントをさらに分割する)
+
+```js
+// App.js
+import Gallery from './Gallery.js';
+
+export default function App() {
+  return (
+    <div>
+      <Gallery />
+    </div>
+  );
+}
+```
+
+```js
+// Gallery.js
+import Profile from './Profile.js'
+
+export default function Gallery() {
+  return (
+    <section>
+      <h1>Amazing scientists</h1>
+      <Profile />
+      <Profile />
+      <Profile />
+    </section>
+  );
+}
+
+```
+
+```js
+// Profile.js
+export default function Profile() {
+  return (
+    <img
+      src="https://i.imgur.com/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
+    />
+  );
+}
+```
+
+## Writing Markup with JSX (JSX でマークアップする) App4.js
+
+* Reactコンポーネントは、構文拡張 JSX を使用してそのマークアップを表す
+* ボタンのレンダリングロジックとマークアップを一緒に保つことで、編集のたびにボタンの同期が保たれる
+* JSX の規約は HTML より厳しい
+    - ルート要素はひとつのみ。JavaScript は関数から2つのオブジェクトを配列にラップせずに返すことはできないため
+    - タグ入れたくないなら `<></>` で囲む(React flagment)
+    - 空閉じタグ必要 `<img>` → `<img />`
+    - 変数名にダッシュを含めたり予約後にしたりできない。キャメルケースで書く
+      - stroke-width → strokeWidth, class (予約後) → className
+    - 歴史的な理由から、aria-*属性とdata-*属性は、HTMLのようにダッシュ付きで記述
+* [HTML to JSX コンバーター](https://transform.tools/html-to-jsx)
+
+## 中括弧に JavaScript コード
+
+* JSXで {} (中括弧)を使用して、JavaScript へのウィンドウを開くことができる
+* `{{}}` (ダブルカーリー) で CSS や その他のオブジェクトにアクセス
+
+## Passing Props to a Component (コンポーネント間での props の受け渡し)
+
+★★TODO: https://beta.reactjs.org/learn/passing-props-to-a-component から
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
