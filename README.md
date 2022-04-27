@@ -163,7 +163,12 @@ export default function Profile() {
 
 ## Passing Props to a Component (コンポーネント間での props の受け渡し)
 
-★★TODO: https://beta.reactjs.org/learn/passing-props-to-a-component から
+* props を使うと、親コンポーネントと子コンポーネントについて個別に考えることができる
+* props は、コンポーネントに対する唯一の引数
+* フォールバックするデフォルト値を指定
+* Spread 構文を使用して props の転送
+
+★★TODO: https://beta.reactjs.org/learn/passing-props-to-a-component#forwarding-props-with-the-jsx-spread-syntax から
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
