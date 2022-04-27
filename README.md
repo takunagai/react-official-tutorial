@@ -195,8 +195,9 @@ function Profile(props) {
 
 * Passing JSX as children JSXを子として渡す (App4.js 続き)
     - children で親コンポーネントに子要素を埋め込む
+* props が時間とともにどのように変化するか
 
-★★TODO: https://beta.reactjs.org/learn/passing-props-to-a-component#forwarding-props-with-the-jsx-spread-syntax から
+★★TODO: https://beta.reactjs.org/learn/passing-props-to-a-component#challenges から
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
