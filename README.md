@@ -166,7 +166,34 @@ export default function Profile() {
 * props を使うと、親コンポーネントと子コンポーネントについて個別に考えることができる
 * props は、コンポーネントに対する唯一の引数
 * フォールバックするデフォルト値を指定
-* Spread 構文を使用して props の転送
+* すべての props を子供に転送する場合、Spread 構文を使用して props 転送を簡潔に書ける
+
+```js
+// Before
+function Profile({ person, size, isSepia, thickBorder }) {
+  return (
+    <div className="card">
+      <Avatar
+        person={person}
+        size={size}
+        isSepia={isSepia}
+        thickBorder={thickBorder}
+      />
+    </div>
+  );
+}
+
+// Spread 構文で簡潔に書ける
+function Profile(props) {
+  return (
+    <div className="card">
+      <Avatar {...props} />
+    </div>
+  );
+}
+```
+
+* Passing JSX as children JSXを子として渡す (App4.js 続き)
 
 ★★TODO: https://beta.reactjs.org/learn/passing-props-to-a-component#forwarding-props-with-the-jsx-spread-syntax から
 
