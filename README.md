@@ -196,7 +196,9 @@ function Profile(props) {
 * Passing JSX as children JSXを子として渡す (App4.js 続き)
     - children で親コンポーネントに子要素を埋め込む
 * props が時間とともにどのように変化するか (後で状態管理)
-* 条件付きレンダリング
+* 条件付きレンダリング (App5.js)
+  - ネストされた条件付きマークアップが多くコンポーネントが乱雑になる場合は、子コンポーネントを抽出してクリーンアップする
+  - 論理積演算子（&&）真の時のみレンダリング
 
 ★★TODO: https://beta.reactjs.org/learn/passing-props-to-a-component#challenges から
 
