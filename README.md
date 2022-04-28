@@ -201,6 +201,7 @@ function Profile(props) {
   - 論理積演算子（&&）真の時のみレンダリング
     - ※注意：&& の左側に数字を入れない(変数でも)。左側をブール値に自動変換し、レンダリングされてしまうから
   - 3項演算子で主コードがややこしくなりそうなら、前で if 文で変数をセットしとく
+* リストのレンダリング (App6.js)
 
 ★★TODO: https://beta.reactjs.org/learn/passing-props-to-a-component#challenges から
 
