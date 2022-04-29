@@ -1,47 +1,57 @@
 import { getImageUrl } from './utils'
 import { people } from './data'
 
-// /**
-//  * リストアイテムを表示
-//  */
-// const people = [
-//   'Creola Katherine Johnson: mathematician',
-//   'Mario José Molina-Pasquel Henríquez: chemist',
-//   'Mohammad Abdus Salam: physicist',
-//   'Percy Lavon Julian: chemist',
-//   'Subrahmanyan Chandrasekhar: astrophysicist'
-// ]
-//
-// export default function List() {
-//   const listItems = people.map(person =>
-//     <li>{person}</li> {// アロー関数なので return 不要}
-//   )
-//   return <ul>{listItems}</ul>
-// }
-
-
 /**
- * リストアイテムをフィルタリングして表示 (科学者のみ抽出)
+ * リストアイテムをフィルタリングして表示 (科学者、それ以外を分けて出力)
  */
 export default function List() {
-  // chemist だけを抽出
-  const chemists = people.filter(person => // メモ：{} 付けたら、return 必要
+  // 科学者のリスト
+  const chemists = people.filter(person =>
     person.profession === 'chemist'
   )
 
+  // 科学者以外のリスト
+  const everyoneElse = people.filter(person =>
+    person.profession !== 'chemist'
+  )
+
+  // 科学者のリストのDOMを生成
   const listItems = chemists.map(person =>
-    <li>
+    <li key={person.id}>
       <img
         src={getImageUrl(person)}
         alt={person.name}
       />
       <p>
-        <b>{person.name}</b>
-        {` ${person.profession} `}
+        <b>{person.name}:</b>
+        {' ' + person.profession + ' '}
         known for {person.accomplishment}
       </p>
     </li>
   )
 
-  return <ul>{listItems}</ul>
+  // 科学者以外のリストのDOMを生成
+  const listItems2 = everyoneElse.map(person =>
+    <li key={person.id}>
+      <img
+        src={getImageUrl(person)}
+        alt={person.name}
+      />
+      <p>
+        <b>{person.name}:</b>
+        {' ' + person.profession + ' '}
+        known for {person.accomplishment}
+      </p>
+    </li>
+  )
+
+  // レンダリング
+  return (
+    <article>
+      <h1>chemists</h1>
+      <ul>{listItems}</ul>
+      <h2>Others</h2>
+      <ul>{listItems2}</ul>
+    </article>
+  );
 }

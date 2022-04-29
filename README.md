@@ -205,8 +205,36 @@ function Profile(props) {
   - map()
   - filter() で条件を設定し抽出できる
   - キーでリストアイテムを整理
+    - map() 呼び出し内の直接のJSX要素はキーが必要
+    - 指定なしの場合、配列のインデックスキーを使用するが、バグにつながるので指定すること
+    - その場でキーを生成しない。キー一致が失われ、遅くなりユーザー入力も失う。データに基づいた安定したIDを使用すること
+    - コンポーネントにIDが必要な場合は、それを別の props として渡すこと `<Profile key = {id} userId ={id}/>`
+    - キーは、各コンポーネントがどの配列アイテムに対応するかをReactに伝え、後でそれらを一致させることができるようにする。配列アイテムの移動(並び替え)、挿入、削除する場合に重要
+    - キーはその場で生成するのではなく、データに含める必要がある
+    - リストアイテムごとに複数のDOMノードを表示したい場合、`<></>` 構文ではキーを渡せないため、div で括るか <Fragment> 構文を使用する必要がある
 
-★★TODO: https://beta.reactjs.org/learn/passing-props-to-a-component#challenges から
+```jsx
+import { Fragment } from 'react'
+
+// ...
+
+const listItems = people.map(person =>
+  <Fragment key={person.id}>
+    <h1>{person.name}</h1>
+    <p>{person.bio}</p>
+  </Fragment>
+)
+```
+
+* キーの入手先
+  - データベース：データベースキー/ID
+  - ローカルで生成されたデータ：アイテム作成時のインクリメントカウンター or crypto.randomUUID() or uuid
+* キーのルール
+  - キーは兄弟間で一意である必要がある。異なる配列のJSXノードなら同じキーでも問題ない
+  - キーを変更してはいけない
+* Reactにキーが必要な理由：兄弟間でアイテムを一意に識別できるようにするため
+
+★★TODO: https://beta.reactjs.org/learn/rendering-lists#keeping-list-items-in-order-with-key から
 
 
 
