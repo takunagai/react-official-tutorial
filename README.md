@@ -233,8 +233,202 @@ const listItems = people.map(person =>
   - キーは兄弟間で一意である必要がある。異なる配列のJSXノードなら同じキーでも問題ない
   - キーを変更してはいけない
 * Reactにキーが必要な理由：兄弟間でアイテムを一意に識別できるようにするため
+* Try out some challenges 2 (ネストされたリストのループ処理)
 
-★★TODO: https://beta.reactjs.org/learn/rendering-lists#keeping-list-items-in-order-with-key から
+```jsx
+export default function RecipeList() {
+  return (
+    <article>
+      <h1>Recipes</h1>
+      {recipes.map(recipe =>
+        <div key={recipe.id}>
+          <h2>{recipe.name}</h2>
+          <ul>
+            {recipe.ingredients.map(ingredient =>
+              <li key={ingredient}>{ingredient}</li>
+            )}
+          </ul>
+        </div>
+      )}
+    </article>
+  )
+}
+```
+
+* Try out some challenges 3 (リストアイテムコンポーネントの抽出)
+  (↑ をコンポーネントで分割)
+
+```jsx
+/**
+ * 配列からレシピのリストを作成
+ * @ref{ @link https://beta.reactjs.org/learn/rendering-lists#challenges }
+ */
+import { recipes } from './data.js'
+
+export function Recipe({ id, name, ingredients }) {
+  return (
+    <div className="recipe">
+      <h2>{name}</h2>
+      <ul>
+        {ingredients.map(ingredient =>
+          <li key={ingredient}>{ingredient}</li>
+        )}
+      </ul>
+    </div>
+  )
+}
+
+export default function RecipeList() {
+  return (
+    <article className="recipe-wrapper">
+      <h1>Recipes</h1>
+      {recipes.map(recipe =>
+        <Recipe key={recipe.id} {...recipe} /> // キー、スプレッド構文で
+      )}
+    </article>
+  )
+}
+```
+
+* Try out some challenges 4 (リストの行間に区切り線を付ける)
+
+```jsx
+/**
+ * 行間に区切り線を付ける
+ * @ref{ @link https://beta.reactjs.org/learn/rendering-lists#challenges }
+ */
+const poem = {
+  lines: [
+    'I write, erase, rewrite',
+    'Erase again, and then',
+    'A poppy blooms.'
+  ]
+};
+
+export default function Poem() {
+  return (
+    <article>
+      {poem.lines.map((line, i) =>
+        <Fragment key={i}>
+          {i > 0 && <hr />} {/* 1つめは上に区切り線付けない */}
+          <p>{line}</p>
+        </Fragment>
+      )}
+    </article>
+  )
+}
+
+```
+
+## Keeping Components Pure (コンポーネントを純粋に保つ)
+
+* 純粋な関数は計算のみを実行、それ以上は実行しない。クラス全体の不可解なバグや予測できない動作を回避できる
+* Reactは、作成する全てのコンポーネントが純粋関数であると想定
+  - 自分の責務のみ気にする。呼び出される前に存在していたオブジェクトや変数は変更されない
+  - 同じ入力が与えられた場合、純粋関数は常に同じ JSX を返す必要がある
+  - コンポーネントが必ず特定の順序でレンダリングされることを期待するべきではない
+  - 各コンポーネントは「自分で考える」だけ。レンダリング中に他のコンポーネントと調整したり、他のコンポーネントに依存したりしないようにする必要がある
+* 副作用:意図する(意図しない）結果
+  - レンダリング前に存在していたオブジェクトや変数を変更すると、コンポーネントが不純になる
+
+```jsx
+// 良くない例：不純なコンポーネント
+// このコンポーネントを複数回呼び出すと「異なるJSXが生成」される
+// → 常に同じ JSX を返す必要がある
+let guest = 0; // 既存の変数
+
+function Cup() {
+  guest = guest + 1; // Bad: このコンポーネントが既存の変数を変更している
+  return <h2>Tea cup for guest #{guest}</h2>;
+}
+
+export default function TeaSet() {
+  return (
+    <>
+      <Cup />
+      <Cup />
+      <Cup />
+    </>
+  )
+}
+```
+
+```jsx
+// 修正：代わりに、ゲストを小道具として渡すことで純粋を保てる
+// JSX が返す値は、guest prop にのみ依存
+function Cup({ guest }) {
+  return <h2>Tea cup for guest #{guest}</h2>;
+}
+
+export default function TeaSet() {
+  return (
+    <>
+      <Cup guest={1} />
+      <Cup guest={2} />
+      <Cup guest={3} />
+    </>
+  );
+}
+```
+
+* Reactは、開発中に各コンポーネントの関数を2回呼び出す「厳密モード」を提供する。これらのルールに違反するコンポーネントを見つけるのに役立つ
+  - `<React.StrictMode>`でラップすると有効に
+  - 純粋関数は計算するだけなので、2回呼び出しても結果は同じ。不純なら、2回呼び出しで結果が変わることがある
+* ただし、レンダリング中に作成したばかりの変数やオブジェクトを変更することはまったく問題ない (= ローカルミューテーション)
+
+```jsx
+function Cup({ guest }) {
+  return <h2>Tea cup for guest #{guest}</h2>;
+}
+
+export default function TeaGathering() {
+  let cups = [];
+  
+  // i: コンポーネント内部でレンダリング中に作成する変数 (OK。コンポーネント外ならNG)
+  for (let i = 1; i <= 12; i++) {
+    cups.push(<Cup key={i} guest={i} />);
+  }
+  return cups;
+}
+```
+
+* 副作用 (画面の更新、アニメーションの開始、データの変更)
+  - レンダリング中ではなく、「側面」で発生するもの
+  - 副作用は通常、イベントハンドラー内にある (ボタンをクリックなど)
+  - イベントハンドラーはコンポーネント内で定義されていますが、レンダリング中には実行されない。なので、イベントハンドラーは純粋である必要はない
+  - ? 他のすべてのオプションを使い果たして、副作用に適したイベントハンドラーが見つからない場合でも、コンポーネントでuseEffect呼び出しを使用して、返されたJSXにアタッチできます。これは、副作用が許可されたときに、レンダリング後に後で実行するようにReactに指示します。ただし、このアプローチは最後の手段となるはずです。
+  - 返却するJSXでコンポーネントのロジックを表現するように努めること。「物事を変更する」必要がある場合は、通常、イベントハンドラーで変更する。最終手段として、Effectを使用
+  - 可能であれば、レンダリングだけでロジックを表現すること
+  - 純粋関数は常に同じ結果を返すため、キャッシュしても安全
+  - データのフェッチからアニメーション、パフォーマンスに至るまで、コンポーネントを純粋に保つことで、Reactパラダイムの力を解き放つ
+* Try out some challenges 1 - 壊れた時計の修正
+
+```jsx
+/**
+ * h1 のCSSクラスを切り替える
+ * 深夜から午前6時間までの時間帯は "night"
+ * それ以外の時間帯は "day"に設定
+ */
+export default function Clock({ time }) {
+  let hours = time.getHours() // 値変えてテスト
+  let className = ''
+
+  if (hours >= 0 && hours <= 6) {
+    // document.getElementById('time').className = 'night' // 
+    className = 'night'
+  } else {
+    className = 'day'
+  }
+  return (
+    <h1 className={className}>
+      {time.toLocaleTimeString()}
+    </h1>
+  )
+}
+```
+
+* Try out some challenges 2 - 壊れたプロフィールを直す (クリア)
+* Try out some challenges 3 - 壊れたストーリートレイを直す (わからんが、ミューテーションがローカルに保つ)
 
 
 
