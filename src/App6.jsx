@@ -28,13 +28,18 @@ export function ListSection({ title, people }) {
 }
 
 export default function List() {
-  const chemists = people.filter(person =>
-    person.profession === 'chemist'
-  )
-  // △ フィルター呼び出し２回目
-  const everyoneElse = people.filter(person =>
-    person.profession !== 'chemist'
-  )
+
+  // フィルター処理を１回に改善
+  let chemists = []
+  let everyoneElse = []
+
+  people.forEach(person => {
+    if (person.profession === 'chemist') {
+      chemists.push(person)
+    } else {
+      everyoneElse.push(person)
+    }
+  })
 
   return (
     <article>
