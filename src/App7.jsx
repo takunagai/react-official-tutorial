@@ -1,5 +1,7 @@
 import { useState } from 'react' // 状態管理のフック
 import { sculptureList } from './data2'
+import Form from './Form'
+import Counter from './Counter'
 
 /**
  * data2.js の各データの内容
@@ -34,8 +36,14 @@ export default function Gallery() {
       <button onClick={handleMoreClick}>
         {showMore ? 'Hide' : 'Show'} details
       </button>
-      {showMore && <p>{sculpture.description}</p>}
+      {showMore && <p>{sculpture.description}</p>} {/* showMoreがtrueなら説明文を表示 */}
       <img src={sculpture.url} alt={sculpture.alt} />
+
+      <hr />
+      <Form />
+
+      <hr />
+      <Counter />
     </>
   )
 }
