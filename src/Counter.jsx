@@ -5,7 +5,7 @@ export default function Counter() {
   const [score, setScore] = useState(0)
 
   function increment() {
-    setScore(score + 1)
+    setScore(s => s + 1) // score を更新でなく、アップデータ関数を渡す
   }
 
   return (
@@ -13,13 +13,10 @@ export default function Counter() {
       <button onClick={() => increment()}>+1</button>
       <button onClick={() => {
         increment()
-        console.log(score)  // 0 ※レンダリング済みのコードは変更されない
-        increment()         // 1 のまま
-        console.log(score)  // 0
-        increment()         // 1 のまま
-        console.log(score)  // 0
+        increment()
+        increment()
       }}>+3</button>
-      <h1>Score: {score}</h1>
+      <h1>Score: {score}</h1> {/* 9 */}
     </>
   )
 }
