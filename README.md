@@ -475,7 +475,7 @@ console.log(count);  // Still 0!
   - ただし、React状態で保持しているオブジェクトや配列を直接変更するのはNG
   - オブジェクトや配列を更新する場合は、新しいものを作成し、そのコピーを使用するように状態を更新する必要がある
   - 通常、... Spread構文で、変更するオブジェクトと配列をコピーする
-  - ネストされたオブジェクトの更新
+  - ネストされたオブジェクトの更新 (App7, Form2)
 
 ★★TODO: https://beta.reactjs.org/learn/adding-interactivity#updating-objects-in-state から
 
