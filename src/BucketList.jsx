@@ -1,25 +1,21 @@
-import { useState } from 'react'
+import { useImmer } from 'use-immer'
 
 const initialList = [
   { id: 0, title: 'Big Bellies', seen: false },
   { id: 1, title: 'Lunar Landscape', seen: false },
-  { id: 2, title: 'Terracotta Army', seen: false },
+  { id: 2, title: 'Terracotta Army', seen: true },
 ]
 
 export default function BucketList () {
-  const [list, setList] = useState(initialList)
+  const [list, updateList] = useImmer(initialList)
 
   function handleToggle(artworkId, nextSeen) { // id, チェック状態(変数名わかりにくい)
-    setList(list.map(artwork => {
-      if (artwork.id === artworkId) {
-        return {
-          ...artwork, // 配列オブジェクト全てをセット
-          seen: nextSeen // 特定のプロパティを上書き
-        }
-      } else {
-        return artwork
-      }
-    }))
+    updateList(draft => {
+      const artwork = draft.find(a => // find: テスト関数を満たす配列内の最初の要素の値を返す
+        a.id === artworkId
+      )
+      artwork.seen = nextSeen
+    })
   }
 
   return (
