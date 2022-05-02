@@ -483,7 +483,23 @@ console.log(count);  // Still 0!
     - stateに配列も格納できる。JavaScript の可変オブジェクトの一種であり、読み取り専用として扱う必要がある。オブジェクトと同様、state 
       に格納された配列を更新したい場合は、新しい配列を作成し（または既存の配列をコピーし）、新しい配列を使用するようにstateを設定する必要がある
 
-★★TODO: https://beta.reactjs.org/learn/adding-interactivity#updating-objects-in-state から
+## Responding to Events イベントへの対応
+
+JSX にイベントハンドラーを追加 (クリック、ホバー、フォーム入力へのフォーカスなどの独自関数)
+以下を学ぶ
+
+1. イベントハンドラーを作成するさまざまな方法
+2. 親コンポーネントからイベント処理ロジックを渡す方法
+3. イベントがどのように伝播し、どのように停止するか
+
+* イベントハンドラーの追加
+  - 関数を定義 → その関数を props として JSX タグに渡す。
+  - 通常、コンポーネント内で定義する
+  - ハンドルとその後に処理されるイベントという名前を付けるのが慣例
+    (`onClick={handleClick}`、`onMouseEnter={handleMouseEnter}` など)
+  - イベントハンドラーをインラインで定義することもできる
+
+★★TODO: https://beta.reactjs.org/learn/responding-to-events#adding-event-handlers から
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
