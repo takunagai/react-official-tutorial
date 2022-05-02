@@ -3,6 +3,7 @@ import { sculptureList } from './data2'
 import Form from './Form'
 import Counter from './Counter'
 import Form2 from './Form2'
+import BucketList from './BucketList'
 
 /**
  * data2.js の各データの内容
@@ -48,6 +49,9 @@ export default function Gallery() {
 
       <hr />
       <Form2 />
+
+      <hr />
+      <BucketList />
     </>
   )
 }

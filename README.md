@@ -479,6 +479,9 @@ console.log(count);  // Still 0!
     - コード内のオブジェクトのコピー、状態管理ライブラリ Immerでコードをスッキリ書ける `npm - install immer use-immer`
       - useImmer 関数、useState 同様のタプルを返す
       - 関数をアップデーターに渡す場合、プロデューサーが終了して変更が不変になり、次の状態になるまで、ドラフト引数を自由に変更できる
+  - 状態での配列の更新
+    - stateに配列も格納できる。JavaScript の可変オブジェクトの一種であり、読み取り専用として扱う必要がある。オブジェクトと同様、state 
+      に格納された配列を更新したい場合は、新しい配列を作成し（または既存の配列をコピーし）、新しい配列を使用するようにstateを設定する必要がある
 
 ★★TODO: https://beta.reactjs.org/learn/adding-interactivity#updating-objects-in-state から
 
