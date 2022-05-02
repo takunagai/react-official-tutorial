@@ -470,8 +470,14 @@ console.log(count);  // Still 0!
 * 一連の状態変化のキューイング (App7.js, Counter.js)
   - スナップショット：状態を設定すると、新しい再レンダリングが要求されるが、すでに実行されているコードでは変更されない ★★TODO: 良くわからない
   - 状態を設定するときにアップデータ関数を渡すことで修正できる
+* 状態のオブジェクトの更新
+  - Stateは、オブジェクトを含むあらゆる種類のJavaScript値を保持できる
+  - ただし、React状態で保持しているオブジェクトや配列を直接変更するのはNG
+  - オブジェクトや配列を更新する場合は、新しいものを作成し、そのコピーを使用するように状態を更新する必要がある
+  - 通常、... Spread構文で、変更するオブジェクトと配列をコピーする
+  - ネストされたオブジェクトの更新
 
-★★TODO: https://beta.reactjs.org/learn/adding-interactivity#responding-to-events から
+★★TODO: https://beta.reactjs.org/learn/adding-interactivity#updating-objects-in-state から
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

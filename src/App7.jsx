@@ -2,6 +2,7 @@ import { useState } from 'react' // 状態管理のフック
 import { sculptureList } from './data2'
 import Form from './Form'
 import Counter from './Counter'
+import Form2 from './Form2'
 
 /**
  * data2.js の各データの内容
@@ -44,6 +45,9 @@ export default function Gallery() {
 
       <hr />
       <Counter />
+
+      <hr />
+      <Form2 />
     </>
   )
 }
