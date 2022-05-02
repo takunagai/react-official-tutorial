@@ -498,6 +498,9 @@ JSX にイベントハンドラーを追加 (クリック、ホバー、フォ�
   - ハンドルとその後に処理されるイベントという名前を付けるのが慣例
     (`onClick={handleClick}`、`onMouseEnter={handleMouseEnter}` など)
   - イベントハンドラーをインラインで定義することもできる。短い処理に便利
+  - イベントハンドラーに渡す関数は、呼び出すのではなく渡す。レンダリング時に実行でなく後で呼び出される関数を渡す。関数名に括弧付けない
+* イベントハンドラーでの props の読み取り
+  - イベントハンドラーはコンポーネント内で宣言されているため、コンポーネントの props にアクセスできる
 
 ★★TODO: https://beta.reactjs.org/learn/responding-to-events#adding-event-handlers から
 

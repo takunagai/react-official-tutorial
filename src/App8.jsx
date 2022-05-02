@@ -1,3 +1,5 @@
+import Toolbar from './Toolbar'
+
 export default function Button() {
   // イベントハンドラーは、通常、コンポーネント内で定義する
   function handleClick() {
@@ -12,6 +14,9 @@ export default function Button() {
       <button onClick={() => {
         alert('You clicked me!')
       }}>クリック</button>
+
+      <hr/>
+      <Toolbar />
     </>
   )
 }

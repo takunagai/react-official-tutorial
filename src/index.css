@@ -32,6 +32,10 @@ p, h1, h2, h3, h4, h5, h6 {
 /**
  * Styles
  */
+hr {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
 .card {
   display: inline-block;
   margin: 1rem;
