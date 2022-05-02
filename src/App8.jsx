@@ -6,6 +6,14 @@ export default function Button() {
     alert('You clicked me!')
   }
 
+  function Button2({ onSmash, children }) {
+    return (
+      <button onClick={onSmash}>
+        {children}
+      </button>
+    )
+  }
+
   return (
     <>
       <button onClick={handleClick}>クリック</button>
@@ -15,8 +23,14 @@ export default function Button() {
         alert('You clicked me!')
       }}>クリック</button>
 
-      <hr/>
+      <hr />
       <Toolbar />
+
+      <hr />
+      {/* イベントハンドラーの props に名前を付ける */}
+      <Button2 onSmash={() => alert('Playing!')}>
+        Play Movie
+      </Button2>
     </>
   )
 }
