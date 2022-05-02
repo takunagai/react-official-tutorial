@@ -1,7 +1,8 @@
-import { useState } from 'react'
+// import { useState } from 'react'
+import { useImmer } from 'use-immer'
 
 export default function Form2 () {
-  const [person, setPerson] = useState({
+  const [person, updatePerson] = useImmer({
     name: 'Niki de Saint Phalle',
     artwork: {
       title: 'Blue Nana',
@@ -11,39 +12,26 @@ export default function Form2 () {
   })
 
   function handleNameChange(e) {
-    setPerson({
-      ...person, // 状態(オブジェクトそのまま全部)
-      name: e.target.value // 特定のプロパティを上書き、双方向パインディング
+    updatePerson(draft => {
+      draft.name = e.target.value
     })
   }
 
   function handleTitleChange(e) {
-    setPerson({
-        ...person, // 状態(オブジェクトそのまま全部)
-        artwork: { // 2階層目
-          ...person.artwork, // 状態(2階層目そのまま全部)
-          title: e.target.value // 特定のプロパティを上書き、双方向パインディング
-      }
+    updatePerson(draft => {
+      draft.artwork.title = e.target.value
     })
   }
 
   function handleCityChange(e) {
-    setPerson({
-      ...person,
-      artwork: {
-        ...person.artwork,
-        city: e.target.value
-      }
+    updatePerson(draft => {
+      draft.artwork.city = e.target.value
     })
   }
 
   function handleImageChange(e) {
-    setPerson({
-      ...person,
-      artwork: {
-        ...person.artwork,
-        image: e.target.value
-      }
+    updatePerson(draft => {
+      draft.artwork.image = e.target.value
     })
   }
 

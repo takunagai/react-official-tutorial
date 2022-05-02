@@ -476,6 +476,9 @@ console.log(count);  // Still 0!
   - オブジェクトや配列を更新する場合は、新しいものを作成し、そのコピーを使用するように状態を更新する必要がある
   - 通常、... Spread構文で、変更するオブジェクトと配列をコピーする
   - ネストされたオブジェクトの更新 (App7, Form2)
+    - コード内のオブジェクトのコピー、状態管理ライブラリ Immerでコードをスッキリ書ける `npm - install immer use-immer`
+      - useImmer 関数、useState 同様のタプルを返す
+      - 関数をアップデーターに渡す場合、プロデューサーが終了して変更が不変になり、次の状態になるまで、ドラフト引数を自由に変更できる
 
 ★★TODO: https://beta.reactjs.org/learn/adding-interactivity#updating-objects-in-state から
 
