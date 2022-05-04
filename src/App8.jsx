@@ -1,6 +1,8 @@
 import Toolbar from './Toolbar'
 import Toolbar2 from './Toolbar2'
 import Toolbar3 from './Toolbar3'
+import Signup from './Signup'
+import LightSwitch from './LightSwitch'
 
 export default function Button() {
   // イベントハンドラーは、通常、コンポーネント内で定義する
@@ -42,6 +44,12 @@ export default function Button() {
 
       <hr />
       <Toolbar3 />
+
+      <hr />
+      <Signup />
+
+      <hr />
+      <LightSwitch />
     </>
   )
 }

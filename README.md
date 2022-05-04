@@ -517,8 +517,41 @@ JSX にイベントハンドラーを追加 (クリック、ホバー、フォ�
     - イベントハンドラーは、唯一の引数としてイベントオブジェクトを受け取る(慣例で e)。このオブジェクトでイベントに関する情報を読み取れ、伝播を停止することもできる
     - React では、親コンポーネントに到達しないようにする
 * イベント伝播の代わりにハンドラーを渡す
+* デフォルトの動作の防止
+  - 一部のブラウザイベントには、デフォルトの動作が関連付けられている(フォームとボタン、リンク他)
+* Try out some challenges 1 - ボタンクリックで背景色を変更(App8.jsx, LightSwitch.jsx)
+* Try out some challenges 2 - イベントの伝播の停止
 
-★★TODO: https://beta.reactjs.org/learn/responding-to-events#stopping-propagation から
+```jsx
+export default function ColorSwitch({ onChangeColor }) {
+  return (
+    <button onClick={e => {
+      e.stopPropagation()
+      onChangeColor()
+    }}>
+      Change color
+    </button>
+  )
+}
+
+```
+
+## State: A Component's Memory - 状態：コンポーネントのメモリ
+
+多くの場合、コンポーネントは、インタラクションの結果として画面の内容を変更する必要があります。フォームに入力すると入力フィールドが更新され、画像カルーセルで[次へ]をクリックすると表示される画像が変更され、[購入]をクリックすると商品がショッピングカートに入れられます。コンポーネントは、現在の入力値、現在の画像、ショッピングカートなどを「記憶」する必要があります。 Reactでは、この種のコンポーネント固有のメモリは状態と呼ばれます。
+
+学習すること
+
+1. useState フックを使用して状態変数を追加する方法 
+2. useState フックが返す値のペア 
+3. 複数の状態変数を追加する方法 
+4. State がローカルと呼ばれる理由
+
+### 通常の変数では不十分な場合
+
+
+
+★★TODO: https://beta.reactjs.org/learn/state-a-components-memory から
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
