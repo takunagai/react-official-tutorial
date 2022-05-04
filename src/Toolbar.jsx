@@ -6,6 +6,7 @@ function Button({ onClick, children }) {
   )
 }
 
+// 動作を親コンポーネントで定義
 function PlayButton({ movieName }) {
   function handlePlayClick() {
     alert(`Playing ${movieName}`)

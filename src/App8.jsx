@@ -1,4 +1,6 @@
 import Toolbar from './Toolbar'
+import Toolbar2 from './Toolbar2'
+import Toolbar3 from './Toolbar3'
 
 export default function Button() {
   // イベントハンドラーは、通常、コンポーネント内で定義する
@@ -31,6 +33,15 @@ export default function Button() {
       <Button2 onSmash={() => alert('Playing!')}>
         Play Movie
       </Button2>
+
+      <hr />
+      <Toolbar2
+        onPlayMovie={() => alert('Playing!')}
+        onUploadImage={() => alert('Uploading!')}
+      />
+
+      <hr />
+      <Toolbar3 />
     </>
   )
 }
