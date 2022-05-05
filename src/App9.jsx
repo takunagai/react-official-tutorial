@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { sculptureList } from './data2'
 import Form3 from './Form3'
+import FeedbackForm from './FeedbackForm'
 
 /**
  * -- Data --
@@ -30,6 +31,9 @@ export default function Gallery() {
 
       <hr />
       <Form3 />
+
+      <hr />
+      <FeedbackForm />
     </>
   )
 }
