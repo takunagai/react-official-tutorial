@@ -8,7 +8,8 @@ import './index.css'
 // import App5 from './App5'
 // import App6 from './App6'
 // import App7 from './App7'
-import App8 from './App8'
+// import App8 from './App8'
+import App9 from './App9'
 // import reportWebVitals from './reportWebVitals'
 
 const container = document.getElementById('root')
@@ -23,7 +24,8 @@ root.render(
     {/*<App5 />*/}
     {/*<App6 />*/}
     {/*<App7 />*/}
-    <App8 />
+    {/*<App8 />*/}
+    <App9 />
   </React.StrictMode>
 )
 
