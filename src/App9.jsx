@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { sculptureList } from './data2'
+import Form3 from './Form3'
 
 /**
  * -- Data --
@@ -26,6 +27,9 @@ export default function Gallery() {
       <h3>({index + 1} of {sculptureList.length})</h3>
       <img src={sculpture.url} alt={sculpture.alt} />
       <p>{sculpture.description}</p>
+
+      <hr />
+      <Form3 />
     </>
   )
 }
