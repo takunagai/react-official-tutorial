@@ -1,5 +1,5 @@
 import React from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot } from 'react-dom/client' // React18 の書き方
 import './index.css'
 // import App from './App'
 // import App2 from './App2'
@@ -9,8 +9,9 @@ import './index.css'
 // import App6 from './App6'
 // import App7 from './App7'
 // import App8 from './App8'
-import App9 from './App9'
-// import reportWebVitals from './reportWebVitals'
+// import App9 from './App9'
+import Image from './Image'
+
 
 const container = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
@@ -25,7 +26,9 @@ root.render(
     {/*<App6 />*/}
     {/*<App7 />*/}
     {/*<App8 />*/}
-    <App9 />
+    {/*<App9 />*/}
+    <Image />
+
   </React.StrictMode>
 )
 
