@@ -12,7 +12,8 @@ import './index.css'
 // import App9 from './App9'
 // import Image from './Image'
 // import Gallery from './Gallery'
-import TestCounter from './TestCounter'
+// import TestCounter from './TestCounter'
+import TrafficLight from './TrafficLight'
 
 
 const container = document.getElementById('root')
@@ -31,7 +32,8 @@ root.render(
     {/*<App9 />*/}
     {/*<Image />*/}
     {/*<Gallery />*/}
-    <TestCounter />
+    {/*<TestCounter />*/}
+    <TrafficLight />
 
   </React.StrictMode>
 )

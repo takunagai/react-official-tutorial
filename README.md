@@ -640,7 +640,7 @@ export default function ColorSwitch({ onChangeColor }) {
   - Try out some challenges - Traffic Light
 
 
-★★TODO: https://beta.reactjs.org/learn/render-and-commit#step-3-react-commits-changes-to-the-dom から
+★★TODO: https://beta.reactjs.org/learn/queueing-a-series-of-state-updates から
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
