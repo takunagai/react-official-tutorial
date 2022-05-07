@@ -671,6 +671,7 @@ export default function ColorSwitch({ onChangeColor }) {
   - 1つのイベントでいくつかの状態を複数回更新するには、アップデーター関数を使用する(`setNumber(n => n + 1)`)
   - Try out some challenges 1 - 遅延のある処理を扱うボタン (Scoreboard.jsx)
   - Try out some challenges 2 - ドラッグでボックスを移動 (Canvas.jsx, CanvasBackground.jsx, CanvasBox.jsx)
+  - Try out some challenges 3 - 2を Immer でスッキリ書く (Canvas.jsx, CanvasBackground.jsx, CanvasBox.jsx を更新)
   - 
 
   - ★★TODO: Try out some challenges 1 - テスト

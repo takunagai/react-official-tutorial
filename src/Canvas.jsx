@@ -1,30 +1,25 @@
-import { useState } from 'react'
+import { useImmer } from 'use-immer'
 import Background from './CanvasBackground'
 import Box from './CanvasBox'
 
 const initialPosition = { x: 0, y: 0 }
 
 export default function Canvas() {
-  const [shape, setShape] = useState({
+  const [shape, updateShape] = useImmer({
     color: 'orange',
     position: initialPosition
   })
 
   function handleMove(dx, dy) {
-    setShape({
-      ...shape,
-      position: {
-        ...shape,
-        x: shape.position.x += dx,
-        y: shape.position.y += dy
-      }
+    updateShape(draft => {
+      draft.position.x += dx
+      draft.position.y += dy
     })
   }
 
   function handleColorChange(e) {
-    setShape({
-      ...shape,
-      color: e.target.value
+    updateShape(draft => {
+      draft.color = e.target.value
     })
   }
 
