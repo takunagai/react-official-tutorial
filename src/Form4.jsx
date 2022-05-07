@@ -7,26 +7,10 @@ export default function Form4() {
     email: 'bhepworth@sculpture.com'
   })
 
-  function handleFirstNameChange(e) {
-    // person.firstName = e.target.value // これではダメ
-    setPerson({
-      ...person, // 元のオブジェクトのデータを複製
-      firstName: e.target.value // 更新したいものをオーバーライド
-    })
-  }
-
-  function handleLastNameChange(e) {
+  function handleChange(e) {
     setPerson({
       ...person,
-      lastName: e.target.value
-    })
-    person.lastName = e.target.value
-  }
-
-  function handleEmailChange(e) {
-    setPerson({
-      ...person,
-      email: e.target.value
+      [e.target.name]: e.target.value // プロパティを動的にセット
     })
   }
 
@@ -35,22 +19,25 @@ export default function Form4() {
       <label>
         First name:
         <input
+          name="firstName" // 変えたいプロパティを同じ名前を付ける
           value={person.firstName}
-          onChange={handleFirstNameChange}
+          onChange={handleChange}
         />
       </label><br />
       <label>
         Last name:
         <input
+          name="lastName"
           value={person.lastName}
-          onChange={handleLastNameChange}
+          onChange={handleChange}
         />
       </label><br />
       <label>
         Email:
         <input
+          name="email"
           value={person.email}
-          onChange={handleEmailChange}
+          onChange={handleChange}
         />
       </label>
       <p>
