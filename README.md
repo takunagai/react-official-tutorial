@@ -658,7 +658,17 @@ export default function ColorSwitch({ onChangeColor }) {
     - `setNumber(n => n + 1)`
   - 状態を置き換えた後に状態を更新するとどうなるか？(index.js, TestCount3.jsx)
     - `setNumber(number + 5)` `setNumber(n => n + 1)` で +6 になる
-  - 更新後に状態を置き換えるとどうなるか？
+  - 更新後に状態を置き換えるとどうなるか？(index.js, TestCount4.jsx)
+    - 上のに `setNumber(42)` を追記すると、すでにキューに入れられているものを無視して、キューに「replacewith42」を追加、42 となる
+  - イベントハンドラーが完了すると、Reactは再レンダリングをトリガー。再レンダリング中にキューを処理する
+    - アップデータ関数はレンダリング中に実行されるため純粋であり結果のみを返す必要がある。それらの内部から状態を設定したり、他の副作用を実行してはならない
+    - Strict モードでは、Reactは各アップデーター関数を2回実行する (検証用、2番目の結果は破棄)
+* アップデータ関数の引数の命名規則：『対応する状態変数の最初の1,2文字』で名前を付けるのが一般的
+  - より詳細なコードが必要な場合、別の一般的な規則は、setEnabled（enabled =>！enabled）のように完全な状態変数名を繰り返すか、setEnabled（prevEnabled =>！prevEnabled）のようにプレフィックスを使用する
+* まとめ
+  - 状態を設定しても、既存のレンダリングの変数は変更されないが、新しいレンダリングが要求される
+  - Reactは、イベントハンドラーの実行が終了した後、状態の更新を処理する(バッチ処理)
+  - 1つのイベントでいくつかの状態を複数回更新するには、アップデーター関数を使用する(`setNumber(n => n + 1)`)
 
 ★★TODO: https://beta.reactjs.org/learn/queueing-a-series-of-state-updates#updating-the-same-state-variable-multiple-times-before-the-next-render から
 

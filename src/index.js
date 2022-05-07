@@ -16,6 +16,8 @@ import './index.css'
 // import TrafficLight from './TrafficLight'
 import TestCounter2 from './TestCounter2'
 import TestCounter3 from './TestCounter3'
+import TestCounter4 from './TestCounter4'
+import RequestTracker from './RequestTracker'
 
 
 const container = document.getElementById('root')
@@ -38,6 +40,8 @@ root.render(
     {/*<TrafficLight />*/}
     <TestCounter2 />
     <TestCounter3 />
+    <TestCounter4 />
+    <RequestTracker />
   </React.StrictMode>
 )
 
