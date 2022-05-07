@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useImmer } from 'use-immer'
 
 export default function Form5() {
-  const [person, setPerson] = useState({
+  const [person, updatePerson] = useImmer({
     name: 'Niki de Saint Phalle',
     artwork: {
       title: 'Blue Nana',
@@ -11,39 +11,26 @@ export default function Form5() {
   })
 
   function handleNameChange(e) {
-    setPerson({
-      ...person, // 全てコピーし (ネストなしの場合)
-      name: e.target.value // オーバーライド
+    updatePerson(draft => {
+      draft.name = e.target.value
     })
   }
 
   function handleTitleChange(e) {
-    setPerson({
-      ...person, // 全てコピーし (ネストありの場合)
-      artwork: {
-        ...person.artwork, // 変えたいプロパティを含む親プロパティの
-        title: e.target.value // 更新したい子プロパティをオーバーライド
-      }
+    updatePerson(draft => {
+      draft.artwork.title = e.target.value // ネスト、ドットシンタックスで指定するだけ
     })
   }
 
   function handleCityChange(e) {
-    setPerson({
-      ...person,
-      artwork: {
-        ...person.artwork,
-        city: e.target.value
-      }
+    updatePerson(draft => {
+      draft.artwork.city = e.target.value
     })
   }
 
   function handleImageChange(e) {
-    setPerson({
-      ...person,
-      artwork: {
-        ...person.artwork,
-        image: e.target.value
-      }
+    updatePerson(draft => {
+      draft.artwork.image = e.target.value
     })
   }
 
