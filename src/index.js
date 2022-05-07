@@ -20,7 +20,8 @@ import './index.css'
 // import RequestTracker from './RequestTracker'
 // import MovingDot from './MovingDot'
 // import Form4 from './Form4'
-import Form5 from './Form5'
+// import Form5 from './Form5'
+import Scoreboard from './Scoreboard'
 
 
 const container = document.getElementById('root')
@@ -47,7 +48,8 @@ root.render(
     {/*<RequestTracker />*/}
     {/*<MovingDot />*/}
     {/*<Form4 />*/}
-    <Form5 />
+    {/*<Form5 />*/}
+    <Scoreboard />
   </React.StrictMode>
 )
 
