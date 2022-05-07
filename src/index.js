@@ -18,7 +18,8 @@ import './index.css'
 // import TestCounter3 from './TestCounter3'
 // import TestCounter4 from './TestCounter4'
 // import RequestTracker from './RequestTracker'
-import MovingDot from './MovingDot'
+// import MovingDot from './MovingDot'
+import Form4 from './Form4'
 
 
 const container = document.getElementById('root')
@@ -43,7 +44,8 @@ root.render(
     {/*<TestCounter3 />*/}
     {/*<TestCounter4 />*/}
     {/*<RequestTracker />*/}
-    <MovingDot />
+    {/*<MovingDot />*/}
+    <Form4 />
   </React.StrictMode>
 )
 
