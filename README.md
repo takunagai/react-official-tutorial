@@ -639,8 +639,28 @@ export default function ColorSwitch({ onChangeColor }) {
   - 再レンダリングする前に最新の状態を読みたい場合、状態更新機能(後で)を使用する
   - Try out some challenges - Traffic Light
 
+### Queueing a Series of State Updates - 一連の状態更新のキューイング
 
-★★TODO: https://beta.reactjs.org/learn/queueing-a-series-of-state-updates から
+* 状態変数を設定すると、別のレンダリングがキューに入れられる
+* 次のレンダリングをキューに入れる前に、値に対して複数の操作を実行したい場合「バッチ処理」を行う
+* 「+3」ボタンをクリックで、setNumber（number + 1）を3回呼び出しても 1 しか増えない(上のスナップショット参照)
+* React は、イベントハンドラーのすべてのコードが実行されるまで待機してから、状態の更新を処理する
+* 最初の料理オーダーを行っても、ウェイターはキッチンに駆け寄らずそのまま注文を受けるような感じ
+* これにより、再レンダリングをあまりトリガーせずに、複数のコンポーネントからでも複数の状態変数を更新できる
+* ただしこれは、イベントハンドラーとその中のコードが完了するまで  UIが更新されないことも意味する
+* この動作は「バッチ処理」といい、実行を大幅に高速化し、「半完成」レンダリングの処理を回避する
+* Reactは、一般的に安全な場合にのみバッチ処理を実行する (例：最初のボタンクリックでフォームが無効になった場合、2回目のクリックでフォームが再度送信されることはない)
+
+* 次のレンダリングの前に、同じ状態変数を複数回更新する
+  - `setNumber(number + 1)` ではなく、次の状態を計算する関数を渡す `setNumber(n => n + 1)`
+  - React に単に置換するのではなく「状態値を使用して何かを行う」ように指示する方法
+  - 「アップデータ関数」を渡すことで、Reactはキューを通過し、最終的に更新された状態を提供する(index.js, TestCount3.jsx)
+    - `setNumber(n => n + 1)`
+  - 状態を置き換えた後に状態を更新するとどうなるか？(index.js, TestCount3.jsx)
+    - `setNumber(number + 5)` `setNumber(n => n + 1)` で +6 になる
+  - 更新後に状態を置き換えるとどうなるか？
+
+★★TODO: https://beta.reactjs.org/learn/queueing-a-series-of-state-updates#updating-the-same-state-variable-multiple-times-before-the-next-render から
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
