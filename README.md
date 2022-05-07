@@ -669,7 +669,10 @@ export default function ColorSwitch({ onChangeColor }) {
   - 状態を設定しても、既存のレンダリングの変数は変更されないが、新しいレンダリングが要求される
   - Reactは、イベントハンドラーの実行が終了した後、状態の更新を処理する(バッチ処理)
   - 1つのイベントでいくつかの状態を複数回更新するには、アップデーター関数を使用する(`setNumber(n => n + 1)`)
-  - Try out some challenges 1 - 遅延のある処理を扱うボタン
+  - Try out some challenges 1 - 遅延のある処理を扱うボタン (Scoreboard.jsx)
+  - Try out some challenges 2 - ドラッグでボックスを移動 (Canvas.jsx, CanvasBackground.jsx, CanvasBox.jsx)
+  - 
+
   - ★★TODO: Try out some challenges 1 - テスト
 
 ### Updating Objects in State - 状態のオブジェクトの更新
@@ -696,6 +699,7 @@ export default function ColorSwitch({ onChangeColor }) {
     - 一般的なReact最適化戦略は、前の小道具または状態が次のものと同じである場合、作業をスキップすることに依存している
     - 状態の過去のコピーをメモリに保持し、必要に応じてそれらを再利用できるため、Undo/Redo、変更履歴表示、フォームを以前の値にリセットなどが実装しやすい
   - Try out some challenges 1 - ボタンで点数加算を Fix
+  - Try out some challenges 2 - ドラッグでボックスを移動 Fix (Canvas.jsx, CanvasBackground.jsx, CanvasBox.jsx)
 
 ★★TODO: https://beta.reactjs.org/learn/updating-objects-in-state#treat-state-as-read-only から
 

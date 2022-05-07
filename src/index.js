@@ -21,7 +21,8 @@ import './index.css'
 // import MovingDot from './MovingDot'
 // import Form4 from './Form4'
 // import Form5 from './Form5'
-import Scoreboard from './Scoreboard'
+// import Scoreboard from './Scoreboard'
+import Canvas from './Canvas'
 
 
 const container = document.getElementById('root')
@@ -49,7 +50,8 @@ root.render(
     {/*<MovingDot />*/}
     {/*<Form4 />*/}
     {/*<Form5 />*/}
-    <Scoreboard />
+    {/*<Scoreboard />*/}
+    <Canvas />
   </React.StrictMode>
 )
 
