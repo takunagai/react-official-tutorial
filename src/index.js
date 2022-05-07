@@ -14,10 +14,11 @@ import './index.css'
 // import Gallery from './Gallery'
 // import TestCounter from './TestCounter'
 // import TrafficLight from './TrafficLight'
-import TestCounter2 from './TestCounter2'
-import TestCounter3 from './TestCounter3'
-import TestCounter4 from './TestCounter4'
-import RequestTracker from './RequestTracker'
+// import TestCounter2 from './TestCounter2'
+// import TestCounter3 from './TestCounter3'
+// import TestCounter4 from './TestCounter4'
+// import RequestTracker from './RequestTracker'
+import MovingDot from './MovingDot'
 
 
 const container = document.getElementById('root')
@@ -38,10 +39,11 @@ root.render(
     {/*<Gallery />*/}
     {/*<TestCounter />*/}
     {/*<TrafficLight />*/}
-    <TestCounter2 />
-    <TestCounter3 />
-    <TestCounter4 />
-    <RequestTracker />
+    {/*<TestCounter2 />*/}
+    {/*<TestCounter3 />*/}
+    {/*<TestCounter4 />*/}
+    {/*<RequestTracker />*/}
+    <MovingDot />
   </React.StrictMode>
 )
 

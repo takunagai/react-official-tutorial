@@ -669,8 +669,18 @@ export default function ColorSwitch({ onChangeColor }) {
   - 状態を設定しても、既存のレンダリングの変数は変更されないが、新しいレンダリングが要求される
   - Reactは、イベントハンドラーの実行が終了した後、状態の更新を処理する(バッチ処理)
   - 1つのイベントでいくつかの状態を複数回更新するには、アップデーター関数を使用する(`setNumber(n => n + 1)`)
+  - Try out some challenges 1 - 遅延のある処理を扱うボタン
+  - ★★TODO: Try out some challenges 1 - テスト
 
-★★TODO: https://beta.reactjs.org/learn/queueing-a-series-of-state-updates#updating-the-same-state-variable-multiple-times-before-the-next-render から
+### Updating Objects in State - 状態のオブジェクトの更新
+
+* State は、オブジェクトを保持できる
+* ただし、React状態で保持しているオブジェクトを直接変更してはダメ。新しいオブジェクトを作成し、または既存のオブジェクトのコピーを作成し、そのコピーを使用するように状態を設定する必要があ
+る
+* js では、オブジェクト自体の内容を変更することが可能(ミュータブル)だが、他と同じように不変であるかのように扱う必要がある → 変更でなく、置き換え
+* 状態のオブジェクトは、読み取り専用として扱う
+
+★★TODO: https://beta.reactjs.org/learn/updating-objects-in-state#treat-state-as-read-only から
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
