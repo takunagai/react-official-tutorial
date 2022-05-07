@@ -5,8 +5,11 @@ export default function MovingDot() {
   return (
     <div
       onPointerMove={e => {
-        position.x = e.clientX; // プリミティブな変数の時と同じで、これでは再レンダリングに反映されない
-        position.y = e.clientY;
+        setPosition({
+          x: e.clientX,
+          y: e.clientY
+        }
+        )
       }}
       style={{
         position: 'relative',
