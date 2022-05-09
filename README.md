@@ -718,7 +718,8 @@ export default function ColorSwitch({ onChangeColor }) {
     - または、 Immer を使用することもできる
     - Reactでは、状態のオブジェクトや配列を変更したくないため、スライス（p! なし）をより頻繁に使う
   - 配列への追加 (index.js, List.jsx)
-    - push() は、配列を変更してしまう。代わりに、既存のアイテムの最後に新しいアイテムを追加し、新しい配列を作成する
+    - push() は、配列を変更してしまう。代わりに、useState のセッター関数で、既存のアイテムをスプレッド構文でコピーした上で新しいアイテムを後(前に加えたい場合は前に)追加、新しい配列を作成する
+    - 
 
 ★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#adding-to-an-array から
 

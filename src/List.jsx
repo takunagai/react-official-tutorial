@@ -17,8 +17,8 @@ export default function List() {
       <button onClick={() => {
         setName('')
         setArtists([
+          { id: nextId++, name: name }, // 追加分
           ...artists, // 元の配列全部
-          { id: nextId++, name: name } // 追加分
         ])
       }}>Add</button>
       <ul>
