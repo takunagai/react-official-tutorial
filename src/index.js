@@ -24,6 +24,7 @@ import './index.css'
 // import Scoreboard from './Scoreboard'
 // import Canvas from './Canvas'
 import List from './List'
+import List2 from './List2'
 
 
 const container = document.getElementById('root')
@@ -54,6 +55,7 @@ root.render(
     {/*<Scoreboard />*/}
     {/*<Canvas />*/}
     <List />
+    <List2 />
   </React.StrictMode>
 )
 

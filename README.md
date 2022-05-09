@@ -718,80 +718,12 @@ export default function ColorSwitch({ onChangeColor }) {
     - または、 Immer を使用することもできる
     - Reactでは、状態のオブジェクトや配列を変更したくないため、スライス（p! なし）をより頻繁に使う
   - 配列への追加 (index.js, List.jsx)
-    - push() は、配列を変更してしまう。代わりに、useState のセッター関数で、既存のアイテムをスプレッド構文でコピーした上で新しいアイテムを後(前に加えたい場合は前に)追加、新しい配列を作成する
-    - 
+    - push() は、配列を変更してしまう。代わりに、useState のセッター関数で、既存のアイテムをスプレッド構文でコピーした上で新しいアイテムを後 push(前に加えたい場合は前に = unshift)
+      追加、新しい配列を作成する
+  - 配列からの削除 (index.js, List2.jsx)
+    - 配列からアイテムを削除する簡単な方法は、フィルターでの除外。でも、そのアイテムを含まない新しい配列を作成する。元の配列は変更されないのでOK
+  - 配列の変更
+    - 配列の一部またはすべての項目を変更する場合は、map() で新しい配列を作成する
+    - map(関数) に渡す関数は、データまたは index（あるいはその両方）に基づいて、各アイテムをどう処理するかを決定できる
 
-★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#adding-to-an-array から
-
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#removing-from-an-array から
