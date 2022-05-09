@@ -25,6 +25,7 @@ import './index.css'
 // import Canvas from './Canvas'
 import List from './List'
 import List2 from './List2'
+import ShapeEditor from './ShapeEditor'
 
 
 const container = document.getElementById('root')
@@ -56,6 +57,7 @@ root.render(
     {/*<Canvas />*/}
     <List />
     <List2 />
+    <ShapeEditor />
   </React.StrictMode>
 )
 
