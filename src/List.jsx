@@ -16,10 +16,10 @@ export default function List() {
       />
       <button onClick={() => {
         setName('')
-        artists.push({ // push は配列を変更してしまう
-          id: nextId++,
-          name: name,
-        })
+        setArtists([
+          ...artists, // 元の配列全部
+          { id: nextId++, name: name } // 追加分
+        ])
       }}>Add</button>
       <ul>
         {artists.map(artist => (
