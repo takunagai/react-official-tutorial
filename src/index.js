@@ -22,7 +22,8 @@ import './index.css'
 // import Form4 from './Form4'
 // import Form5 from './Form5'
 // import Scoreboard from './Scoreboard'
-import Canvas from './Canvas'
+// import Canvas from './Canvas'
+import List from './List'
 
 
 const container = document.getElementById('root')
@@ -51,7 +52,8 @@ root.render(
     {/*<Form4 />*/}
     {/*<Form5 />*/}
     {/*<Scoreboard />*/}
-    <Canvas />
+    {/*<Canvas />*/}
+    <List />
   </React.StrictMode>
 )
 

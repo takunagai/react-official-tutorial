@@ -702,7 +702,24 @@ export default function ColorSwitch({ onChangeColor }) {
   - Try out some challenges 1 - ボタンで点数加算を Fix
   - Try out some challenges 2 - ドラッグでボックスを移動 Fix (Canvas.jsx, CanvasBackground.jsx, CanvasBox.jsx)
 
-★★TODO: https://beta.reactjs.org/learn/updating-objects-in-state#treat-state-as-read-only から
+## Updating Arrays in State 状態の配列の更新
+
+* React で、状態で格納する場合はオブジェクトと同じく不変として扱う必要がある
+  - 新しい配列を作成(または既存の配列のコピーを作成)してから、新しい配列を使用するように状態を設定する必要がある
+* ミューテーションなしでアレイを更新する
+  - 配列は単なる別の種類のオブジェクト。読み取り専用として扱う必要がある(ダメ：`arr[0] ='bird'`、push/pop メソッド)
+  - 代わりに、配列を更新するたびに、新しい配列を状態設定関数に渡す
+  - filter() や map() などの非変異メソッドを呼び出すことにより、状態の元の配列から新しい配列を作成する
+  - [使うメソッド](https://beta.reactjs.org/learn/updating-arrays-in-state#updating-arrays-without-mutation)
+    - 追加：push, unshift ではなく concat, スプレッド構文
+    - 削除：pop, shift, splice(配列を変更) ではなく filter, slice(配列の一部をコピー)
+    - 置換：splice, arr[i] ではなく map
+    - reverse, sort ではなく、初めに配列を複製
+    - または、 Immer を使用することもできる
+    - Reactでは、状態のオブジェクトや配列を変更したくないため、スライス（p! なし）をより頻繁に使う
+  - 配列への追加 (index.js, List.jsx)
+
+★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#adding-to-an-array から
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
