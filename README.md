@@ -725,5 +725,9 @@ export default function ColorSwitch({ onChangeColor }) {
   - 配列の変更 (index.js, ShapeEditor.jsx)
     - 配列の一部またはすべての項目を変更する場合は、map() で新しい配列を作成する
     - map(関数) に渡す関数は、データまたは index（あるいはその両方）に基づいて、各アイテムをどう処理するかを決定できる
+  - 配列内のアイテムを置き換える (index.js, CounterList.jsx)
+    - アイテムを置き換えるには、mapを使用して新しい配列を作成する
+    - map 呼び出し内で、2番目の引数としてアイテムインデックスを受け取る
+    - これを使用し、元のアイテム(最初の引数)を返すか他の何かを返すかを決定する
 
-★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#removing-from-an-array から
+★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#replacing-items-in-an-array から

@@ -26,6 +26,7 @@ import './index.css'
 import List from './List'
 import List2 from './List2'
 import ShapeEditor from './ShapeEditor'
+import CounterList from './CounterList'
 
 
 const container = document.getElementById('root')
@@ -58,6 +59,7 @@ root.render(
     <List />
     <List2 />
     <ShapeEditor />
+    <CounterList />
   </React.StrictMode>
 )
 
