@@ -31,7 +31,8 @@ import './index.css'
 // import List4 from './List4'
 // import BucketList2 from './BucketList2'
 // import BucketList3 from './BucketList3'
-import ShoppingCart from './ShoppingCart'
+// import ShoppingCart from './ShoppingCart'
+import ShoppingCart2 from './ShoppingCart2'
 
 
 const container = document.getElementById('root')
@@ -69,7 +70,8 @@ root.render(
     {/*<List4 />*/}
     {/*<BucketList2 />*/}
     {/*<BucketList3 />*/}
-    <ShoppingCart />
+    {/*<ShoppingCart />*/}
+    <ShoppingCart2 />
   </React.StrictMode>
 )
 

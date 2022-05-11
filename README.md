@@ -752,5 +752,7 @@ export default function ColorSwitch({ onChangeColor }) {
     - 状態オブジェクトが非常に深い場合は、フラットになるように別の方法で再構築することをオススメ
   - Try out some challenges 1 (index.js, ShoppingCart.jsx)
     - メモ：product.count++ ではダメだった → ++product.count
+  - Try out some challenges 2 (index.js, ShoppingCart2.jsx)
+    - 削除ボタンの実装。カウントが1のときに「–」を押すと、製品はカートから自動的に削除するように
 
 ★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#inserting-into-an-array から
