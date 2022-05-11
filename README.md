@@ -731,6 +731,9 @@ export default function ColorSwitch({ onChangeColor }) {
     - これを使用し、元のアイテム(最初の引数)を返すか他の何かを返すかを決定する
   - 配列の任意の位置への挿入 (index.js, List3.jsx)
     - 特定の位置にアイテムを挿入するには、slice()メソッドとスプレッド構文を使う
-  - 
+  - 配列に他の変更を加える
+    - 配列を逆にしたり、並べ替えたり、map()/filter() のような非変異メソッドだけではできないことがある
+    - reverse()/sort() メソッドを使うが、元配列を変更するため直接使用は不可。最初に元配列をコピーしてから変更すれば良い
+    - ただし、浅いコピーのため、中の既存のアイテムの直接変更はNG (配列が変化してしまう)
 
 ★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#inserting-into-an-array から
