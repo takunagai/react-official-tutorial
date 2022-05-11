@@ -729,5 +729,8 @@ export default function ColorSwitch({ onChangeColor }) {
     - アイテムを置き換えるには、mapを使用して新しい配列を作成する
     - map 呼び出し内で、2番目の引数としてアイテムインデックスを受け取る
     - これを使用し、元のアイテム(最初の引数)を返すか他の何かを返すかを決定する
+  - 配列の任意の位置への挿入 (index.js, List3.jsx)
+    - 特定の位置にアイテムを挿入するには、slice()メソッドとスプレッド構文を使う
+  - 
 
-★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#replacing-items-in-an-array から
+★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#inserting-into-an-array から
