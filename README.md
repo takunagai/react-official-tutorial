@@ -750,5 +750,7 @@ export default function ColorSwitch({ onChangeColor }) {
       seen=nextSeen` 
       のようなミューテーションが問題ない (push()/pop()等も可)
     - 状態オブジェクトが非常に深い場合は、フラットになるように別の方法で再構築することをオススメ
+  - Try out some challenges 1 (index.js, ShoppingCart.jsx)
+    - メモ：product.count++ ではダメだった → ++product.count
 
 ★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#inserting-into-an-array から

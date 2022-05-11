@@ -23,14 +23,15 @@ import './index.css'
 // import Form5 from './Form5'
 // import Scoreboard from './Scoreboard'
 // import Canvas from './Canvas'
-import List from './List'
-import List2 from './List2'
-import ShapeEditor from './ShapeEditor'
-import CounterList from './CounterList'
-import List3 from './List3'
-import List4 from './List4'
-import BucketList2 from './BucketList2'
-import BucketList3 from './BucketList3'
+// import List from './List'
+// import List2 from './List2'
+// import ShapeEditor from './ShapeEditor'
+// import CounterList from './CounterList'
+// import List3 from './List3'
+// import List4 from './List4'
+// import BucketList2 from './BucketList2'
+// import BucketList3 from './BucketList3'
+import ShoppingCart from './ShoppingCart'
 
 
 const container = document.getElementById('root')
@@ -60,14 +61,15 @@ root.render(
     {/*<Form5 />*/}
     {/*<Scoreboard />*/}
     {/*<Canvas />*/}
-    <List />
-    <List2 />
-    <ShapeEditor />
-    <CounterList />
-    <List3 />
-    <List4 />
-    <BucketList2 />
-    <BucketList3 />
+    {/*<List />*/}
+    {/*<List2 />*/}
+    {/*<ShapeEditor />*/}
+    {/*<CounterList />*/}
+    {/*<List3 />*/}
+    {/*<List4 />*/}
+    {/*<BucketList2 />*/}
+    {/*<BucketList3 />*/}
+    <ShoppingCart />
   </React.StrictMode>
 )
 
