@@ -30,6 +30,7 @@ import CounterList from './CounterList'
 import List3 from './List3'
 import List4 from './List4'
 import BucketList2 from './BucketList2'
+import BucketList3 from './BucketList3'
 
 
 const container = document.getElementById('root')
@@ -66,6 +67,7 @@ root.render(
     <List3 />
     <List4 />
     <BucketList2 />
+    <BucketList3 />
   </React.StrictMode>
 )
 
