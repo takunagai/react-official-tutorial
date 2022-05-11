@@ -754,5 +754,6 @@ export default function ColorSwitch({ onChangeColor }) {
     - メモ：product.count++ ではダメだった → ++product.count
   - Try out some challenges 2 (index.js, ShoppingCart2.jsx)
     - 削除ボタンの実装。カウントが1のときに「–」を押すと、製品はカートから自動的に削除するように
+  - Try out some challenges 3 (index.js, .jsx)
 
-★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#inserting-into-an-array から
+★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#challenges の３から
