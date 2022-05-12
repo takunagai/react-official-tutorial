@@ -5,7 +5,7 @@ export default function TaskAppTaskList({ todos, onChangeTodo, onDeleteTodo}) {
     <ul>
       {todos.map(todo => (
         <li key={todo.id}>
-          <Task todo={todo} onChange={onChangeTodo} onDelete={onDeleteTodo} />
+          <Task todo={todo} onChange={onChangeTodo} onDelete={onDeleteTodo} />{/*バケツリレー*/}
         </li>
       ))}
     </ul>
@@ -15,14 +15,15 @@ export default function TaskAppTaskList({ todos, onChangeTodo, onDeleteTodo}) {
 function Task({ todo, onChange, onDelete }) {
   const [isEditing, setIsEditing] = useState(false)
   let todoContent
+
   if (isEditing) {
     todoContent = (
       <>
         <input
           type="text"
           value={todo.title}
-          onChange={e => {
-              onChange({
+          onChange={e => { // イベントハンドラの onChange
+              onChange({   // 引数で受け取った関数の onChange
                 ...todo, // 全てコピーして
                 title: e.target.value // オーバーライド
               })
