@@ -794,7 +794,7 @@ export default function ColorSwitch({ onChangeColor }) {
   - デフォルトの動作をオーバーライドし、コンポーネントに<Chat key = {email} />などの別のキーを渡すことで、コンポーネントの状態を強制的にリセットできる
   - 受信者が異なる場合、新しいデータ（および入力のような UI）を使用して最初から再作成する必要がある別のチャットコンポーネントと見なす必要があることを React に伝える
   - これで、同じコンポーネントをレンダリングした場合でも、受信者を切り替えると常に入力フィールドがリセットされる
-* useReducer 状態ロジックをレデューサーに抽出する
+* useReducer 状態ロジックを reducer に抽出する (TaskApp3.jsx ★★TODO:動かない)
   - 補足：useReducer は、変数を宣言時に state の更新方法をあらかじめ dispatch に設定しておける
   - 補足：useState と異なり、state を複数同時に取り扱うことが出来る
   - 補足：特定の action に基づいて reducer で state を更新
@@ -804,12 +804,15 @@ export default function ColorSwitch({ onChangeColor }) {
   - 補足：[React hooksを基礎から理解する (useReducer編) - Qiita](https://qiita.com/seira/items/2fbad56e84bda885c84c)
   - 補足：非依存な純粋関数であることからstateに関するロジックの単体テストが書ける。useStateはロジックがsetStateに依存してしまう(stateに依存)のでどうしてもテストコードを書けない
     - [useStateとuseReducerって実は大きな違いがある](https://zenn.dev/tis1116/articles/8b04672a0221bb)
-
-;
   - reducer は state を更新するための関数、dispatch は、reducer を実行するための呼び出し関数
   - たくさんの状態更新があり、それが多くのイベントハンドラに分散しているコンポーネントは、圧倒される可能性がある
   - このような場合、コンポーネントの外部にあるすべての状態更新ロジックを reducer 関数１つに統合できる
   - イベントハンドラーは、ユーザーのアクションのみを指定するため簡潔になる
   - ファイル下部にある reducer 関数は、各アクションに応じて状態を更新する方法を指定する
+* コンテキストを使用してデータを深く渡す
+  - 複数の props を多数のコンポーネントに渡す場合や、多くのコンポーネントが同じ情報を必要とする場合、props を渡すのは不便
+  - コンテキストを使うと、親コンポーネントは、その下のツリー内の任意のコンポーネントが、その深さに関係なく、props を明示的に通過(バケツリレー)させることなく、情報を利用できるようになる
+  - 例：見出しコンポーネント：最も近いセクションにそのレベルを「尋ねる」ことによって、その見出しレベルを決定。情報提供はコンテキストを通じて行い、props は使わない (Page.jsx, PageSection.jsx, 
+    PageHeading.jsx, PageLevelContext.jsx)
 
 ★★TODO: ここから https://beta.reactjs.org/learn/managing-state
