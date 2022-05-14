@@ -814,5 +814,10 @@ export default function ColorSwitch({ onChangeColor }) {
   - コンテキストを使うと、親コンポーネントは、その下のツリー内の任意のコンポーネントが、その深さに関係なく、props を明示的に通過(バケツリレー)させることなく、情報を利用できるようになる
   - 例：見出しコンポーネント：最も近いセクションにそのレベルを「尋ねる」ことによって、その見出しレベルを決定。情報提供はコンテキストを通じて行い、props は使わない (Page.jsx, PageSection.jsx, 
     PageHeading.jsx, PageLevelContext.jsx)
+* reducer と context によるスケールアップ
+  - reducer で、コンポーネントの状態更新ロジックを統合できる
+  - context で、情報を他のコンポーネントに深く渡すことができる
+  - reducer と context を組み合わせて、複雑な画面の状態を親コンポーネントが reducer で管理できる (TaskApp4.jsx, TaskApp4TasksContext.jsx, 
+    TaskApp4AddTask.jsx, TaskApp4TaskList.jsx) ★★TODO: 理解できてないので理解
 
 ★★TODO: ここから https://beta.reactjs.org/learn/managing-state

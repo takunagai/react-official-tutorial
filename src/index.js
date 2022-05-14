@@ -40,7 +40,8 @@ import './index.css'
 // import Accordion from './Accordion'
 // import Messenger from './Messenger'
 // import TaskApp3 from './TaskApp3'
-import Page from './Page'
+// import Page from './Page'
+import TaskApp4 from './TaskApp4'
 
 
 const container = document.getElementById('root')
@@ -87,7 +88,8 @@ root.render(
     {/*<Accordion />*/}
     {/*<Messenger />*/}
     {/*<TaskApp3 />*/}
-    <Page />
+    {/*<Page />*/}
+    <TaskApp4 />
   </React.StrictMode>
 )
 
