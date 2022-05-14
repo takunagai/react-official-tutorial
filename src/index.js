@@ -34,7 +34,8 @@ import './index.css'
 // import ShoppingCart from './ShoppingCart'
 // import ShoppingCart2 from './ShoppingCart2'
 // import TaskApp from './TaskApp'
-import TaskApp2 from './TaskApp2'
+// import TaskApp2 from './TaskApp2'
+import Form6 from './Form6'
 
 
 const container = document.getElementById('root')
@@ -75,7 +76,8 @@ root.render(
     {/*<ShoppingCart />*/}
     {/*<ShoppingCart2 />*/}
     {/*<TaskApp />*/}
-    <TaskApp2 />
+    {/*<TaskApp2 />*/}
+    <Form6 />
   </React.StrictMode>
 )
 

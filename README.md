@@ -761,4 +761,24 @@ export default function ColorSwitch({ onChangeColor }) {
   - Try out some challenges 3 Immer 使う例
     - (TaskApp2.jsx, TaskAppAddTodo.jsx, TaskAppTaskList.jsx)
 
-★★TODO: https://beta.reactjs.org/learn/updating-arrays-in-state#challenges の３から
+## Managing State - 状態の管理 (中級)
+
+* アプリケーションが大きくなるにつれて、状態がどのように編成され、データがコンポーネント間でどのように流れるかについて、より意図的にすることが役立つ
+* 冗長または重複状態は、バグの一般的な原因
+* 状態を適切に構造化する方法、状態更新ロジックを保守可能に保つ方法、および離れたコンポーネント間で状態を共有する方法を学ぶ
+* この章で学ぶこと
+    - 状態の変化に伴う UI の変化についての考え方
+    - 状態をうまく構成する方法
+    - コンポーネント間で共有するために「状態を持ち上げる」方法
+    - 状態を保持するかリセットするかを制御する方法
+    - 複雑な状態ロジックを関数に統合する方法
+    - 「プロップドリル」なしで情報を渡す方法
+    - アプリの成長に合わせて状態管理を拡張する方法
+* Reacting to input with state 状態で入力に反応する
+  - Reactを使用すると、コードから UI を直接変更(ボタンを無効にするなど)することはない
+  - 代わりに、コンポーネントのさまざまな視覚的状態に対して表示する UI を記述する
+  - 初期状態、入力状態 などユーザー入力に応じて状態変化をトリガーする
+  - クイズフォーム (Form6.jsx)
+    - ステータス状態変数で、送信ボタンの有効/無効、成功メッセージ表示するかどうかを決定する方法
+
+★★TODO: ここから https://beta.reactjs.org/learn/managing-state
