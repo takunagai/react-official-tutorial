@@ -3,16 +3,14 @@ import { useState } from 'react'
 export default function Form7() {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
-  const [fullName, setFullName] = useState('') // 不要な状態変数
+  const fullName = `${firstName} ${lastName}`
 
   function handleFirstNameChange(e) {
     setFirstName(e.target.value)
-    setFullName(e.target.value + ' ' + lastName) // 不要な文字組み立て
   }
 
   function handleLastNameChange(e) {
     setLastName(e.target.value)
-    setFullName(firstName + ' ' + e.target.value) // 不要な文字組み立て
   }
 
   return (

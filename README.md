@@ -782,6 +782,6 @@ export default function ColorSwitch({ onChangeColor }) {
     - ステータス状態変数で、送信ボタンの有効/無効、成功メッセージ表示するかどうかを決定する方法
 * 状態構造の選択 Choosing the state structure
   - 状態の適切な構造化で、変更やデバッグが容易なコンポーネントにできる
-  - 重要なのは、State に重複や冗長さを取り除くとこと(でないとバグの原因になる)
+  - 重要なのは、State に重複や冗長さを取り除くとこと。でないとバグの原因になる(Form7)
 
 ★★TODO: ここから https://beta.reactjs.org/learn/managing-state
