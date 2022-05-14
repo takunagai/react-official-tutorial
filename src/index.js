@@ -36,6 +36,7 @@ import './index.css'
 // import TaskApp from './TaskApp'
 // import TaskApp2 from './TaskApp2'
 import Form6 from './Form6'
+import Form7 from './Form7'
 
 
 const container = document.getElementById('root')
@@ -78,6 +79,7 @@ root.render(
     {/*<TaskApp />*/}
     {/*<TaskApp2 />*/}
     <Form6 />
+    <Form7 />
   </React.StrictMode>
 )
 

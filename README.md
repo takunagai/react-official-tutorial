@@ -774,11 +774,14 @@ export default function ColorSwitch({ onChangeColor }) {
     - 複雑な状態ロジックを関数に統合する方法
     - 「プロップドリル」なしで情報を渡す方法
     - アプリの成長に合わせて状態管理を拡張する方法
-* Reacting to input with state 状態で入力に反応する
+* 状態の入力に応じて反応させる Reacting to input with state
   - Reactを使用すると、コードから UI を直接変更(ボタンを無効にするなど)することはない
   - 代わりに、コンポーネントのさまざまな視覚的状態に対して表示する UI を記述する
   - 初期状態、入力状態 などユーザー入力に応じて状態変化をトリガーする
   - クイズフォーム (Form6.jsx)
     - ステータス状態変数で、送信ボタンの有効/無効、成功メッセージ表示するかどうかを決定する方法
+* 状態構造の選択 Choosing the state structure
+  - 状態の適切な構造化で、変更やデバッグが容易なコンポーネントにできる
+  - 重要なのは、State に重複や冗長さを取り除くとこと(でないとバグの原因になる)
 
 ★★TODO: ここから https://beta.reactjs.org/learn/managing-state
