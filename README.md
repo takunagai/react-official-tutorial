@@ -782,7 +782,7 @@ export default function ColorSwitch({ onChangeColor }) {
     - ステータス状態変数で、送信ボタンの有効/無効、成功メッセージ表示するかどうかを決定する方法
 * 状態構造の選択 Choosing the state structure
   - 状態の適切な構造化で、変更やデバッグが容易なコンポーネントにできる
-  - 重要なのは、State に重複や冗長さを取り除くとこと。でないとバグの原因になる(Form7)
+  - 重要なのは、State に重複や冗長さを取り除くとこと。でないとバグの原因になる(Form7)◯×
 * コンポーネント間で状態を共有する
   - 2つのコンポーネントの状態を常に一緒に変更したい場合、双方から状態を削除し、最も近い共通の親に移動してから props を介してそれらに渡す = 「リフティングステートアップ」
   - 例：一度に1つのパネルのみをアクティブにする (Accordion.jsx)
@@ -790,6 +790,9 @@ export default function ColorSwitch({ onChangeColor }) {
   - コンポーネントの再レンダリング時、Reactは、ツリーのどの部分を保持/更新するか、どの部分を破棄/再作成するかを決定する必要がある
   - デフォルトで、React は、以前にレンダリングされたコンポーネントツリーと「一致」するツリーの部分を保持する
   - ただし、これが希望どおりでない場合がある
-  - 受信者を切替えで入力をリセット(Messenger.jsx, MessengerContactList.jsx, MessengerChat.js)
+  - 受信者を切替えで入力をリセット(Messenger.jsx, MessengerContactList.jsx, MessengerChat.js)◯×
+  - デフォルトの動作をオーバーライドし、コンポーネントに<Chat key = {email} />などの別のキーを渡すことで、コンポーネントの状態を強制的にリセットできる
+  - 受信者が異なる場合、新しいデータ（および入力のような UI）を使用して最初から再作成する必要がある別のチャットコンポーネントと見なす必要があることを React に伝える
+  - これで、同じコンポーネントをレンダリングした場合でも、受信者を切り替えると常に入力フィールドがリセットされる
 
 ★★TODO: ここから https://beta.reactjs.org/learn/managing-state
