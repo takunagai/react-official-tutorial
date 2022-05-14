@@ -783,5 +783,8 @@ export default function ColorSwitch({ onChangeColor }) {
 * 状態構造の選択 Choosing the state structure
   - 状態の適切な構造化で、変更やデバッグが容易なコンポーネントにできる
   - 重要なのは、State に重複や冗長さを取り除くとこと。でないとバグの原因になる(Form7)
+* コンポーネント間で状態を共有する
+  - 2つのコンポーネントの状態を常に一緒に変更したい場合、双方から状態を削除し、最も近い共通の親に移動してから props を介してそれらに渡す = 「リフティングステートアップ」
+  - 例：一度に1つのパネルのみをアクティブにする (Accordion.jsx)
 
 ★★TODO: ここから https://beta.reactjs.org/learn/managing-state
