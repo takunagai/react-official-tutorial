@@ -37,7 +37,8 @@ import './index.css'
 // import TaskApp2 from './TaskApp2'
 // import Form6 from './Form6'
 // import Form7 from './Form7'
-import Accordion from './Accordion'
+// import Accordion from './Accordion'
+import Messenger from './Messenger'
 
 
 const container = document.getElementById('root')
@@ -81,7 +82,8 @@ root.render(
     {/*<TaskApp2 />*/}
     {/*<Form6 />*/}
     {/*<Form7 />*/}
-    <Accordion />
+    {/*<Accordion />*/}
+    <Messenger />
   </React.StrictMode>
 )
 

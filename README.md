@@ -786,5 +786,10 @@ export default function ColorSwitch({ onChangeColor }) {
 * コンポーネント間で状態を共有する
   - 2つのコンポーネントの状態を常に一緒に変更したい場合、双方から状態を削除し、最も近い共通の親に移動してから props を介してそれらに渡す = 「リフティングステートアップ」
   - 例：一度に1つのパネルのみをアクティブにする (Accordion.jsx)
+* 状態の保持とリセット
+  - コンポーネントの再レンダリング時、Reactは、ツリーのどの部分を保持/更新するか、どの部分を破棄/再作成するかを決定する必要がある
+  - デフォルトで、React は、以前にレンダリングされたコンポーネントツリーと「一致」するツリーの部分を保持する
+  - ただし、これが希望どおりでない場合がある
+  - 受信者を切替えで入力をリセット(Messenger.jsx, MessengerContactList.jsx, MessengerChat.js)
 
 ★★TODO: ここから https://beta.reactjs.org/learn/managing-state
