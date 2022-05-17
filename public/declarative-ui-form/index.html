@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>City quiz</title>
+  <style>
+	* { box-sizing: border-box; }
+	body { font-family: sans-serif; margin: 20px; padding: 0; }
+  </style>
+</head>
+<body>
+  <form id="form">
+	<h2>City quiz</h2>
+	<p>What city is located on two continents? (Answer: Istanbul)</p>
+	<textarea id="textarea"></textarea>
+	<br/>
+	<button id="button" disabled>Submit</button>
+	<p id="loading" style="display: none">Loading...</p>
+	<p id="error" style="display: none; color: red;"></p>
+  </form>
+  <h1 id="success" style="display: none">That's right!</h1>
+  <script src="./index.js"></script>
+</body>
+</html>

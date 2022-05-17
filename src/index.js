@@ -41,7 +41,8 @@ import './index.css'
 // import Messenger from './Messenger'
 // import TaskApp3 from './TaskApp3'
 // import Page from './Page'
-import TaskApp4 from './TaskApp4'
+// import TaskApp4 from './TaskApp4'
+import Form8 from './Form8'
 
 
 const container = document.getElementById('root')
@@ -89,7 +90,8 @@ root.render(
     {/*<Messenger />*/}
     {/*<TaskApp3 />*/}
     {/*<Page />*/}
-    <TaskApp4 />
+    {/*<TaskApp4 />*/}
+    <Form8 />
   </React.StrictMode>
 )
 
