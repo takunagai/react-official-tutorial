@@ -46,3 +46,10 @@ hr {
 .avatar {
   border-radius: 50%;
 }
+
+/**
+ * src/Picture.jsx
+ */
+.background { height: 100vh; }
+.background--active { background-color: #b2d3ff; }
+.picture--active { outline: 3px dashed #1f4f93; }

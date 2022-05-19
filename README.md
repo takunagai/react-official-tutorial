@@ -855,6 +855,7 @@ export default function ColorSwitch({ onChangeColor }) {
     - [Context – React](https://reactjs.org/docs/context.html)
 * 状態付きで入力に反応する Reacting to Input with State
   - Reactは、宣言型の方法で UI を操作する
+  - 宣言型プログラミングとは、UI を細かく管理するのではなく、視覚的な状態ごとに UI を記述すること
   - UI 個々を直接操作する代わりに、コンポーネントの状態を記述し、ユーザー入力に応じてそれらを切り替える
   - 学ぶこと
     - 1: 宣言型 UI プログラミングと命令型 UI プログラミングの違い
@@ -932,5 +933,11 @@ export default function ColorSwitch({ onChangeColor }) {
          - このクリーンアップの後、answer, error, status の3つ(元7)の重要な状態変数が残る
            - これらは不可欠。機能を壊さずに削除することはできない
       5. イベントハンドラーを作成・接続して状態を設定
+    * まとめ
+      - 元の命令例よりも長くなったが、脆弱性ははるかに低くなっている
+      - すべてのインタラクションを状態の変化として表現すると、既存の状態を壊すことなく、後で新しい視覚的な状態を導入できる
+      - また、インタラクション自体のロジックを変更せずに、各状態で表示する内容を変更することもできる
+    * Try out some challenges 1 - 画像クリックで、画像と背景のクラスをトグル (Picture.jsx, index.css)
+    * Try out some challenges 2 - 説明 ()
 
-★★TODO: ここから https://beta.reactjs.org/learn/reacting-to-input-with-state#step-1-identify-your-components-different-visual-states
+★★TODO: ここから https://beta.reactjs.org/learn/reacting-to-input-with-state#challenges
