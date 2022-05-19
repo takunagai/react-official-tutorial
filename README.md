@@ -939,5 +939,26 @@ export default function ColorSwitch({ onChangeColor }) {
       - また、インタラクション自体のロジックを変更せずに、各状態で表示する内容を変更することもできる
     * Try out some challenges 1 - 画像クリックで、画像と背景のクラスをトグル (Picture.jsx, index.css)
     * Try out some challenges 2 - 編集/表示モード切替 プロフィールエディタフォーム (EditProfile.jsx)
+    * Try out some challenges 3 - 命令型ソリューションのリファクタリング ※JSで2と同等の処理を書くため省略した
 
-★★TODO: ここから https://beta.reactjs.org/learn/reacting-to-input-with-state#challenges
+## Choosing the State Structure 状態構造の選択(状態を構造化するための原則)
+
+* ある状態を保持するコンポーネントの作成時、使用する状態変数の数とそれらのデータの形状を選択する必要がある
+* 状態を適切に構造化することで、変更やデバッグが容易なコンポーネントと、常にバグの原因となるコンポーネントを区別できる
+* 学ぶこと (状態を構造化するときに考慮すべきいくつかのヒント)
+  1. 単一の状態変数と複数の状態変数の使い分け:グループ関連の状態
+    - 適切な選択(誤りなく簡単に)を行うための指針となる原則
+      1. 複数の状態変数を常に同時更新する場合は、それらを1つの状態変数(オブジェクト)にマージ
+        - △ `const [x, setX] = useState(0); const [y, setY] = useState(0);`
+        - ◯ `const [position, setPosition] = useState({ x: 0, y: 0 });`
+        - サンプル：MovingDot.jsx
+      2. いくつかの状態が互いに矛盾し「不一致」になり得る状態が構造化されている場合、間違いの余地がある 
+      3. 冗長な状態を避ける。レンダリング中にコンポーネントの props、またはその既存の状態変数から計算できる情報は、そのコンポーネントの状態に入れない
+      4. 状態の重複を避ける。同じデータが複数の状態変数間、またはネストされたオブジェクト内で複製される場合、それらの同期を維持することは困難。可能な場合は重複を減らす
+      5. 深くネストされた状態を避ける。状態をフラットな方法で構造化する
+    - データベースエンジニアがデータベース構造を「正規化」し、バグの可能性を減らすのと同様
+  2. 状態を整理するときに避けるべきこと
+  3. 状態構造に関する一般的な問題を修正する方法
+
+
+★★TODO: ここから https://beta.reactjs.org/learn/choosing-the-state-structure#group-related-state

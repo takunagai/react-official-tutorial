@@ -8,8 +8,7 @@ export default function MovingDot() {
         setPosition({
           x: e.clientX,
           y: e.clientY
-        }
-        )
+        })
       }}
       style={{
         position: 'relative',
