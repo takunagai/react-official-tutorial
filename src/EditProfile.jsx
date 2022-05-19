@@ -6,24 +6,27 @@ export default function EditProfile() {
   const [lastName, setLastName] = useState('Jacobs')
 
   return (
-    <form>
+    <form onSubmit={e => {
+      e.preventDefault()
+      setIsEditing(!isEditing)
+    }}>
       <label>
         First name:{' '}
-        {!isEditing && <b>{firstName}</b>}
-        {isEditing &&
+        {isEditing ? (
           <input
             type="text"
             value={firstName}
-            onChange={(e) => {
+            onChange={e => {
               setFirstName(e.target.value)
             }}
           />
-        }
+        ) : (
+          <b>{firstName}</b>
+        )}
       </label><br />
       <label>
         Last name:{' '}
-        {!isEditing && <b>{lastName}</b>}
-        {isEditing &&
+        {isEditing ? (
           <input
             type="text"
             value={lastName}
@@ -31,15 +34,11 @@ export default function EditProfile() {
               setLastName(e.target.value)
             }}
           />
-        }
+        ) : (
+          <b>{lastName}</b>
+        )}
       </label><br />
-      <button
-        type="submit"
-        onClick={(e) => {
-          e.preventDefault()
-          setIsEditing(!isEditing)
-        }}
-      >
+      <button type="submit">
         {isEditing ? 'Save' : 'Edit'} Profile
       </button><br />
       <p><i>Hello, {firstName} {lastName}!</i></p>
