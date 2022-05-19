@@ -938,6 +938,6 @@ export default function ColorSwitch({ onChangeColor }) {
       - すべてのインタラクションを状態の変化として表現すると、既存の状態を壊すことなく、後で新しい視覚的な状態を導入できる
       - また、インタラクション自体のロジックを変更せずに、各状態で表示する内容を変更することもできる
     * Try out some challenges 1 - 画像クリックで、画像と背景のクラスをトグル (Picture.jsx, index.css)
-    * Try out some challenges 2 - 説明 ()
+    * Try out some challenges 2 - 編集/表示モード切替 プロフィールエディタフォーム (EditProfile.jsx)
 
 ★★TODO: ここから https://beta.reactjs.org/learn/reacting-to-input-with-state#challenges

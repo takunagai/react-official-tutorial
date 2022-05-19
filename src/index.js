@@ -43,7 +43,8 @@ import './index.css'
 // import Page from './Page'
 // import TaskApp4 from './TaskApp4'
 // import Form8 from './Form8'
-import Picture from './Picture'
+// import Picture from './Picture'
+import EditProfile from './EditProfile'
 
 
 const container = document.getElementById('root')
@@ -93,7 +94,8 @@ root.render(
     {/*<Page />*/}
     {/*<TaskApp4 />*/}
     {/*<Form8 />*/}
-    <Picture />
+    {/*<Picture />*/}
+    <EditProfile />
   </React.StrictMode>
 )
 
