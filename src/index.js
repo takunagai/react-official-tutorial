@@ -46,7 +46,8 @@ import './index.css'
 // import Picture from './Picture'
 // import EditProfile from './EditProfile'
 // import FeedbackForm2 from './FeedbackForm2'
-import Form9 from './Form9'
+// import Form9 from './Form9'
+import Menu from './Menu'
 
 
 const container = document.getElementById('root')
@@ -99,7 +100,8 @@ root.render(
     {/*<Picture />*/}
     {/*<EditProfile />*/}
     {/*<FeedbackForm2 />*/}
-    <Form9 />
+    {/*<Form9 />*/}
+    <Menu />
   </React.StrictMode>
 )
 
