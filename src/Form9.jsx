@@ -3,16 +3,15 @@ import { useState } from 'react';
 export default function Form9() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [fullName, setFullName] = useState('');
+
+  const fullname = `${firstName} ${lastName}`
 
   function handleFirstNameChange(e) {
     setFirstName(e.target.value);
-    setFullName(e.target.value + ' ' + lastName);
   }
 
   function handleLastNameChange(e) {
     setLastName(e.target.value);
-    setFullName(firstName + ' ' + e.target.value);
   }
 
   return (
@@ -33,7 +32,7 @@ export default function Form9() {
         />
       </label>
       <p>
-        Your ticket will be issued to: <b>{fullName}</b>
+        Your ticket will be issued to: <b>{fullname}</b>
       </p>
     </>
   );
