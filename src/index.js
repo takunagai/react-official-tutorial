@@ -47,7 +47,8 @@ import './index.css'
 // import EditProfile from './EditProfile'
 // import FeedbackForm2 from './FeedbackForm2'
 // import Form9 from './Form9'
-import Menu from './Menu'
+// import Menu from './Menu'
+import PlaceTree from './PlaceTree'
 
 
 const container = document.getElementById('root')
@@ -101,7 +102,8 @@ root.render(
     {/*<EditProfile />*/}
     {/*<FeedbackForm2 />*/}
     {/*<Form9 />*/}
-    <Menu />
+    {/*<Menu />*/}
+    <PlaceTree />
   </React.StrictMode>
 )
 

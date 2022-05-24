@@ -970,13 +970,17 @@ export default function ColorSwitch({ onChangeColor }) {
               - 重複があるよくない例。問題発生中(Menu.jsx)
                 - テキストフォーム入力を変更しても、下部のラベルに反映されない問題
                 - 理由：状態変数に重複があり、selectedItem を更新できていないため
-                - 修正(重複を削除)：selectedId を状態に保持し、items 配列でその ID を持つアイテムを検索して selectedItem を取得するよう修正
+                - 修正(重複を削除)：本質的な状態のみを維持するように。selectedId を状態に保持し、items 配列でその ID を持つアイテムを検索して selectedItem を取得するよう修正
             6. 深くネストされた状態を避ける。状態をフラットな方法で構造化する
           - データベースエンジニアがデータベース構造を「正規化」し、バグの可能性を減らすのと同様
   2. 状態を整理するときに避けるべきこと
+    - ネストされたオブジェクトの状態を更新するには、オブジェクトを丸ごとコピーし、変更された部分をオーバーライドで更新する必要がある
+    - 深くネストされたオブジェクトのデータ変更や削除は、非常に冗長になる
+    - 状態がネストされすぎて簡単に更新できない場合は、「フラット」に再構築する
+    - 最適化のサンプル　ビフォーアフター。子の ID の配列を保持させ、再起的に処理させる (PlaceTree.jsx, placeTreeData.js)
   3. 状態構造に関する一般的な問題を修正する方法
 * 
   - 
 
 
-★★TODO: 次：https://beta.reactjs.org/learn/choosing-the-state-structure#avoid-redundant-state
+★★TODO: 次：https://beta.reactjs.org/learn/choosing-the-state-structure#avoid-deeply-nested-state
