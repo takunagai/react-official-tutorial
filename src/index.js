@@ -51,7 +51,8 @@ import './index.css'
 // import PlaceTree from './PlaceTree'
 // import Clock2 from './Clock2' // ★★うまくいかないので修正
 // import TravelPlan from './TravelPlan' // ★★うまくいかないので修正
-import FetchAPI from './FetchAPI' // このチュートリアルではない
+// import FetchAPI from './FetchAPI' // このチュートリアルではない
+import FetchAPI2 from './FetchAPI2' // このチュートリアルではない
 
 
 const container = document.getElementById('root')
@@ -109,7 +110,8 @@ root.render(
     {/*<PlaceTree />*/}
     {/*<Clock2 />*/}
     {/*<TravelPlan />*/}
-    <FetchAPI />
+    {/*<FetchAPI />*/}
+    <FetchAPI2 />
   </React.StrictMode>
 )
 
