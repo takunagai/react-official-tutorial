@@ -981,9 +981,13 @@ export default function ColorSwitch({ onChangeColor }) {
     - 最適化のサンプル　ビフォーアフター。子の ID の配列を保持させ、再帰的に処理させる (PlaceTree.jsx, placeTreeData.js)
     - 削除(2つのレベルの状態を更新)
       - 1つめは自身、2つめは、親の childIds 配列から削除された ID を削除
+    - useImmer を使い、さらに改善
+      - メモリ使用量の改善「テーブル」オブジェクトから削除されたアイテム（およびその子！）も削除
+      - 更新ロジックをより簡潔に
   3. 状態構造に関する一般的な問題を修正する方法
 * 
   - 
 
 
-★★TODO: 次：https://beta.reactjs.org/learn/choosing-the-state-structure#avoid-deeply-nested-state
+★★TODO: 次：https://beta.reactjs.org/learn/choosing-the-state-structure#avoid-deeply-nested-state の "Improving memory 
+usage" から

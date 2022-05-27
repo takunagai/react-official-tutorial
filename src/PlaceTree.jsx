@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useImmer } from 'use-immer'
 import { initialTravelPlan } from './placeTreeData'
 
 function PlaceTree({ id, parentId, placesById, onComplete }) {
@@ -31,19 +31,21 @@ function PlaceTree({ id, parentId, placesById, onComplete }) {
 }
 
 export default function TravelPlan() {
-  const [plan, setPlan] = useState(initialTravelPlan)
+  const [plan, updatePlan] = useImmer(initialTravelPlan)
 
   function handleComplete(parentId, childId) {
-    const parent = plan[parentId]
-    // この子 ID を含まない親の新バージョンを作成
-    const nextParent = {
-      ...parent,
-      childIds: parent.childIds.filter(id => id !== childId)
-    }
-    // ルートの状態オブジェクトを更新
-    setPlan({
-      ...plan,
-      [parentId]: nextParent // 更新された親を持つようにする
+    updatePlan(draft => {
+      // 親プレースの子IDから削除
+      const parent = draft[parentId]
+      parent.childIds = parent.childIds.filter(id => id !== childId)
+
+      // この場所とそのすべてのサブツリーを取得
+      function deleteAllChildren(id) {
+        const place = draft[id]
+        place.childIds.forEach(deleteAllChildren)
+        delete draft[id]
+      }
+      deleteAllChildren(childId)
     })
   }
 
