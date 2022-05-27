@@ -48,7 +48,10 @@ import './index.css'
 // import FeedbackForm2 from './FeedbackForm2'
 // import Form9 from './Form9'
 // import Menu from './Menu'
-import PlaceTree from './PlaceTree'
+// import PlaceTree from './PlaceTree'
+// import Clock2 from './Clock2' // ★★うまくいかないので修正
+// import TravelPlan from './TravelPlan' // ★★うまくいかないので修正
+import FetchAPI from './FetchAPI' // このチュートリアルではない
 
 
 const container = document.getElementById('root')
@@ -103,7 +106,10 @@ root.render(
     {/*<FeedbackForm2 />*/}
     {/*<Form9 />*/}
     {/*<Menu />*/}
-    <PlaceTree />
+    {/*<PlaceTree />*/}
+    {/*<Clock2 />*/}
+    {/*<TravelPlan />*/}
+    <FetchAPI />
   </React.StrictMode>
 )
 

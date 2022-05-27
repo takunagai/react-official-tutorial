@@ -979,14 +979,19 @@ export default function ColorSwitch({ onChangeColor }) {
     - 状態がネストされすぎて簡単に更新できない場合は「フラット」に再構築する (=正規化)
     - 「フラット」にすることで、状態の更新を容易になる、重複の発生を防げるなどのメリットがある
     - 最適化のサンプル　ビフォーアフター。子の ID の配列を保持させ、再帰的に処理させる (PlaceTree.jsx, placeTreeData.js)
-    - 削除(2つのレベルの状態を更新)
+    - 削除。2つのレベルの状態を更新 (サンプル)
       - 1つめは自身、2つめは、親の childIds 配列から削除された ID を削除
-    - useImmer を使い、さらに改善
+    - useImmer を使い、さらに改善 (サンプル)
       - メモリ使用量の改善「テーブル」オブジェクトから削除されたアイテム（およびその子！）も削除
       - 更新ロジックをより簡潔に
+    - 場合によっては、ネストされた状態の一部を子コンポーネントに移動することで、状態のネストを減らすこともできる
+      - アイテムがホバーされているかどうかなど、"保存する必要のない一時的な UI 状態"に適している
+    - Try out some challenges
+      1. ドロップダウンメニューで時計の時間表示の色を変更 (Clock2.jsx ★★TODO: 修正)
+      2. 壊れた旅行管理リスト(≒ToDoリスト)の修正 (TravelPlan.jsx)
   3. 状態構造に関する一般的な問題を修正する方法
-* 
-  - 
+* 番外編
+  - useEffect を使い API からデータをフェッチするサンプル(FetchAPI.jsx)
 
 
 ★★TODO: 次：https://beta.reactjs.org/learn/choosing-the-state-structure#avoid-deeply-nested-state の "Improving memory 
