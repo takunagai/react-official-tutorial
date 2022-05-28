@@ -36,6 +36,16 @@ hr {
   margin-top: 1em;
   margin-bottom: 1em;
 }
+
+.inline-list {
+  list-style-type: square;
+  line-height: 2em;
+}
+.inline-list li {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
 .card {
   display: inline-block;
   margin: 1rem;

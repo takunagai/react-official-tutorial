@@ -993,6 +993,11 @@ export default function ColorSwitch({ onChangeColor }) {
 * 番外編
   - useEffect を使い API からデータをフェッチするサンプル(FetchAPI.jsx)
 
+## Sharing State Between Components コンポーネント間の状態共有
 
-★★TODO: 次：https://beta.reactjs.org/learn/choosing-the-state-structure#avoid-deeply-nested-state の "Improving memory 
-usage" から
+* 2つのコンポーネントの状態を常に一緒に変更したい場合、両方から状態を削除し、最も近い共通の親に移動してから、props を介してそれらに渡す
+* これは "状態を持ち上げる" として、React でよくやることの1つ
+
+★★TODO: 次：https://beta.reactjs.org/learn/sharing-state-between-components
+
+★★TODO: 次：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges 未消化
