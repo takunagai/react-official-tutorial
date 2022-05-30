@@ -1019,6 +1019,6 @@ export default function ColorSwitch({ onChangeColor }) {
     - 検索クエリに従いリストをフィルタリング
     - (例題、filterItems は実装・インポート済みのため、自分で作成する必要はない)
 
-★★TODO: 次：https://beta.reactjs.org/learn/sharing-state-between-components
+★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state
 
 ★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges

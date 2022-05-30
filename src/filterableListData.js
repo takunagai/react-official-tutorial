@@ -1,6 +1,9 @@
 /**
  * 検索クエリに従いリストをフィルタリング
- * 「s」入力でフィルターできてるかテスト
+ * 単語で分け、頭文字から検索
+ * @param {string[]} items
+ * @param {string} query
+ * @return string[]
  */
 export function filterItems(items, query) {
   query = query.toLowerCase()
