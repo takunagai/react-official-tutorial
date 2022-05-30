@@ -1016,9 +1016,29 @@ export default function ColorSwitch({ onChangeColor }) {
 * Try out some challenges
   1. Synced inputs (SyncedInputs.jsx)
   2. Filtering a list (FilterableList.jsx)
-    - 検索クエリに従いリストをフィルタリング
+    - 検索クエリに従いリストをフィルタリング = インクリメンタルサーチ
     - (例題、filterItems は実装・インポート済みのため、自分で作成する必要はない)
 
-★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state
+## 状態の保存とリセット
+
+* 状態はコンポーネント間で分離される
+* Reactは、UIツリー内の位置に基づいて、どの状態がどのコンポーネントに属しているかを追跡する
+* 状態を保持するタイミングと、再レンダリングの間に状態をリセットするタイミングを制御できる
+* 学ぶこと
+  1. React がコンポーネント構造を「見る」方法
+  2. React が状態の保持またはリセットを選択した場合
+  3. React にコンポーネントの状態をリセットさせる方法
+  4. キーとタイプが状態を保持するかどうかにどのように影響するか
+* UI ツリー
+  - ブラウザ：DOM(HTML要素)、CSSOM(CSS)、アクセシビリティツリー
+  - React は JSX から UI ツリーを作成。ツリー構造を使用して UI を管理およびモデル化する
+  - React DOMは、そのUIツリーに一致するようにブラウザーのDOM要素を更新する
+  - (React Native は、これらのツリーをモバイルプラットフォームに固有の要素に変換)
+* 状態はツリー内の位置に関連付けられる
+  - 状態は React 内に保持される。保持している各状態を、そのコンポーネントが UI ツリーのどこにあるかによって正しいコンポーネントに関連付ける
+    - 独立したカウンター：JSXタグは1つだけだが、2つの異なる位置でレンダリングされる例(Counter2.jsx)
+      - それぞれが独自の独立したスコアとホバー状態を取得
+
+★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state#state-is-tied-to-a-position-in-the-tree
 
 ★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges
