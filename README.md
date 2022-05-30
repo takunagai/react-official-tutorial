@@ -1007,7 +1007,14 @@ export default function ColorSwitch({ onChangeColor }) {
     2. 共通の親からハードコードされたデータを渡す
     3. 共通の親に状態を追加、イベントハンドラーと一緒に渡す
       - イベントハンドラーを子に渡すことで、子が親の状態を変更できる
-
+* 制御されたコンポーネントと制御されていないコンポーネント
+  - 制御されている：ローカル状態のコンポーネント。親が影響を与えることができない
+  - 制御されている：コンポーネントのローカル状態ではなく、親からの props で駆動される
+* 各ステートの信頼できる唯一の情報源
+  - 状態の固有の部分ごとに、それを「所有する」コンポーネントを選択する
+  - コンポーネント間で共有状態を複製する代わりに、それを共通の親に持ち上げ、props で子に渡す
+* Try out some challenges
+  1. Synced inputs (SyncedInputs.jsx)
 
 ★★TODO: 次：https://beta.reactjs.org/learn/sharing-state-between-components
 

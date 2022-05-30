@@ -58,6 +58,7 @@ import PlaceTree from './PlaceTree'
 import FetchAPI from './FetchAPI' // このチュートリアルではない
 import FetchAPI2 from './FetchAPI2' // このチュートリアルではない
 import Accordion2 from './Accordion2'
+import SyncedInputs from './SyncedInputs'
 
 
 const container = document.getElementById('root')
@@ -125,6 +126,7 @@ root.render(
         <Route path="fetchAPI" element={<FetchAPI />} />
         <Route path="fetchAPI2" element={<FetchAPI2 />} />
         <Route path="accordion2" element={<Accordion2 />} />
+        <Route path="syncedInputs" element={<SyncedInputs />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>
