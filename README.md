@@ -1015,6 +1015,9 @@ export default function ColorSwitch({ onChangeColor }) {
   - コンポーネント間で共有状態を複製する代わりに、それを共通の親に持ち上げ、props で子に渡す
 * Try out some challenges
   1. Synced inputs (SyncedInputs.jsx)
+  2. Filtering a list (FilterableList.jsx)
+    - 検索クエリに従いリストをフィルタリング
+    - (例題、filterItems は実装・インポート済みのため、自分で作成する必要はない)
 
 ★★TODO: 次：https://beta.reactjs.org/learn/sharing-state-between-components
 
