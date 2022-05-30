@@ -59,6 +59,7 @@ export default function Frontpage() {
           {/*<li><Link to="/travelPlan">TravelPlan</Link>*/}
           <li><Link to="/fetchAPI">FetchAPI</Link></li>
           <li><Link to="/fetchAPI2">FetchAPI2</Link></li>
+          <li><Link to="/accordion2">Accordion</Link></li>
         </ul>
       </nav>
       <Outlet />

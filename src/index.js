@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client' // React18 の書き方
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import './index.css'
 
+import Frontpage from './Frontpage' // このチュートリアルではない
+
 import App from './App'
 import App2 from './App2'
 import App3 from './App3'
@@ -55,7 +57,7 @@ import PlaceTree from './PlaceTree'
 // import TravelPlan from './TravelPlan' // ★★うまくいかないので修正
 import FetchAPI from './FetchAPI' // このチュートリアルではない
 import FetchAPI2 from './FetchAPI2' // このチュートリアルではない
-import Frontpage from './Frontpage' // このチュートリアルではない
+import Accordion2 from './Accordion2'
 
 
 const container = document.getElementById('root')
@@ -122,6 +124,7 @@ root.render(
         {/*<Route path="travelPlan" element={<TravelPlan />} />*/}
         <Route path="fetchAPI" element={<FetchAPI />} />
         <Route path="fetchAPI2" element={<FetchAPI2 />} />
+        <Route path="accordion2" element={<Accordion2 />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>

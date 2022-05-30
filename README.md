@@ -995,9 +995,13 @@ export default function ColorSwitch({ onChangeColor }) {
 
 ## Sharing State Between Components コンポーネント間の状態共有
 
-* 2つのコンポーネントの状態を常に一緒に変更したい場合、両方から状態を削除し、最も近い共通の親に移動してから、props を介してそれらに渡す
-* これは "状態を持ち上げる" として、React でよくやることの1つ
+* 2つのコンポーネントの状態を常に一緒に変更したい場合、状態を持ち上げる
+  - 双方から状態を削除し、最も近い共通の親に移動。props を介してそれらに渡す
+* 例：アコーディオンコンポーネント
+  - 親アコーディオンコンポーネントが2つの別々のパネルをレンダリング
+  - 各 Panel コンポーネントに、表示フラグのブール値 isActive 状態がある
+
 
 ★★TODO: 次：https://beta.reactjs.org/learn/sharing-state-between-components
 
-★★TODO: 次：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges 未消化
+★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges
