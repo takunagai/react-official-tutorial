@@ -61,7 +61,8 @@ export default function Frontpage() {
           <li><Link to="/fetchAPI2">FetchAPI2</Link></li>
           <li><Link to="/accordion2">Accordion</Link></li>
           <li><Link to="/syncedInputs">SyncedInputs</Link></li>
-          <li><Link to="/filterableList">filterableList</Link></li>
+          <li><Link to="/filterableList">FilterableList</Link></li>
+          <li><Link to="/counter2">Counter2</Link></li>
         </ul>
       </nav>
       <Outlet />
