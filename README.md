@@ -1038,6 +1038,11 @@ export default function ColorSwitch({ onChangeColor }) {
   - 状態は React 内に保持される。保持している各状態を、そのコンポーネントが UI ツリーのどこにあるかによって正しいコンポーネントに関連付ける
     - 独立したカウンター：JSXタグは1つだけだが、2つの異なる位置でレンダリングされる例(Counter2.jsx)
       - それぞれが独自の独立したスコアとホバー状態を取得
+  - Reactは、同じコンポーネントを UI ツリーの同じ位置にレンダリングする限り状態を維持、コンポーネントを削除すると、その状態は破壊される(0 にリセット)
+    - 確認：両方のカウンターをインクリメントし、"Render the second counter" のチェックをオフにし2番目のコンポーネントを削除、もう一度チェックして追加し直す
+      - 2番目のカウンターのレンダリングを停止すると、その状態が完全に消えることに注意
+* 同じ位置にある同じコンポーネントは状態を保持
+  - 2つの異なる<Counter/>タグ
 
 ★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state#state-is-tied-to-a-position-in-the-tree
 
