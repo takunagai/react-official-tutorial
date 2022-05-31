@@ -1050,8 +1050,17 @@ export default function ColorSwitch({ onChangeColor }) {
     - UI ツリーから破棄された Counter は、一旦消されるので状態も破棄される
     - 元に戻すと、pが削除され、カウンターが追加される
     - また、同じ位置に別のコンポーネントをレンダリングすると、サブツリー全体の状態がリセット
-    - 確認：カウンターをインクリメントしてから、チェックボックスをオンに (Counter5.jsx)
+    - 確認：カウンターをインクリメントしてから、チェックボックスをオンに (Counter5.jsx, 写経せず)
+  - 再レンダリング間の状態を保持したい場合、ツリーの構造は、あるレンダリングから別のレンダリングに「一致」する必要がある
+  - 構造が異なる場合、React はツリーからコンポーネントを削除するときに状態を破棄するため、状態は破棄される
+  - これがコンポーネント関数定義をネストしない理由 (MyComponent.jsx ダメな例)
+    - 例：MyTextFieldコンポーネント関数はMyComponent内で定義
+      - ボタンをクリックするたびに、入力状態が消える
+      - MyComponent のレンダリングごとに異なる MyTextField 関数が作成されるため
+      - =同位置に別コンポーネントをレンダリングしているため、状態がリセット
+      - → バグやパフォーマンスの問題の発生につながるので、常に最上位でコンポーネント関数を宣言し、それらの定義をネストしない
 
-★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state#state-is-tied-to-a-position-in-the-tree
+★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state#different-components-at-the-same-position
+-reset-state の Pitfall から
 
 ★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges

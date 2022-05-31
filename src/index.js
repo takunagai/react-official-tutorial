@@ -63,6 +63,8 @@ import FilterableList from './FilterableList'
 import Counter2 from './Counter2'
 import Counter3 from './Counter3'
 import Counter4 from './Counter4'
+import Counter5 from './Counter5'
+import MyComponent from './MyComponent'
 
 
 const container = document.getElementById('root')
@@ -135,6 +137,8 @@ root.render(
         <Route path="counter2" element={<Counter2 />} />
         <Route path="counter3" element={<Counter3 />} />
         <Route path="counter4" element={<Counter4 />} />
+        <Route path="counter5" element={<Counter5 />} />
+        <Route path="myComponent" element={<MyComponent />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>
