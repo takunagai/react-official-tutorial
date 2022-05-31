@@ -1042,7 +1042,9 @@ export default function ColorSwitch({ onChangeColor }) {
     - 確認：両方のカウンターをインクリメントし、"Render the second counter" のチェックをオフにし2番目のコンポーネントを削除、もう一度チェックして追加し直す
       - 2番目のカウンターのレンダリングを停止すると、その状態が完全に消えることに注意
 * 同じ位置にある同じコンポーネントは状態を保持
-  - 2つの異なる<Counter/>タグ
+  - チェックボックスをオン/オフしても、カウンタの状態はリセットされず保持(Counter3.jsx)
+    - 同じ位置にある同じコンポーネントなので、Reactの観点からは同じカウンター
+* Reactにとって重要なのは、JSXマークアップではなく、UIツリー内の位置
 
 ★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state#state-is-tied-to-a-position-in-the-tree
 

@@ -63,6 +63,7 @@ export default function Frontpage() {
           <li><Link to="/syncedInputs">SyncedInputs</Link></li>
           <li><Link to="/filterableList">FilterableList</Link></li>
           <li><Link to="/counter2">Counter2</Link></li>
+          <li><Link to="/counter3">Counter3</Link></li>
         </ul>
       </nav>
       <Outlet />

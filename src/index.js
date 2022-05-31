@@ -61,6 +61,7 @@ import Accordion2 from './Accordion2'
 import SyncedInputs from './SyncedInputs'
 import FilterableList from './FilterableList'
 import Counter2 from './Counter2'
+import Counter3 from './Counter3'
 
 
 const container = document.getElementById('root')
@@ -131,6 +132,7 @@ root.render(
         <Route path="syncedInputs" element={<SyncedInputs />} />
         <Route path="filterableList" element={<FilterableList />} />
         <Route path="counter2" element={<Counter2 />} />
+        <Route path="counter3" element={<Counter3 />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>
