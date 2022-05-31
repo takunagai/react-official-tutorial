@@ -1044,7 +1044,13 @@ export default function ColorSwitch({ onChangeColor }) {
 * 同じ位置にある同じコンポーネントは状態を保持
   - チェックボックスをオン/オフしても、カウンタの状態はリセットされず保持(Counter3.jsx)
     - 同じ位置にある同じコンポーネントなので、Reactの観点からは同じカウンター
-* Reactにとって重要なのは、JSXマークアップではなく、UIツリー内の位置
+  - React にとって重要なのは、JSXマークアップではなく UI ツリー内の位置
+* 同じ位置にある異なるコンポーネントは、状態をリセットする
+  - チェックボックスをオンにすると、<Counter> が <p> に置き換える例 (Counter4.jsx)
+    - UI ツリーから破棄された Counter は、一旦消されるので状態も破棄される
+    - 元に戻すと、pが削除され、カウンターが追加される
+    - また、同じ位置に別のコンポーネントをレンダリングすると、サブツリー全体の状態がリセット
+    - 確認：カウンターをインクリメントしてから、チェックボックスをオンに (Counter5.jsx)
 
 ★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state#state-is-tied-to-a-position-in-the-tree
 

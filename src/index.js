@@ -62,6 +62,7 @@ import SyncedInputs from './SyncedInputs'
 import FilterableList from './FilterableList'
 import Counter2 from './Counter2'
 import Counter3 from './Counter3'
+import Counter4 from './Counter4'
 
 
 const container = document.getElementById('root')
@@ -133,6 +134,7 @@ root.render(
         <Route path="filterableList" element={<FilterableList />} />
         <Route path="counter2" element={<Counter2 />} />
         <Route path="counter3" element={<Counter3 />} />
+        <Route path="counter4" element={<Counter4 />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>

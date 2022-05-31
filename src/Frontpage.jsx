@@ -64,6 +64,8 @@ export default function Frontpage() {
           <li><Link to="/filterableList">FilterableList</Link></li>
           <li><Link to="/counter2">Counter2</Link></li>
           <li><Link to="/counter3">Counter3</Link></li>
+          <li><Link to="/counter4">Counter4</Link></li>
+          <li><Link to="/counter5">Counter5</Link></li>
         </ul>
       </nav>
       <Outlet />
