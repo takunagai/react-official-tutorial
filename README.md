@@ -1064,9 +1064,20 @@ export default function ColorSwitch({ onChangeColor }) {
   - これはデフォルトの動作として理にかなっている
   - ただし、コンポーネントの状態をリセットしたい場合は、
   - 例：2人のプレーヤーが各ターン中に自分のスコアを追跡できるアプリ (Scoreboard2.jsx)
-    - ダメな例：プレイヤー変更してもスコアは保持されてしまう
+    - ダメな例：プレイヤー変更してもスコアは保持されてしまう (サンプル)
+      - 2つのカウンターは同じ位置に表示されるため、React はそれらを "プレイヤーの props が変更された同じカウンター" と見なしてしまうため
+      - このアプリでは、2つの別々のカウンターである必要がある
+      - → UI の同じ場所に表示されるが別個のカウンター(状態)を持たせたい。2つの方法がある
+        1. コンポーネントを2つの異なる別の位置にレンダリングする
+          - プレイヤー切り替えでリセットされてしまう例。DOMから削除されるたびに状態も破棄されてしまい 0 になる (サンプル)
+          - 同じ場所にいくつかの独立したコンポーネントしかレンダリングされていない場合に便利な解決方法
+        2. 各コンポーネントにキーを使用し、明示的な ID を付与
+          - キーはリストだけのものではない。キーで React でコンポーネントを区別できる
+          - デフォルトでは、React は親内の順序（最初のカウンター、2番目のカウンター）を使用してコンポーネントを識別
+          - キー使用で、これが単なる最初 or 2番目のカウンターではなく、特定のカウンター（たとえば、テイラーのカウンター）であることを React に伝えることができる
+          - → ツリーのどこに表示されていても、テイラーのカウンターを認識
+          - 例：2つの <Counter /> は、JSXの同じ場所に表示されていても、状態を共有しない
 
-★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state#different-components-at-the-same-position
--reset-state の Pitfall から
+★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state#option-1-rendering-a-component-in-different-positions
 
 ★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges
