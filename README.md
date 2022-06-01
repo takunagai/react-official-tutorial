@@ -1059,6 +1059,12 @@ export default function ColorSwitch({ onChangeColor }) {
       - MyComponent のレンダリングごとに異なる MyTextField 関数が作成されるため
       - =同位置に別コンポーネントをレンダリングしているため、状態がリセット
       - → バグやパフォーマンスの問題の発生につながるので、常に最上位でコンポーネント関数を宣言し、それらの定義をネストしない
+* 同じ位置でのリセット状態
+  - React はコンポーネントが同じ位置にある間、コンポーネントの状態を保持する
+  - これはデフォルトの動作として理にかなっている
+  - ただし、コンポーネントの状態をリセットしたい場合は、
+  - 例：2人のプレーヤーが各ターン中に自分のスコアを追跡できるアプリ (Scoreboard2.jsx)
+    - ダメな例：プレイヤー変更してもスコアは保持されてしまう
 
 ★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state#different-components-at-the-same-position
 -reset-state の Pitfall から

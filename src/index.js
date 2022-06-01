@@ -65,6 +65,7 @@ import Counter3 from './Counter3'
 import Counter4 from './Counter4'
 import Counter5 from './Counter5'
 import MyComponent from './MyComponent'
+import Scoreboard2 from './Scoreboard2'
 
 
 const container = document.getElementById('root')
@@ -139,6 +140,7 @@ root.render(
         <Route path="counter4" element={<Counter4 />} />
         <Route path="counter5" element={<Counter5 />} />
         <Route path="myComponent" element={<MyComponent />} />
+        <Route path="scoreboard2" element={<Scoreboard2 />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>
