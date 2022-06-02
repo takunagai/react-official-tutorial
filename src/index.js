@@ -70,13 +70,13 @@ import App10 from './App10'
 import App11 from './App11'
 import ContactManager from './ContactManager'
 import Gallery2 from './Gallery2'
-
+import ContactList from './ContactList'
 
 const container = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
 
 function NotFound() {
-  return <h2>Not Found Page</h2>;
+  return <h2>Not Found Page</h2>
 }
 
 root.render(
@@ -150,6 +150,7 @@ root.render(
         <Route path="app11" element={<App11 />} />
         <Route path="contactManager" element={<ContactManager />} />
         <Route path="gallery2" element={<Gallery2 />} />
+        <Route path="contactList" element={<ContactList />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>

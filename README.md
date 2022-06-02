@@ -1103,7 +1103,9 @@ export default function ColorSwitch({ onChangeColor }) {
   4. ローディング中、画像を消す (Gallery2.jsx)
     - 「次へ」を押しても、次の画像が読み込まれるまで前の画像が表示され続ける。消したい
     - → img にキーを与えることで DOM を再生成させる
-  5. リスト内の置き忘れた状態を修正
+  5. リスト内の置き忘れた状態を修正 (ContactList.jsx)
+    - 逆順で表示を押すと展開の状態がついてこない
+    - → インデックスをキーとして使用してるのがダメ。状態を特定の各連絡先に関連付ける必要がある。連絡先IDをキーとして使用すると治る
 
 ★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state#challenges
 
