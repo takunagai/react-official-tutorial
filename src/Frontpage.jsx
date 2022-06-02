@@ -68,6 +68,7 @@ export default function Frontpage() {
           <li><Link to="/counter5">Counter5</Link></li>
           <li><Link to="/scoreboard2">Scoreboard2</Link></li>
           <li><Link to="/app10">App10</Link></li>
+          <li><Link to="/app11">App11</Link></li>
         </ul>
       </nav>
       <Outlet />
