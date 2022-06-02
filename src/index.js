@@ -68,6 +68,8 @@ import MyComponent from './MyComponent'
 import Scoreboard2 from './Scoreboard2'
 import App10 from './App10'
 import App11 from './App11'
+import ContactManager from './ContactManager'
+import Gallery2 from './Gallery2'
 
 
 const container = document.getElementById('root')
@@ -145,6 +147,9 @@ root.render(
         <Route path="scoreboard2" element={<Scoreboard2 />} />
         <Route path="app10" element={<App10 />} />
         <Route path="app11" element={<App11 />} />
+        <Route path="app11" element={<App11 />} />
+        <Route path="contactManager" element={<ContactManager />} />
+        <Route path="gallery2" element={<Gallery2 />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>

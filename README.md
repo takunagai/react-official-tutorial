@@ -1097,6 +1097,13 @@ export default function ColorSwitch({ onChangeColor }) {
     - 異なる位置なのでリセットされてしまう (if では2番目の子、else では最初の子) のを直す
   2. 2つのフォームフィールドを入替えで、入力値が入れ替わらない問題を直す (App11.jsx)
     - 位置も要素も同じだが、キーを与えることでコンポーネントを再作成させる
+  3. 詳細フォームをリセットする (ContactManager.jsx)
+    - 別の連絡先を選択したとき状態が更新されるが、フォームに前の連絡先の詳細が残ってしまう
+    - → 入力欄コンポーネントにキーを与えることで解決
+  4. ローディング中、画像を消す (Gallery2.jsx)
+    - 「次へ」を押しても、次の画像が読み込まれるまで次の画像が表示され続ける。消したい
+    - → img にキーを与えることで DOM を再生成させる
+  5. リスト内の置き忘れた状態を修正
 
 ★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state#challenges
 
