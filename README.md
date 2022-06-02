@@ -1093,6 +1093,9 @@ export default function ColorSwitch({ onChangeColor }) {
       3. 状態を localStorage などの外部ソースに：ユーザーが誤ってページを閉じた場合でも、メッセージの下書きを保持できる
       * いずれを選択しても、ここではアリスとのチャットはボブとのチャットとは概念的に異なるため、現在の受信者に基づいて <Chat> ツリーにキーを与えることは理にかなっている
 * Try out some challenges
+  1. input text が消えるのを直す (App10.jsx)
+    - 異なる位置なのでリセットされてしまう (if では2番目の子、else では最初の子) のを直す
+  2. 2つのフォームフィールドを入替えで、入力値が入れ替わらない問題を直す
 
 ★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state#challenges
 
