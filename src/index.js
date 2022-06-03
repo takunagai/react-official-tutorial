@@ -71,6 +71,7 @@ import App11 from './App11'
 import ContactManager from './ContactManager'
 import Gallery2 from './Gallery2'
 import ContactList from './ContactList'
+import TaskApp5 from './TaskApp5'
 
 const container = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
@@ -151,6 +152,7 @@ root.render(
         <Route path="contactManager" element={<ContactManager />} />
         <Route path="gallery2" element={<Gallery2 />} />
         <Route path="contactList" element={<ContactList />} />
+        <Route path="TaskApp5" element={<TaskApp5 />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>

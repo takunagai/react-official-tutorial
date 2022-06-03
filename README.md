@@ -1107,6 +1107,25 @@ export default function ColorSwitch({ onChangeColor }) {
     - 逆順で表示を押すと展開の状態がついてこない
     - → インデックスをキーとして使用してるのがダメ。状態を特定の各連絡先に関連付ける必要がある。連絡先IDをキーとして使用すると治る
 
-★★TODO: 次：https://beta.reactjs.org/learn/preserving-and-resetting-state#challenges
+## 状態ロジックを Reducer に抽出 (useState を useReducer にリファクタリング)
+
+* コンポーネントが複雑になるにつれて、コンポーネントの状態が更新される様々な方法を一目で確認するのが難しくなる
+* 多くのイベントハンドラーにまたがり、多くの状態更新を伴うコンポーネントは、圧倒されるかも知れない。そのような場合、コンポーネントの外部にあるすべての状態更新ロジックを、Reducer と呼ばれる単一の関数に統合できる
+* 状態ロジックを Reducer で統合する
+  - Reducer 置き換え前のTODOリスト：(TaskApp5.jsx)
+    - たとえば、この例での TaskApp コンポーネントは、一連のタスクを状態で保持し、3つの異なるイベントハンドラーを使用してタスクを追加、削除、および編集する
+  - コンポーネントが大きくなると、状態ロジックの量も大きくなる。この複雑さを軽減し、すべてのロジックを1つのアクセスしやすい場所に保持するために、その状態ロジックをコンポーネントの外部にある "Reducer" と呼ばれる単一の関数に移動できる
+  - Reducer は、状態を処理する別の方法。useState から useReducer に移行するには、次の3つの手順を実行する
+    1. "状態の設定" から "アクションのディスパッチ" に移行
+      - 現在、イベントハンドラー(handleAddTaskなど)は、状態を設定して何をするかを指定している。これら全ての状態設定ロジックを削除。残るのは3つのイベントハンドラー
+        - handleAddTask(text)：ユーザーが「追加」を押すと呼び出される 
+        - handleChangeTask(task)：ユーザーがタスクを切替える or 保存を押すと呼び出される 
+        - handleDeleteTask(taskId)：ユーザーが削除を押すと呼び出される
+      -  Reducer での状態管理は、直接状態を設定するのとは少し異なる。状態を設定し、React
+         に「何をすべきか」を指示する代わりに、イベントハンドラーから「アクション」をディスパッチして「ユーザーが今何をしたか」を指定する(状態更新ロジックは他の場所にある）イベントハンドラーを介して「タスクを設定」する代わりに「タスクの追加/変更/削除」アクションをディスパッチする。これは、ユーザーの意図をよりよく表す
+    2. reducer 関数を記述
+    3. コンポーネントの reducer を使用
+
+★★TODO: 次：https://beta.reactjs.org/learn/extracting-state-logic-into-a-reducer
 
 ★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges
