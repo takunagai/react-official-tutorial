@@ -1209,6 +1209,7 @@ export default function ColorSwitch({ onChangeColor }) {
 * Context で、親コンポーネントはその下のツリー全体にデータを提供できる 
 * Context には多くの用途があり、これが一例
 * 例：サイズのレベルを受け入れる見出しコンポーネント(Page2.jsx)
+* 同セクション内の複数のヘッダーが常に同じレベルであるとする(Page2.jsx)
 
 ★★TODO: 次：https://beta.reactjs.org/learn/extracting-state-logic-into-a-reducer#writing-concise-reducers-with-immer
 
