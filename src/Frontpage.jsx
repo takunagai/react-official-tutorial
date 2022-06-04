@@ -73,6 +73,7 @@ export default function Frontpage() {
           <li><Link to="/gallery2">Gallery2</Link></li>
           <li><Link to="/contactList">ContactList</Link></li>
           <li><Link to="/TaskApp5">TaskApp5</Link></li>
+          <li><Link to="/TaskApp5b">TaskApp5b</Link></li>
         </ul>
       </nav>
       <Outlet />

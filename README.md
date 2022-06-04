@@ -1135,7 +1135,25 @@ export default function ColorSwitch({ onChangeColor }) {
         3. reducer から次の状態を返す(Reactが状態を設定する)
       - メリット：reducer関数は状態(タスク)を引数として取るため、コンポーネントの外部で宣言できる。インデントレベルが下がり、コードが読みやすくなる
       - 規約：ここまでの例では if/else を使っているが、reducer関数内で switch を使うのが慣例
+        - case は、return 文での終了が必須。忘れると次の case に進んでしまうので注意
+      - なぜ reducer と呼ばれるのか？
+        - 配列に対して実行できる reduce() 操作にちなんで名付けられている
+        - reduce() は、配列を取得し、多数の中から1つの値を "累積"
+        - ここでの reducer関数は、これまでの結果(状態)と現在のアイテム(アクション)を取得し、次の結果を返すのが、配列の reduce() と同様のアイデア。これらは時間の経過とともにアクションを状態に蓄積する
+        - initialState とアクションの配列で reduce() メソッドを使い、reducer関数を渡すことで最終状態を計算することもできる (サンプル：未写経)
     3. コンポーネントの reducer を使用
+      - tasksReducer をコンポーネントに接続する
+      - React から useReducer フックをインポート
+      - `const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);`
+      - useReducer フックは useState に似ている。初期状態と "ステートフル値と状態を設定する方法(今回は dispatch関数)" を返す
+      - useReducer フックは2つの引数を取る
+        1. Reducer機能
+        2. 初期状態
+      - useReducer フックはの返り値
+        1. ステートフル値
+        2. ディスパッチ機能(ユーザーアクションを reducer にディスパッチするため)
+    * 補足：通常、useReducer が useState より好ましいのは、複数の値にまたがる複雑な state ロジックがある場合や、前の state に基づいて次の state を決める必要がある場合
+    * useReducer を使えばコールバックの代わりに dispatch を下位コンポーネントに渡せるようになるため、複数階層にまたがって更新を発生させるようなコンポーネントではパフォーマンスの最適化にもなる
 
 ★★TODO: 次：https://beta.reactjs.org/learn/extracting-state-logic-into-a-reducer
 

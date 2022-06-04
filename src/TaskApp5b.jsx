@@ -1,4 +1,5 @@
-import { useState } from 'react'
+// import { useState } from 'react'
+import { useReducer } from 'react'
 import AddTask from './TaskApp5AddTask'
 import TaskList from './TaskApp5TaskList'
 
@@ -10,7 +11,8 @@ const initialTasks = [
 ]
 
 export default function TaskApp5() {
-  const [tasks, setTasks] = useState(initialTasks)
+  // const [tasks, setTasks] = useState(initialTasks)
+  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks)
 
   /**
    * 追加
@@ -42,38 +44,8 @@ export default function TaskApp5() {
   function handleDeleteTask(taskId) {
     dispatch({
       type: 'deleted',
-      task: taskId
+      id: taskId
     })
-  }
-
-  /**
-   * Reducer
-   * @param {object} tasks - 現在の状態
-   * @param {string} action - アクションオブジェクト
-   */
-  function taskReducer(tasks, action) {
-    if (action.type === 'added') {
-      return [
-        ...tasks,
-        {
-          id: action.id,
-          text: action.text,
-          done: false
-        }
-      ]
-    } else if (action.type === 'changed') {
-      return tasks.map(t => {
-        if (t.id === action.task.id) {
-          return action.task
-        } else {
-          return t
-        }
-      })
-    } else if (action.type === 'deleted') {
-      return tasks.filter(t => t.id !== action.id)
-    } else {
-      throw Error(`Unknown action: ${action.type}`)
-    }
   }
 
   return (
@@ -87,4 +59,39 @@ export default function TaskApp5() {
       />
     </>
   )
+}
+
+/**
+ * Reducer
+ * @param {object} tasks - 現在の状態
+ * @param {string} action - アクションオブジェクト
+ */
+function tasksReducer(tasks, action) {
+  switch (action.type) {
+    case 'added' : {
+      return [
+        ...tasks,
+        {
+          id: action.id,
+          text: action.text,
+          done: false
+        }
+      ]
+    }
+    case 'changed' : {
+      return tasks.map(t => {
+        if (t.id === action.task.id) {
+          return action.task
+        } else {
+          return t
+        }
+      })
+    }
+    case 'deleted' : {
+      return tasks.filter(t => t.id !== action.id)
+    }
+    default : {
+      throw Error(`Unknown action: ${action.type}`)
+    }
+  }
 }
