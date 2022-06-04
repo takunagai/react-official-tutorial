@@ -1182,7 +1182,7 @@ export default function ColorSwitch({ onChangeColor }) {
   - Try out some challenges 1 - メッセンジャー (Messenger2.jsx)
     - アクションをディスパッチする練習
   - Try out some challenges 2 - メッセンジャー (.jsx)
-    - メッセージ送信時にアラート＆入力をクリア
+    - 上記 1 にメッセージ送信時にアラート＆入力をクリア 機能を追加
 
 
 
