@@ -1206,7 +1206,7 @@ export default function ColorSwitch({ onChangeColor }) {
 
 ### Context：props を渡す代わりの方法
 
-* Context で、親コンポーネントはその下のツリー全体にデータを提供できる 
+* Context で、親コンポーネントは、たとえ遠く離れていても、その下のツリー全体にデータを提供できる 
 * Context には多くの用途があり、これが一例
 * 例：サイズのレベルを受け入れる見出しコンポーネント(Page2.jsx)
 * 同セクション内の複数のヘッダーが常に同じレベルであるとする。この時点で、現在、レベルプロップを各<Heading>に個別に渡している(Page2.jsx)
@@ -1219,10 +1219,14 @@ export default function ColorSwitch({ onChangeColor }) {
       - React と Context から useContext フックをインポート
       - useContext はフック。useState や useReducer と同様、React コンポーネントのトップレベルでのみ呼び出せる
       - 例では、レベルprop を持ち上げる(見出しコンポーネント → セクションコンポーネント)
-    3. データを指定するコンポーネントからその Context を提供する(セクションが LevelContext を提供する）
+      - Context 未指定の場合、React は前の手順で指定したデフォルト値を使用する(今回は全てh1に)
+      - 各セクションに独自のコンテキストを提供させることで、この問題を修正
+    3. データを指定するコンポーネントからその Context を提供する
+      - この例では、子(Heading)をレンダリングする親(Section)が LevelContext を提供
+      - Context プロバイダーでラップし LevelContext を提供
+      - コンポーネントは、その上の UI ツリーで最も近い <LevelContext.Provider> の値を使用する
 
-コンテキストを使用すると、親は、たとえ遠く離れていても、その中のツリー全体にデータを提供できます。
 
-★★TODO: 次：https://beta.reactjs.org/learn/extracting-state-logic-into-a-reducer#writing-concise-reducers-with-immer
+★★TODO: 次：https://beta.reactjs.org/learn/passing-data-deeply-with-context#step-3-provide-the-context
 
 ★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges
