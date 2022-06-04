@@ -75,6 +75,7 @@ import TaskApp5 from './TaskApp5'
 import TaskApp5b from './TaskApp5b'
 import TaskApp5c from './TaskApp5c'
 import Messenger2 from './Messenger2'
+import Page2 from './Page2'
 
 const container = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
@@ -159,6 +160,7 @@ root.render(
         <Route path="TaskApp5b" element={<TaskApp5b />} />
         <Route path="TaskApp5c" element={<TaskApp5c />} />
         <Route path="Messenger2" element={<Messenger2 />} />
+        <Route path="Page2" element={<Page2 />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>

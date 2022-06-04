@@ -354,7 +354,7 @@ export default function TeaSet() {
 ```
 
 ```jsx
-// 修正：代わりに、ゲストを小道具として渡すことで純粋を保てる
+// 修正：代わりに、ゲストを props として渡すことで純粋を保てる
 // JSX が返す値は、guest prop にのみ依存
 function Cup({ guest }) {
   return <h2>Tea cup for guest #{guest}</h2>;
@@ -506,7 +506,7 @@ JSX にイベントハンドラーを追加 (クリック、ホバー、フォ�
   - デザインシステムを使う場合、ボタンなどのコンポーネントにはスタイルが含まれているが、動作は指定されていないのが一般的。代わりに、PlayButtonやUploadButtonなどのコンポーネントでイベントハンドラーを渡す
 * イベントハンドラーの props に名前を付ける
   - <button>や<div>などの組み込みコンポーネントは、onClickなどのブラウザイベント名のみをサポート。ただし、独自のコンポーネントを作成する場合は、イベントハンドラーの props に任意の名前を付けることができる
-  - 慣例によりイベントハンドラーの小道具は on で始まり、その後に大文字が続く必要がある
+  - 慣例によりイベントハンドラーの props は on で始まり、その後に大文字が続く必要がある
 * コンポーネントが複数のインタラクションをサポートしている場合、アプリ固有の概念に合わせてイベントハンドラーの props に名前を付けることができる (App8.jsx, Toolbar2.jsx)
   - Appコンポーネントが、onPlayMovie, onUploadImage で Toolbar2 コンポーネントが何をするかを知る必要がないことに注意
 * イベントの伝播(バブリング)
@@ -697,7 +697,7 @@ export default function ColorSwitch({ onChangeColor }) {
   - 状態が深くネストされている場合の対策：フラット化する。or 状態構造を変更したくない場合は、ネストされたスプレッドへのショートカット (Immer ライブラリ等)を使用することを推奨
   - Immer ライブラリを使うと、ネストがいくらあってもドットシンタックス指定でスッキリ書ける
   - メモ
-    - 一般的なReact最適化戦略は、前の小道具または状態が次のものと同じである場合、作業をスキップすることに依存している
+    - 一般的なReact最適化戦略は、前の props または状態が次のものと同じである場合、作業をスキップすることに依存している
     - 状態の過去のコピーをメモリに保持し、必要に応じてそれらを再利用できるため、Undo/Redo、変更履歴表示、フォームを以前の値にリセットなどが実装しやすい
   - Try out some challenges 1 - ボタンで点数加算を Fix
   - Try out some challenges 2 - ドラッグでボックスを移動 Fix (Canvas.jsx, CanvasBackground.jsx, CanvasBox.jsx)
@@ -1187,8 +1187,28 @@ export default function ColorSwitch({ onChangeColor }) {
     - 上記 2 に 受信者タブを切替え時に入力値を復元 機能を追加
     - メッセージを保存する状態の message を messages 配列とし、各ユーザーごとにデータを持たせるようにする `messages[state.selectedId]`
     - reducer、初期状態、コンポーネントにいくつかの変更
+  - Try out some challenges 4 - メッセンジャー (写経せず)
+    - useReducer を最初から実装する
+    - 1,2,3 は、React から useReducer フックをインポートした。今回は useReducer フック自体を実装する。始めるためのスタブを元に作成。10行以内で実装できる
 
+## Context でデータを深く渡す
 
+* 通常、親 → 子コンポーネントに props を介してデータを渡す
+* これは、UI ツリーを介してそれを使用するコンポーネントにデータを明示的にパイプするための優れた方法
+* しかし、props を渡す、あるいはアプリ内の多くのコンポーネントが同じ情報を必要とする場合、props を渡すことは冗長で不便な場合がある
+* そのような場合、Context を使うと、親コンポーネントは props を明示的に通過することなく、その下のツリー内の任意のコンポーネントでデータを利用できるようになる
+
+### props の受け渡しに関する問題 (Prop ドリリング)
+
+* 多くのコンポーネントが同じ props を必要とする場合、props 渡しは冗長で不便な可能性がある
+* 最も近い共通の祖先が、データを必要とするコンポーネントから遠く離れていると、状態をその高さまで持ち上げる必要があり「プロップドリル」が発生する
+* props 渡しなしでデータを必要とするツリー内のコンポーネントにデータを「テレポート」する方法→ React の Context
+
+### Context：props を渡す代わりの方法
+
+* Context で、親コンポーネントはその下のツリー全体にデータを提供できる 
+* Context には多くの用途があり、これが一例
+* 例：サイズのレベルを受け入れる見出しコンポーネント(Page2.jsx)
 
 ★★TODO: 次：https://beta.reactjs.org/learn/extracting-state-logic-into-a-reducer#writing-concise-reducers-with-immer
 
