@@ -74,6 +74,7 @@ export default function Frontpage() {
           <li><Link to="/contactList">ContactList</Link></li>
           <li><Link to="/TaskApp5">TaskApp5</Link></li>
           <li><Link to="/TaskApp5b">TaskApp5b</Link></li>
+          <li><Link to="/TaskApp5c">TaskApp5c</Link></li>
         </ul>
       </nav>
       <Outlet />

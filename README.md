@@ -1147,18 +1147,43 @@ export default function ColorSwitch({ onChangeColor }) {
       - `const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);`
       - useReducer フックは useState に似ている。初期状態と "ステートフル値と状態を設定する方法(今回は dispatch関数)" を返す
       - useReducer フックは2つの引数を取る
-        1. Reducer機能 (stateを更新するための関数 (state, action) => newState)
-        2. 初期状態
+        1. Reducer関数 (引数で state と actionを受け取り、stateを更新するための関数 (state, action) => newState)
+        2. 状態の初期値
       - useReducer フックはの返り値
         1. ステートフル値
         2. ディスパッチ機能(ユーザーアクションを reducer にディスパッチするため、reducerを実行するための呼び出し関数)
     * Reducer を別ファイルに分けることも可能
+    * 関心の分離を行うことで、コンポーネントロジックが読みやすくなる
+      - 現在、イベントハンドラーは、アクションのディスパッチによって何が起こったかを指定するだけ。reducer関数は、アクションに応答して状態がどのように更新されるかを決定する
     * 補足：通常、useReducer が useState より好ましいのは、複数の値にまたがる複雑な state ロジックがある場合や、前の state に基づいて次の state を決める必要がある場合
     * 補足：useReducer を使えばコールバックの代わりに dispatch を下位コンポーネントに渡せるようになるため、複数階層にまたがって更新を発生させるようなコンポーネントではパフォーマンスの最適化にもなる
+      * dispatch 関数はメモ化されたコールバック関数であるため、レンダリングごとで不変
     * 補足：useState は useReducer に内部実装されている
     * 補足：Redux で実現していた state 管理が、useContext & useReducer で実現できるようになり、Reduxが不要になってきた
     * 補足：参考 [React hooksを基礎から理解する (useReducer編) - Qiita](https://qiita.com/seira/items/2fbad56e84bda885c84c)
+    * 補足：参考 [【useReducer】React hookが便利すぎる](https://zenn.dev/web_tips/articles/0638273b083ec8)
+    * 補足：参考 [【React Hooks】useReducerで複雑なstate管理を簡単にしよう](https://tyotto-good.com/blog/usereducer)
+    * 補足：参考 [React Hook useReducerを理解する | アールエフェクト](https://reffect.co.jp/react/react-hook-reducer-understanding#useReducerreduce)
+    * useState と useReducer の比較 (reducer の欠点)
+      - コードサイズ：useReducer は、reducer 関数とディスパッチアクションの両方を作成する必要がある。ただし、"多くのイベントハンドラーが同様の方法で状態を変更する場合"に、コードを削減するのに役立つ
+      - 読みやすさ：状態の更新が単純なら useState が読みやすい。しかし複雑になるとコンポーネントのコードが肥大化し読みづらくなる。そんな場合、useReducer を使うと、更新ロジックの方法をイベントハンドラーで発生したことから明確に分離でき可読性が上がる
+      - デバッグ：useState にバグがある場合、状態が正しく設定されていない箇所や原因を判断するのが難しい場合がある。useReducer を使うと、console.log をレデューサーに追加し、すべての状態の更新と、それが発生した理由(どのアクションが原因)を確認できる。各アクションが正しければ、間違いは reducer ロジック自体にあることがわかる。ただし、useStateよりも多くのコードをステップスルーする必要がある
+      - テスト：reducer は、コンポーネントに依存しない純粋関数なので、個別にエクスポートしてテストできる。より現実的な環境でコンポーネントをテストするのが最善だが、複雑な状態更新ロジックの場合、レデューサーが特定の初期状態とアクションに対して特定の状態を返すことを表明すると便利な場合がある
+      - 個人的な好み：reducer が好きな人/嫌いな人がいる。useState/useReducer はいつでも変換できるので大丈夫
+      -まとめ：一部のコンポーネントの状態の更新が正しくないためにバグが頻繁に発生し、そのコードにより多くの構造を導入したい場合は、reducer の使用を推奨。すべてに reducer を使用する必要はなく、自由に組合せればいい。同じコンポーネントで useState と useReducer を使用してもよい
+    * Reducer を上手に書くためのヒント2つ
+      1. reducer は純粋であること(同じ入力が常に同じ出力になる)。状態アップデーター関数と同様に、レデューサーはレンダリング中に実行される(アクションは次のレンダリングまでキューに入れられる)。リクエストの送信、タイムアウトのスケジュール、副作用(コンポーネントの外部に影響を与える操作)の実行はNG。オブジェクトと配列を変更せずに更新する必要がある
+      2. データに複数の変更が生じる場合でも、各アクションは単一のユーザーインタラクションを表す。たとえば、ユーザーが reducer によって管理される5つのフィールドを持つフォームで「リセット」を押した場合、5つの個別の set_field アクションではなく、1つの reset_form アクションをディスパッチする方が理にかなっている。すべてのアクションをレデューサーに記録する場合、そのログは、どの相互作用または応答がどの順序で発生したかを再構築するのに十分なほど明確である必要がある。これはデバッグに役立つ
+    * Immer を使い簡潔な reducer を作成する
+      - Immer ライブラリで reducer をより簡潔にできる
+      - useImmerReducer で、push または arr[i] = assignment を使用し状態を変更できる
+      - reducer は純粋でなければならないので、状態を変化させてはならない。ただし、Immer は変更しても安全な "特別なドラフトオブジェクト" を提供する。内部的に Immer 
+        は draft に加えた変更を使用して状態のコピーを作成する。これが useImmerReducer によって管理される reducer が最初の引数を変更でき、状態を返す必要がない理由
+  - Try out some challenges 1- イベントハンドラーからのディスパッチアクション
+    - ContactList.jsとChat.jsのアクションをディスパッチ
 
-★★TODO: 次：https://beta.reactjs.org/learn/extracting-state-logic-into-a-reducer
+
+
+★★TODO: 次：https://beta.reactjs.org/learn/extracting-state-logic-into-a-reducer#writing-concise-reducers-with-immer
 
 ★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges
