@@ -1209,7 +1209,19 @@ export default function ColorSwitch({ onChangeColor }) {
 * Context で、親コンポーネントはその下のツリー全体にデータを提供できる 
 * Context には多くの用途があり、これが一例
 * 例：サイズのレベルを受け入れる見出しコンポーネント(Page2.jsx)
-* 同セクション内の複数のヘッダーが常に同じレベルであるとする(Page2.jsx)
+* 同セクション内の複数のヘッダーが常に同じレベルであるとする。この時点で、現在、レベルプロップを各<Heading>に個別に渡している(Page2.jsx)
+* 代わりにレベルprop を<Section>コンポーネントに渡し、<Heading>から削除。同じセクションの見出し全てが同じレベルになるように強制(Page2.jsx)
+  * 最も近い<Section>のレベルを知るには、子がツリーの上のどこかからデータを「要求」するための何らかの方法が必要になる
+  * props だけでは無理。Context を使う。3つのステップでできる
+    1. Context を作成(見出しレベル用なので、LevelContextと呼ぶ)
+      - createContext の唯一の引数は、デフォルト値
+    2. データを必要とするコンポーネントからその Context を使用(ヘッダーが LevelContext を使う)
+      - React と Context から useContext フックをインポート
+      - useContext はフック。useState や useReducer と同様、React コンポーネントのトップレベルでのみ呼び出せる
+      - 例では、レベルprop を持ち上げる(見出しコンポーネント → セクションコンポーネント)
+    3. データを指定するコンポーネントからその Context を提供する(セクションが LevelContext を提供する）
+
+コンテキストを使用すると、親は、たとえ遠く離れていても、その中のツリー全体にデータを提供できます。
 
 ★★TODO: 次：https://beta.reactjs.org/learn/extracting-state-logic-into-a-reducer#writing-concise-reducers-with-immer
 
