@@ -2,6 +2,7 @@
 import { useReducer } from 'react'
 import AddTask from './TaskApp5AddTask'
 import TaskList from './TaskApp5TaskList'
+import tasksReducer from './taskApp5TasksReducer'
 
 let nextId = 3
 const initialTasks = [
@@ -59,39 +60,4 @@ export default function TaskApp5() {
       />
     </>
   )
-}
-
-/**
- * Reducer
- * @param {object} tasks - 現在の状態
- * @param {string} action - アクションオブジェクト
- */
-function tasksReducer(tasks, action) {
-  switch (action.type) {
-    case 'added' : {
-      return [
-        ...tasks,
-        {
-          id: action.id,
-          text: action.text,
-          done: false
-        }
-      ]
-    }
-    case 'changed' : {
-      return tasks.map(t => {
-        if (t.id === action.task.id) {
-          return action.task
-        } else {
-          return t
-        }
-      })
-    }
-    case 'deleted' : {
-      return tasks.filter(t => t.id !== action.id)
-    }
-    default : {
-      throw Error(`Unknown action: ${action.type}`)
-    }
-  }
 }

@@ -1147,13 +1147,17 @@ export default function ColorSwitch({ onChangeColor }) {
       - `const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);`
       - useReducer フックは useState に似ている。初期状態と "ステートフル値と状態を設定する方法(今回は dispatch関数)" を返す
       - useReducer フックは2つの引数を取る
-        1. Reducer機能
+        1. Reducer機能 (stateを更新するための関数 (state, action) => newState)
         2. 初期状態
       - useReducer フックはの返り値
         1. ステートフル値
-        2. ディスパッチ機能(ユーザーアクションを reducer にディスパッチするため)
+        2. ディスパッチ機能(ユーザーアクションを reducer にディスパッチするため、reducerを実行するための呼び出し関数)
+    * Reducer を別ファイルに分けることも可能
     * 補足：通常、useReducer が useState より好ましいのは、複数の値にまたがる複雑な state ロジックがある場合や、前の state に基づいて次の state を決める必要がある場合
-    * useReducer を使えばコールバックの代わりに dispatch を下位コンポーネントに渡せるようになるため、複数階層にまたがって更新を発生させるようなコンポーネントではパフォーマンスの最適化にもなる
+    * 補足：useReducer を使えばコールバックの代わりに dispatch を下位コンポーネントに渡せるようになるため、複数階層にまたがって更新を発生させるようなコンポーネントではパフォーマンスの最適化にもなる
+    * 補足：useState は useReducer に内部実装されている
+    * 補足：Redux で実現していた state 管理が、useContext & useReducer で実現できるようになり、Reduxが不要になってきた
+    * 補足：参考 [React hooksを基礎から理解する (useReducer編) - Qiita](https://qiita.com/seira/items/2fbad56e84bda885c84c)
 
 ★★TODO: 次：https://beta.reactjs.org/learn/extracting-state-logic-into-a-reducer
 
