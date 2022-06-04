@@ -1179,8 +1179,10 @@ export default function ColorSwitch({ onChangeColor }) {
       - useImmerReducer で、push または arr[i] = assignment を使用し状態を変更できる
       - reducer は純粋でなければならないので、状態を変化させてはならない。ただし、Immer は変更しても安全な "特別なドラフトオブジェクト" を提供する。内部的に Immer 
         は draft に加えた変更を使用して状態のコピーを作成する。これが useImmerReducer によって管理される reducer が最初の引数を変更でき、状態を返す必要がない理由
-  - Try out some challenges 1- イベントハンドラーからのディスパッチアクション
-    - ContactList.jsとChat.jsのアクションをディスパッチ
+  - Try out some challenges 1 - メッセンジャー (Messenger2.jsx)
+    - アクションをディスパッチする練習
+  - Try out some challenges 2 - メッセンジャー (.jsx)
+    - メッセージ送信時にアラート＆入力をクリア
 
 
 
