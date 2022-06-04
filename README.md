@@ -1225,6 +1225,16 @@ export default function ColorSwitch({ onChangeColor }) {
       - この例では、子(Heading)をレンダリングする親(Section)が LevelContext を提供
       - Context プロバイダーでラップし LevelContext を提供
       - コンポーネントは、その上の UI ツリーで最も近い <LevelContext.Provider> の値を使用する
+  * このサンプルでのステップ
+    1. レベルプロップを<Section>に渡す
+    2. セクションはその子を `<LevelContext.Providervalue={level}>` でラップ
+    3. ヘッダーは useContext（LevelContext）を使い、上記の LevelContext の最も近い値を要求
+
+### 同じコンポーネントからのコンテキストの使用と提供
+
+* 現在、各セクションのレベルを手動で指定する必要がある
+* Context は上のコンポーネントから情報を読み取ることができるため、各セクションは上のセクションからレベルを読み取り、レベル+1 を自動で渡すことができる(ネストなら +1 される)
+* この変更で、レベルプロップを <Section> や <Heading> に渡す必要がなくなる
 
 
 ★★TODO: 次：https://beta.reactjs.org/learn/passing-data-deeply-with-context#step-3-provide-the-context
