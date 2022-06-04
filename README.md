@@ -1181,8 +1181,12 @@ export default function ColorSwitch({ onChangeColor }) {
         は draft に加えた変更を使用して状態のコピーを作成する。これが useImmerReducer によって管理される reducer が最初の引数を変更でき、状態を返す必要がない理由
   - Try out some challenges 1 - メッセンジャー (Messenger2.jsx)
     - アクションをディスパッチする練習
-  - Try out some challenges 2 - メッセンジャー (.jsx)
-    - 上記 1 にメッセージ送信時にアラート＆入力をクリア 機能を追加
+  - Try out some challenges 2 - メッセンジャー (Messenger2.jsx)
+    - 上記 1 に メッセージ送信時にアラート＆入力をクリア 機能を追加
+  - Try out some challenges 3 - メッセンジャー (Messenger2.jsx)
+    - 上記 2 に 受信者タブを切替え時に入力値を復元 機能を追加
+    - メッセージを保存する状態の message を messages 配列とし、各ユーザーごとにデータを持たせるようにする `messages[state.selectedId]`
+    - reducer、初期状態、コンポーネントにいくつかの変更
 
 
 
