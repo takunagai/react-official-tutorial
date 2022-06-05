@@ -77,6 +77,8 @@ export default function Frontpage() {
           <li><Link to="/TaskApp5c">TaskApp5c</Link></li>
           <li><Link to="/Messenger2">Messenger2</Link></li>
           <li><Link to="/Page2">Page2</Link></li>
+          <li><Link to="/ProfilePage">ProfilePage</Link></li>
+          <li><Link to="/ArticleList">ArticleList</Link></li>
         </ul>
       </nav>
       <Outlet />
