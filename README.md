@@ -15,7 +15,7 @@
 * ステップ1：UIをコンポーネント階層に分割する
 * ステップ2：Reactで静的バージョンをビルドする
 * ステップ3：UI 状態の最小限であるが完全な表現を見つける
-    - 状態をDRY（Do n’t Repeat Yourself）に保つことが重要な原則
+    - 状態をDRY（Don’t Repeat Yourself）に保つことが重要な原則
     - props(関数に渡す引数のようなもの)と状態(コンポーネントのメモリのようなもの)の2種類の「モデル」データ
     - リスト内のアイテムの数を表示する場合、アイテムの数を別の状態値として保存しない。代わりに、配列の長さを読み取ること
 * ステップ4：状態(State)を所有/状態の変更を担当するコンポーネントを特定
@@ -1274,8 +1274,29 @@ export default function ColorSwitch({ onChangeColor }) {
 * Context を使用しリファクタリング
   - imageSize プロップを削除し、代わりにAppコンポーネントから PlaceImage に直接渡す
   - Context.jsでコンテキストを宣言できる
+  - 間のコンポーネントが imageSize を渡す必要がなくなる(バケツリレーなくなる)
 
+## Reducer と Context によるスケールアップ
 
-★★TODO: 次：https://beta.reactjs.org/learn/passing-data-deeply-with-context#context-passes-through-intermediate-components
+* Reducer を使うと、コンポーネントの状態更新ロジックを統合できる。Context を使用すると、情報を他のコンポーネントに深く渡すことができる。Reducer と Context を組合せれば、複雑な画面の状態を管理できる
+* 学ぶこと
+  1. レデューサーとコンテキストを組み合わせる方法
+  2. 状態の通過を回避し、小道具を介してディスパッチする方法
+  3. コンテキストと状態のロジックを別のファイルに保持する方法
+
+### レデューサーとコンテキストの組み合わせ
+
+* レデューサーを使った TODOリスト (TaskApp6.jsx)
+* レデューサーはイベントハンドラーを短く簡潔に保つのに役立つが、アプリが大きくなると別の問題が発生する可能性がある
+* 現在、タスクの状態とディスパッチ機能は、最上位の TaskApp コンポーネントでのみ使用できる
+* → 他のコンポーネントがタスクのリストを読み取ったり変更したりできるようにするには、現在の状態と、それを変更するイベントハンドラーを小道具として明示的に渡す必要(=バケツリレーする必要)がある
+* → これを改善。レデューサーとコンテキストを併用すれば、ツリー内の TaskApp の下にあるコンポーネントは、「プロップドリル」を繰り返すことなくタスクを読み取り、アクションをディスパッチできる
+* レデューサーとコンテキストを組み合わせる手順
+  1. コンテキストを作成
+    - ★★ここから
+  2. 状態とディスパッチをコンテキストに入れる
+  3. ツリー内の任意の場所でコンテキストを使用
+
+★★TODO: 次：https://beta.reactjs.org/learn/scaling-up-with-reducer-and-context#step-1-create-the-context
 
 ★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges

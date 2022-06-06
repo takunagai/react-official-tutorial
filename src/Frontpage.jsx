@@ -79,6 +79,7 @@ export default function Frontpage() {
           <li><Link to="/Page2">Page2</Link></li>
           <li><Link to="/ProfilePage">ProfilePage</Link></li>
           <li><Link to="/ArticleList">ArticleList</Link></li>
+          <li><Link to="/TaskApp6">TaskApp6</Link></li>
         </ul>
       </nav>
       <Outlet />
