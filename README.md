@@ -1322,6 +1322,13 @@ export default function ColorSwitch({ onChangeColor }) {
     2. 配下のコンポーネントに Context (ここでは2つ両方)を提供する
     3. それに JSX を渡すことができるように props として Children を連れて行く
   - これにより、TaskApp コンポーネントからすべての複雑さと配線が削除される
+  - TaskApp6TasksContext.js から Context を使用する関数をエクスポートすることもできる
+  - コンポーネントが Context を読み取る必要がある場合、次の関数を使用して読み取ることができる
+    - 動作は変わらないが、後々これらの Context をさらに分割したり、これらの関数にロジックを追加したりがしやすくなる
+    - これで、すべての Context とレデューサーの配線が TasksContext.js にある。コンポーネントがクリーンで整理された状態に保たれ、データを取得する場所ではなく、表示される内容に焦点が当てれる
+    - TasksProvider は、タスクの処理方法を知っている画面の一部と考えることができ、タスクを読み取る方法として useTasks を、ツリー内の任意のコンポーネントからタスクを更新する方法として useTasksDispatch を使用 できる
+    - useTasks や useTasksDispatch のような関数は「カスタムフック」と呼ばれる。名前が use で始まる場合、関数はカスタムフックと見なされる。これにより、useContext などの他のフックをその中で使用できる
+    - アプリが成長するにつれ、このような Context と Reducer のペアが多数存在するようになる可能性がある。これは、ツリーの奥深くにあるデータにアクセスするときに、手間少なくアプリをスケールアップして状態を上げるための強力な方法である
 
 ★★TODO: 次：https://beta.reactjs.org/learn/scaling-up-with-reducer-and-context#moving-all-wiring-into-a-single-file
 
