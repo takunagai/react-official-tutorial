@@ -1,9 +1,8 @@
 import { useReducer } from 'react'
 import { TasksContext, TasksDispatchContext } from './TaskApp6TasksContext' // Context 読み込み
 import AddTask from './TaskApp6AddTask'
-import  TaskList from './TaskApp6TaskList'
+import TaskList from './TaskApp6TaskList'
 
-let nextId = 3
 const initialTasks = [
   { id: 0, text: 'Philosopher’s Path', done: true },
   { id: 1, text: 'Visit the temple', done: false },
@@ -13,39 +12,13 @@ const initialTasks = [
 export default function TaskApp6() {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks)
 
-  function handleAddTask(text) {
-    dispatch({ // Reducer に渡すアクションオブジェクト(何が起こったのかについての最小限の情報)
-      type: 'added',
-      id: nextId++,
-      text: text
-    })
-  }
-
-  function handleChangeTask(task) {
-    dispatch({
-      type: 'changed',
-      task: task
-    })
-  }
-
-  function handleDeleteTask(taskId) {
-    dispatch({
-      type: 'deleted',
-      id: taskId
-    })
-  }
-
   return (
     // Context Provider 2つを追加
     <TasksContext.Provider value={tasks}>
       <TasksDispatchContext.Provider value={dispatch}>
         <h1>Day off in Kyoto</h1>
-        <AddTask onAddTask={handleAddTask} />
-        <TaskList
-          tasks={tasks}
-          onChangeTask={handleChangeTask}
-          onDeleteTask={handleDeleteTask}
-        />
+        <AddTask />
+        <TaskList />
       </TasksDispatchContext.Provider>
     </TasksContext.Provider>
   )

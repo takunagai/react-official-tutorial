@@ -1,19 +1,27 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { TasksDispatchContext } from './TaskApp6TasksContext'
 
-export default function AddTask({ onAddTask }) {
+let nextId = 3
+
+export default function AddTask() {
   const [text, setText ] = useState('')
+  const dispatch = useContext(TasksDispatchContext)
 
   return (
     <>
       <input
-        type="text"
         placeholder="Add task"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
       <button onClick={() => {
         setText('')
-        onAddTask(text)
+        // onAddTask(text)
+        dispatch({
+          type: 'added',
+          id: nextId++,
+          text: text,
+        })
       }}>Add</button>
     </>
   )
