@@ -1293,8 +1293,16 @@ export default function ColorSwitch({ onChangeColor }) {
 * → これを改善。レデューサーとコンテキストを併用すれば、ツリー内の TaskApp の下にあるコンポーネントは、「プロップドリル」を繰り返すことなくタスクを読み取り、アクションをディスパッチできる
 * レデューサーとコンテキストを組み合わせる手順
   1. コンテキストを作成
-    - ★★ここから
+    - useReducer フックは、現在のタスクと、それらを更新できるディスパッチ関数を返す
+      - `const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);`
+    - それらをツリーに渡すため、2つの別個のコンテキストを作成する
+      1. TasksContext: タスクの現在のリストを提供
+      2. TasksDispatchContext: Reducer 関数を提供(コンポーネントがアクションをディスパッチできるようにする関数)
+    - 後で他のファイルからインポートできるよう、それらを別のファイルからエクスポートする
+    - ここでは、両方のコンテキストにデフォルト値としてnullを渡す。実際の値は、TaskApp コンポーネントによって提供される
   2. 状態とディスパッチをコンテキストに入れる
+    - TaskApp コンポーネントに両方のコンテキストをインポート
+    - → useReducer() で返されたタスクとディスパッチを取得し、配下のツリー全体に提供
   3. ツリー内の任意の場所でコンテキストを使用
 
 ★★TODO: 次：https://beta.reactjs.org/learn/scaling-up-with-reducer-and-context#step-1-create-the-context

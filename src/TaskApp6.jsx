@@ -1,4 +1,5 @@
 import { useReducer } from 'react'
+import { TasksContext, TasksDispatchContext } from './TaskApp6TasksContext' // Context 読み込み
 import AddTask from './TaskApp6AddTask'
 import  TaskList from './TaskApp6TaskList'
 
@@ -35,15 +36,18 @@ export default function TaskApp6() {
   }
 
   return (
-    <>
-      <h1>Day off in Kyoto</h1>
-      <AddTask onAddTask={handleAddTask} />
-      <TaskList
-        tasks={tasks}
-        onChangeTask={handleChangeTask}
-        onDeleteTask={handleDeleteTask}
-      />
-    </>
+    // Context Provider 2つを追加
+    <TasksContext.Provider value={tasks}>
+      <TasksDispatchContext.Provider value={dispatch}>
+        <h1>Day off in Kyoto</h1>
+        <AddTask onAddTask={handleAddTask} />
+        <TaskList
+          tasks={tasks}
+          onChangeTask={handleChangeTask}
+          onDeleteTask={handleDeleteTask}
+        />
+      </TasksDispatchContext.Provider>
+    </TasksContext.Provider>
   )
 }
 
