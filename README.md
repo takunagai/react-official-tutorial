@@ -1330,6 +1330,24 @@ export default function ColorSwitch({ onChangeColor }) {
     - useTasks や useTasksDispatch のような関数は「カスタムフック」と呼ばれる。名前が use で始まる場合、関数はカスタムフックと見なされる。これにより、useContext などの他のフックをその中で使用できる
     - アプリが成長するにつれ、このような Context と Reducer のペアが多数存在するようになる可能性がある。これは、ツリーの奥深くにあるデータにアクセスするときに、手間少なくアプリをスケールアップして状態を上げるための強力な方法である
 
-★★TODO: 次：https://beta.reactjs.org/learn/scaling-up-with-reducer-and-context#moving-all-wiring-into-a-single-file
+## エスケープハッチ(脱出用ハッチ)
+
+### 参照を使用した値の参照
+
+* コンポーネントに一部の情報を「記憶」させたいが、その情報が新しいレンダリングをトリガーしたくない場合は「参照」を使う
+
+#### コンポーネントに参照を追加する
+
+* React から useRef フックをインポートすることで、コンポーネントに参照を追加できる
+  - `import { useRef } from 'react'`
+* コンポーネント内で、useRef フックを呼び出し、参照する初期値を唯一の引数として渡す。たとえば、値0への参照は次のとおり
+  - `const ref = useRef(0)`
+* useRefは、次のようなオブジェクトを返す
+* たとえば、値0への参照は次のとおり 
+  `{ current: 0 }`
+* ref.current プロパティを使用して、その参照の現在の値にアクセスできる。この値は意図的に変更可能。つまり、読み取りと書き込みの両方が可能。これは、React が追跡しないコンポーネントの秘密のポケットのようなもの（これが、Reactの一方向のデータフローからの「エスケープハッチ」になっている理由です。詳細は以下）
+* 例：クリックするたびに ref.current をインクリメントするボタン
+
+★★TODO: 次：https://beta.reactjs.org/learn/escape-hatches
 
 ★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges
