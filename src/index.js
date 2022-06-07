@@ -80,6 +80,7 @@ import ProfilePage from './ProfilePage'
 import ArticleList from './ArticleList'
 import TaskApp6 from './TaskApp6'
 import Counter6 from './Counter6'
+import StopWatch from './StopWatch'
 
 const container = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
@@ -169,6 +170,7 @@ root.render(
         <Route path="ArticleList" element={<ArticleList />} />
         <Route path="TaskApp6" element={<TaskApp6 />} />
         <Route path="Counter6" element={<Counter6 />} />
+        <Route path="StopWatch" element={<StopWatch />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>
