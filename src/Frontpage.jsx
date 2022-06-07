@@ -82,6 +82,7 @@ export default function Frontpage() {
           <li><Link to="/TaskApp6">TaskApp6</Link></li>
           <li><Link to="/Counter6">Counter6</Link></li>
           <li><Link to="/StopWatch">StopWatch</Link></li>
+          <li><Link to="/Counter7">Counter7</Link></li>
         </ul>
       </nav>
       <Outlet />
