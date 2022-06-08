@@ -83,6 +83,7 @@ export default function Frontpage() {
           <li><Link to="/Counter6">Counter6</Link></li>
           <li><Link to="/StopWatch">StopWatch</Link></li>
           <li><Link to="/Counter7">Counter7</Link></li>
+          <li><Link to="/Chat">Chat</Link></li>
         </ul>
       </nav>
       <Outlet />
