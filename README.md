@@ -1402,7 +1402,10 @@ export default function ColorSwitch({ onChangeColor }) {
   - 状態とは異なり、参照の現在の値を設定しても再レンダリングはトリガーされない
   - レンダリング中に ref.current を読み書きしただダメ。コンポーネントの予測が困難になるから
 * Try out some challenges
-  1. 壊れたチャット入力を修正。3秒後の送信済みまで、「元に戻す」ボタンを表示(Chat.jsx)
+  1. 取り消し機能付きチャット入力。3秒後の送信済みまで「元に戻す」ボタンを表示(Chat.jsx)
+    - 壊れたチャット入力を修正する
+  2. 再レンダリングに失敗するコンポーネントを修正(Toggle.jsx)
+    - このボタンは ON/OFF 表示を切り替えるはずが、常に「オフ」と表示されているのを修正する
 
 ★★TODO: 次：https://beta.reactjs.org/learn/referencing-values-with-refs#challenges
 
