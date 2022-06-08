@@ -85,6 +85,7 @@ import Counter7 from './Counter7'
 import Chat from './Chat'
 import Toggle from './Toggle'
 import Dashboard from './Dashboard'
+import Chat2 from './Chat2'
 
 const container = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
@@ -179,6 +180,7 @@ root.render(
         <Route path="Chat" element={<Chat />} />
         <Route path="Toggle" element={<Toggle />} />
         <Route path="Dashboard" element={<Dashboard />} />
+        <Route path="Chat2" element={<Chat2 />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>
