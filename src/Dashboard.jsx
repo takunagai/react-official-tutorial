@@ -1,12 +1,12 @@
-import { useState } from 'react'
-
-let timeoutID
+import { useRef } from 'react'
 
 function DebouncedButton({ onClick, children }) {
+  const timeoutRef = useRef(null)
+
   return (
     <button onClick={() => {
-      clearTimeout(timeoutID)
-      timeoutID = setTimeout(() => {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = setTimeout(() => {
         onClick()
       }, 1000)
     }}>
