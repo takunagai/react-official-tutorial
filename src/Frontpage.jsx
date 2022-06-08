@@ -85,6 +85,7 @@ export default function Frontpage() {
           <li><Link to="/Counter7">Counter7</Link></li>
           <li><Link to="/Chat">Chat</Link></li>
           <li><Link to="/Toggle">Toggle</Link></li>
+          <li><Link to="/Dashboard">Dashboard</Link></li>
         </ul>
       </nav>
       <Outlet />

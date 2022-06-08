@@ -84,6 +84,7 @@ import StopWatch from './StopWatch'
 import Counter7 from './Counter7'
 import Chat from './Chat'
 import Toggle from './Toggle'
+import Dashboard from './Dashboard'
 
 const container = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
@@ -177,6 +178,7 @@ root.render(
         <Route path="Counter7" element={<Counter7 />} />
         <Route path="Chat" element={<Chat />} />
         <Route path="Toggle" element={<Toggle />} />
+        <Route path="Dashboard" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>
