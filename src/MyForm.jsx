@@ -1,4 +1,4 @@
-import { forwardRef, useRef } from 'react'
+import { forwardRef, useRef, useImperativeHandle } from 'react'
 
 // 他のコンポーネントの DOM ノード(子でも)へのアクセスを許可しないためにエラーに
 // function MyInput(props) {
@@ -7,7 +7,13 @@ import { forwardRef, useRef } from 'react'
 
 // forwardRef で、DOM入力要素を公開
 const MyInput = forwardRef((props, ref) => {
-  return <input {...props} ref={ref} />
+  const realInputRef = useRef(null)
+  useImperativeHandle(ref, () => ({
+    focus() {
+      realInputRef.current.focus()
+    }
+  }))
+  return <input {...props} ref={realInputRef} />
 })
 
 export default function MyForm() {
