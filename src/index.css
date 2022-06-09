@@ -68,3 +68,24 @@ hr {
 .fancy {
   border: 3px dashed #61dafb;
 }
+
+/* CatFriend.jsx */
+#cat-friends div {
+  width: 600px;
+  overflow: hidden;
+  outline: 1px solid silver;
+}
+#cat-friends ul,
+#cat-friends li {
+  list-style: none;
+  white-space: nowrap;
+}
+#cat-friends ul {
+  padding-left: 0;
+}
+#cat-friends li {
+  display: inline-block;
+}
+#cat-friends li {
+  vertical-align: bottom;
+}

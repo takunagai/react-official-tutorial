@@ -1452,7 +1452,9 @@ export default function ColorSwitch({ onChangeColor }) {
   * 次にイベントハンドラーからこの DOM ノードにアクセスし、そこに定義されている組み込みのブラウザー API を使用できる
   * `myRef.current.scrollIntoView() // 任意のブラウザAPIを使用できる`
 * 例：テキスト入力のフォーカス(Form10.jsx)
-  - ボタンをクリックすると入力がフォーカスされる
+  - ボタンをクリックするとテキストボックスがフォーカスされる
+* 例2：要素までスクロール (CatFriends.jsx)
+  - 
 
 
 ★★TODO: 次：https://beta
