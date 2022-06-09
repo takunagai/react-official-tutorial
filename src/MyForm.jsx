@@ -4,6 +4,8 @@ import { forwardRef, useRef } from 'react'
 // function MyInput(props) {
 //   return <input {...props} />
 // }
+
+// forwardRef で、DOM入力要素を公開
 const MyInput = forwardRef((props, ref) => {
   return <input {...props} ref={ref} />
 })
