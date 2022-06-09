@@ -1454,10 +1454,26 @@ export default function ColorSwitch({ onChangeColor }) {
 * 例：テキスト入力のフォーカス(Form10.jsx)
   - ボタンをクリックするとテキストボックスがフォーカスされる
 * 例2：要素までスクロール (CatFriends.jsx)
-  - 
+  - 画像スライダー。ref を宛てた要素に .scrollIntoView() 
+
+### Deep Dive: ref コールバックを使用して ref のリストを管理する方法
+
+* 上記の例では、事前定義された数の参照がある
+* リスト内の各アイテムへの参照が必要な場合で、いくつあるかわからない場合にどうするか？
+* useRef は他の React フック同様にトップレベルで呼び出す必要があるので map() 内で回したりできない
+* これを回避する方法の1つは、親要素への単一の参照を取得し、querySelectorAll などの DOM 操作メソッドを使用して、そこから個々の子ノードを「検索」すること。ただし、これは脆弱であり、DOM
+  構造が変更されると破損する可能性がある
+* 別の解決策は、関数を ref 属性に渡すこと。これは「ref コールバック」と呼ばれる。
+  Reactは、ref を設定するときに DOM ノードを使用して ref コールバックを呼び出し、ref をクリアするときに null を使用して ref コールバックを呼び出す
+* これにより、独自の配列またはマップを維持し、そのインデックスまたはある種の ID によって任意の参照にアクセスできる
+* 例：このアプローチを使用し、長いリスト内の任意のノードにスクロールする(CatFriends2.jsx)
+  - この例では、itemsRef は単一の DOM ノードを保持していない。代わりに、アイテム ID から DOM ノードへの Map オブジェクトを保持する(参照は任意の値を保持できる)。すべてのリストアイテムの参照コールバックは、マップを更新するために注意を払う
+
+### その他参考
+
+* [Reactでスクロール位置によって要素のスタイルを変える](https://zenn.dev/catnose99/articles/0f0bb01ee6a940)
 
 
-★★TODO: 次：https://beta
-.reactjs.org/learn/manipulating-the-dom-with-refs
+★★TODO: 次：https://beta.reactjs.org/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes
 
 ★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges

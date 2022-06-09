@@ -89,6 +89,7 @@ export default function Frontpage() {
           <li><Link to="/Chat2">Chat2</Link></li>
           <li><Link to="/Form10">Form10</Link></li>
           <li><Link to="/CatFriends">CatFriends</Link></li>
+          <li><Link to="/CatFriends2">CatFriends2</Link></li>
         </ul>
       </nav>
       <Outlet />
