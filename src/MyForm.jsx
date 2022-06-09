@@ -7,7 +7,7 @@ import { forwardRef, useRef, useImperativeHandle } from 'react'
 
 // forwardRef で、DOM入力要素を公開
 const MyInput = forwardRef((props, ref) => {
-  const realInputRef = useRef(null)
+  const realInputRef = useRef(null) // 実際の入力 DOM ノード
   useImperativeHandle(ref, () => ({
     focus() {
       realInputRef.current.focus()

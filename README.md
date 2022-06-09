@@ -1481,9 +1481,12 @@ export default function ColorSwitch({ onChangeColor }) {
       3. MyInput 自体は、受信した参照をその中の`<input>`に渡す
   - 設計システムでは、ボタンや入力などの低レベルのコンポーネントが参照を DOM ノードに転送するのが一般的なパターン。一方、フォーム、リスト、ページセクションなどの高レベルのコンポーネントは、通常、DOM 構造への偶発的な依存を避けるために、DOMノードを公開しない
 
-### Deep Dive: 命令型ハンドルを使用してAPIのサブセットを公開する
+### Deep Dive: 命令型ハンドルを使用してAPIのサブセットを公開する(MyForm.jsx 続き)
 
 * forwardRefAPI で DOM 入力要素を公開することで、子コンポーネントの DOM ノードを操作できるようになるが、親コンポーネントは、たとえば、CSSスタイルを変更など別のことも実行できるようになる。まれに、その機能を制限したい場合がある → useImperativeHandle でできる
+* MyInput 内の realInputRef は、実際の入力 DOM ノードを保持する。ただし、useImperativeHandle は、親コンポーネントへの ref の値として独自の特別なオブジェクトを提供するように 
+  React に指示する。したがって、Form コンポーネント内の inputRef.current には、focus メソッドのみが含まれる。この場合、ref の「ハンドル」は DOM ノードではなく、useImperativeHandle 
+  呼び出し内で作成するカスタムオブジェクト
 
 ### その他参考
 
