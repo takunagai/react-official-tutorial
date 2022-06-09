@@ -1282,6 +1282,11 @@ export default function ColorSwitch({ onChangeColor }) {
   - Context.jsで Context を宣言できる
   - 間のコンポーネントが imageSize を渡す必要がなくなる(バケツリレーなくなる)
 
+### Reducer, Context 関連のわかりやすい記事
+
+* [useReducerの本質：良いパフォーマンスのためのロジックとコンポーネント設計 - Qiita](https://qiita.com/uhyo/items/cea1bd157453a85feebf)
+* [React ステート管理 比較考察 - uhyo/blog](https://blog.uhy.ooo/entry/2021-07-24/react-state-management/)
+
 ## Reducer と Context によるスケールアップ
 
 * Reducer を使うと、コンポーネントの状態更新ロジックを統合できる。Context を使用すると、情報を他のコンポーネントに深く渡すことができる。Reducer と Context を組合せれば、複雑な画面の状態を管理できる
@@ -1420,6 +1425,36 @@ export default function ColorSwitch({ onChangeColor }) {
     - 「hello」と入力し、送信 を押してからアラートが表示されるまでに、入力をもう一度すばやく編集する。編集しても、アラートには「hello」(ボタンがクリックされたときの状態の値)が表示される
     - 通常、この動作はアプリに必要なもの。ただし、非同期コードで最新バージョンの状態を読み取らせたい場合がある。クリック時のテキストではなく、現在の入力テキストをアラートに表示させる方法を考えられますか？
 
-★★TODO: 次：https://beta.reactjs.org/learn/referencing-values-with-refs#challenges
+## 参照を使用したDOMの操作
+
+* React はレンダリング出力に一致するように DOM を自動的に更新するため、コンポーネントが DOM 
+を操作する必要はほとんどない
+* ただし、ノードのフォーカスを合わせたり、ノードまでスクロールしたり、ノードのサイズと位置を測定したりするために、React によって管理される DOM 要素にアクセスする必要がある場合がある
+* React でこれらのことを行う組み込みの方法はないため、DOM ノードへの参照が必要になる
+* 学ぶこと
+  - React が管理する DOM ノードに ref 属性でアクセスする方法 
+  - ref JSX 属性と useRef フックの関係 
+  - 別のコンポーネントの DOM ノードにアクセスする方法 
+  - その場合、React が管理する DOM を変更しても安全
+
+### ノードへの参照を取得する
+
+* 導入の手順
+  * React が管理する DOM ノードにアクセスするには、まず useRef フックをインポートする
+    - `import { useRef } from 'react'`
+  * 次に、それを使用して、コンポーネント内で ref を宣言する
+    - `const myRef = useRef(null)`
+    - current と呼ばれる単一のプロパティを持つオブジェクトを返す。最初は、myRef.current は null になる
+  * 最後に、それを ref 属性として DOM ノードに渡す
+    - `<div ref={myRef}>`
+    - React はこのノードへの参照を `myRef.current`に配置する
+  * 次にイベントハンドラーからこの DOM ノードにアクセスし、そこに定義されている組み込みのブラウザー API を使用できる
+  * `myRef.current.scrollIntoView() // 任意のブラウザAPIを使用できる`
+* 例：テキスト入力のフォーカス(Form10.jsx)
+  - ボタンをクリックすると入力がフォーカスされる
+
+
+★★TODO: 次：https://beta
+.reactjs.org/learn/manipulating-the-dom-with-refs
 
 ★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges
