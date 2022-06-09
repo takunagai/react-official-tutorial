@@ -91,6 +91,7 @@ export default function Frontpage() {
           <li><Link to="/CatFriends">CatFriends</Link></li>
           <li><Link to="/CatFriends2">CatFriends2</Link></li>
           <li><Link to="/MyForm">MyForm</Link></li>
+          <li><Link to="/TodoList2">TodoList2</Link></li>
         </ul>
       </nav>
       <Outlet />

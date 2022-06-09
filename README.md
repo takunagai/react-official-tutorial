@@ -1484,13 +1484,34 @@ export default function ColorSwitch({ onChangeColor }) {
 ### Deep Dive: 命令型ハンドルを使用してAPIのサブセットを公開する(MyForm.jsx 続き)
 
 * forwardRefAPI で DOM 入力要素を公開することで、子コンポーネントの DOM ノードを操作できるようになるが、親コンポーネントは、たとえば、CSSスタイルを変更など別のことも実行できるようになる。まれに、その機能を制限したい場合がある → useImperativeHandle でできる
-* MyInput 内の realInputRef は、実際の入力 DOM ノードを保持する。ただし、useImperativeHandle は、親コンポーネントへの ref の値として独自の特別なオブジェクトを提供するように 
-  React に指示する。したがって、Form コンポーネント内の inputRef.current には、focus メソッドのみが含まれる。この場合、ref の「ハンドル」は DOM ノードではなく、useImperativeHandle 
-  呼び出し内で作成するカスタムオブジェクト
+* MyInput 内の realInputRef は、実際の入力 DOM ノードを保持する。ただし、useImperativeHandle は、親コンポーネントへの ref の値として独自の特別なオブジェクトを提供するように React に指示する。したがって、Form コンポーネント内の inputRef.current には、focus メソッドのみが含まれる。この場合、ref の「ハンドル」は DOM ノードではなく、useImperativeHandle 呼び出し内で作成するカスタムオブジェクト
+
+### React が ref をアタッチするとき
+
+* Reactでは、すべての更新が2つのフェーズに分割される
+  1. レンダリング中、Reactはコンポーネントを呼び出し、画面に何を表示するかを判断する
+  2. コミット中に、React が変更を DOM に適用する
+* 一般に、レンダリング中の参照へのアクセスは望ましくない。これは、DOMノードを保持する参照にも当てはまる
+* 最初のレンダリングでは、DOMノードはまだ作成されていないため、ref.current は null になる
+* また、更新のレンダリング中、DOM ノードはまだ更新されていない。なので、それらを読むのは時期尚早
+* React はコミット中に ref.current を設定する。DOM を更新する前に、React は影響を受ける ref.current 値を null に設定する。DOM を更新した後、React はすぐにそれらを対応する DOM ノードに設定する
+* 通常、イベントハンドラーから参照にアクセスします。ref を使用して何かを実行したいが、それを実行する特定のイベントがない場合は、エフェクトが必要になる場合があります。次のページで効果について説明します
+
+### Deep Dive: フラッシュ状態は、flushSync と同期して更新される
+
+* 例：新しいToDoを追加し、画面をリストの最後の子までスクロールダウン(TodoList2.jsx)
+  - 何らかの理由で、最後に追加された ToDo の直前の ToDo に常にスクロール(スクロールが常に1つの項目だけ遅れる=リストを最後の要素までスクロールしても todo はまだ追加されていない)することに注意
+  - 問題はの2行 `setTodos([ ...todos, newTodo])` `listRef.current.lastChild.scrollIntoView()`
+  - React では、状態の更新がキューに入れられる。これは通常望む動作だが、上記のような問題が発生する
+  - この問題を修正するには、React に DOM を同期的に更新(flush)させる。react-dom から flushSync をインポートし、状態の更新を flushSync 呼び出しにラップする
+  - これにより、flushSync でラップされたコードが実行された直後に DOM を同期的に更新するように React に指示できる。結果、最後の ToDo は、スクロールしようとする時点ですでに DOM に含まれている
 
 ### その他参考
 
 * [Reactでスクロール位置によって要素のスタイルを変える](https://zenn.dev/catnose99/articles/0f0bb01ee6a940)
+* [React Hooksの10種類を理解する（Additional: useImperativeHandle）](https://zenn.dev/gashi/articles/20210802-article008)
+* [モーダル実装：useImperativeHandle と forwardRef を使うととても便利 - I am Electrical machine](https://scrapbox.
+  io/jigsaw/useImperativeHandle_%E3%81%A8_forwardRef_%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%A8%E3%81%A6%E3%82%82%E4%BE%BF%E5%88%A9)
 
 
 ★★TODO: 次：https://beta.reactjs.org/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes
