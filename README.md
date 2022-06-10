@@ -1545,12 +1545,18 @@ export default function ColorSwitch({ onChangeColor }) {
   - 解決：ref を宣言し、それを <video> 要素に配置。次に、次の状態に応じて、イベントハンドラーで `ref.current.play()` と `ref.current.pause()` 呼び出す
 2. 検索フィールドにフォーカスさせる (Page3.jsx)
   - 「検索」ボタンをクリックすると、フィールドにフォーカスが移るようにする
-3. 画像カルーセルのスクロール
+3. 画像カルーセルのスクロール (CatFriends3.jsx)
   - この画像カルーセルには、アクティブな画像を切り替える「次へ」ボタンがある。クリックすると、ギャラリーがアクティブな画像まで水平方向にスクロールする。アクティブな画像の DOM ノードで `scrollIntoView()` を呼び出す必要がある
   - この演習では、現在アクティブな画像またはリスト自体への参照があれば十分。すべての画像を参照する必要はない。スクロールする前に、flushSync で DOM が更新されているようにする
   - selectedRef を宣言し、それを条件付きで現在の画像にのみ渡す (selectedRef.current が常に正しい DOM ノードを指す)
   - スクロールの前に React に DOM を更新させるには、flushSync 呼び出しが必要
     - それ以外の場合、selectedRef.current は常に以前に選択されたアイテムを指す
+4. 個別のコンポーネントで検索フィールドに焦点を合わせる (Page4.jsx)
+  - 「検索」ボタンをクリックすると、フィールドにフォーカスが移るようにする。各コンポーネントは個別のファイルで定義されているため、そのファイルから移動しないこと。それらをどのように接続しますか？
+  - SearchInput などの独自のコンポーネントから DOM ノードを公開することを選択するには、 forwardRef が必要
+  - onClick プロップ を SearchButton に追加し、SearchButton がそれをブラウザの`<button>`に渡すようにする必要がある。また、refを `<SearchInput>` 
+    に渡す。これにより、実際の `<input>` に転送されデータが入力される。最後に、クリックハンドラーで、その参照内に格納されている DOM ノードにフォーカスを呼び出す
+  - 解決：onClick プロップを SearchButton に追加し、SearchButton がそれをブラウザの`<button>`に渡すようにする必要がある。また、ref を`<SearchInput>`に渡す。これにより、実際の`<input>`に転送され、データが入力される。最後に、クリックハンドラーで、その参照内に格納されている DOM ノードにフォーカスを呼び出す
 
 ★★TODO: 次：https://beta.reactjs.org/learn/manipulating-the-dom-with-refs#challenges
 

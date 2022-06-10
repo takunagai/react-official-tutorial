@@ -96,6 +96,7 @@ export default function Frontpage() {
           <li><Link to="/VideoPlayer">VideoPlayer</Link></li>
           <li><Link to="/Page3">Page3</Link></li>
           <li><Link to="/CatFriends3">CatFriends3</Link></li>
+          <li><Link to="/Page4">Page4</Link></li>
         </ul>
       </nav>
       <Outlet />
