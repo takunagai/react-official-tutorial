@@ -1473,7 +1473,8 @@ export default function ColorSwitch({ onChangeColor }) {
   - `<input />`などのブラウザ要素を出力する組み込みコンポーネントに ref を配置すると、React はその ref の現在のプロパティを対応する DOM ノード（ブラウザの実際の`<input />`など）に設定する
   - ただし、`<MyInput />`などの独自のコンポーネントに参照を配置しようとすると、デフォルトで null になる
   - 例；ボタンをクリックしても入力にフォーカスしない。エラー
-    - デフォルトでは React がコンポーネントに他のコンポーネントの DOM ノードへのアクセスを許可しないためにエラーとなる(自分の子でさえも)。これは意図的なもの。レフリーは控えめに使用する必要があるエスケープハッチです。別のコンポーネントの DOM ノードを手動で操作すると、コードがさらに壊れやすくなる
+    - デフォルトでは React がコンポーネントに他のコンポーネントの DOM ノードへのアクセスを許可しないためにエラーとなる(自分の子でさえも)
+      。これは意図的なもの。Ref は控えめに使用すべきエスケープハッチ。別のコンポーネントの DOM ノードを手動で操作すると、コードがさらに壊れやすくなる
     - 代わりに DOM ノードを公開したいコンポーネントは、その動作にオプトインする必要がある。コンポーネントは、その参照を子の1つに「転送」するように指定できる
     - MyInput が forwardRefAPI を使用(= DOM 入力要素を公開)する方法は次のとおり。これにより、親コンポーネントはそれにfocus（）を呼び出すことができるようになる
       1. `<MyInput ref = {inputRef} />` は、対応する DOM ノードを inputRef.currentに配置するよう React に指示する。ただし、これをオプトインするかどうかは MyInput コンポーネント次第。デフォルトでは、オプトインしない
@@ -1506,14 +1507,34 @@ export default function ColorSwitch({ onChangeColor }) {
   - この問題を修正するには、React に DOM を同期的に更新(flush)させる。react-dom から flushSync をインポートし、状態の更新を flushSync 呼び出しにラップする
   - これにより、flushSync でラップされたコードが実行された直後に DOM を同期的に更新するように React に指示できる。結果、最後の ToDo は、スクロールしようとする時点ですでに DOM に含まれている
 
-### その他参考
+#### その他参考
 
 * [Reactでスクロール位置によって要素のスタイルを変える](https://zenn.dev/catnose99/articles/0f0bb01ee6a940)
 * [React Hooksの10種類を理解する（Additional: useImperativeHandle）](https://zenn.dev/gashi/articles/20210802-article008)
 * [モーダル実装：useImperativeHandle と forwardRef を使うととても便利 - I am Electrical machine](https://scrapbox.
   io/jigsaw/useImperativeHandle_%E3%81%A8_forwardRef_%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%A8%E3%81%A6%E3%82%82%E4%BE%BF%E5%88%A9)
 
+### 参照を使用したDOM操作のベストプラクティス
 
-★★TODO: 次：https://beta.reactjs.org/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes
+* Ref は控えめに使用すべきエスケープハッチ。「React の外に出る必要がある場合にのみ」使用すること。一般的には、フォーカスの管理、スクロール位置、または React が公開しないブラウザー API 呼び出し等が含まれる
+* フォーカスやスクロールなどの非破壊的なアクションに固執すれば、問題は発生しない。ただし、DOM　を手動で変更しようとすると、React が行っている変更と競合するリスクがある
+* この問題を説明する例：ウェルカムメッセージと2つのボタン(Counter8.jsx)
+  - 最初のボタンは、通常 React で行うように、条件付きレンダリングと状態を使用してその存在を切り替える
+  - 2番目のボタンは remove() DOM API で、React の制御外の DOM から強制的に削除する
+  - 「togglewithsetState」ボタンを数回押すと、メッセージが消え再び表示される。次に「Remove from the DOM」を押すと強制的に削除。最後に「TogglewithsetState」を押す
+  - DOM 要素を手動で削除した後、setState でそれを再度表示しようとすると、クラッシュが発生する。これは、DOM を変更したため、React が DOM を正しく管理し続ける方法を知らないため
+  - React が管理する DOM ノードの変更は避けること。React によって管理されている要素を変更、子を追加、または要素から削除すると、上記のような一貫性のない視覚的な結果やクラッシュが発生する可能性があります。
+  - ただし、これはまったくできないという意味ではない。注意が必要です。React が更新する理由がない DOM の部分を安全に変更できる。たとえば、JSX で一部の <div> が常に空の場合、React には子リストに触れる理由がない。したがって、そこに要素を手動で追加または削除しても安全
+
+### まとめ
+
+* Ref(参照)は一般的な概念だが、ほとんどの場合、参照を使用してDOM要素を保持する
+* `<div ref = {myRef}>` を渡すことにより、DOM ノードを myRef.current に配置するように React に指示する
+* 通常、フォーカス、スクロール、DOM 要素の測定などの非破壊的なアクションには ref を使用する
+* コンポーネントは、デフォルトではその DOM ノードを公開しない。forwardRef を使い、2番目の ref 引数を特定のノードに渡すことで、DOMノードの公開を選択できる
+* React が管理する DOM ノードの変更は避けること
+* React が管理する DOM ノードを変更する場合は、React が更新する理由がない部分を変更する
+
+★★TODO: 次：https://beta.reactjs.org/learn/manipulating-the-dom-with-refs#challenges
 
 ★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges
