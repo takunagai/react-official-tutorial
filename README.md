@@ -1545,6 +1545,12 @@ export default function ColorSwitch({ onChangeColor }) {
   - 解決：ref を宣言し、それを <video> 要素に配置。次に、次の状態に応じて、イベントハンドラーで `ref.current.play()` と `ref.current.pause()` 呼び出す
 2. 検索フィールドにフォーカスさせる (Page3.jsx)
   - 「検索」ボタンをクリックすると、フィールドにフォーカスが移るようにする
+3. 画像カルーセルのスクロール
+  - この画像カルーセルには、アクティブな画像を切り替える「次へ」ボタンがある。クリックすると、ギャラリーがアクティブな画像まで水平方向にスクロールする。アクティブな画像の DOM ノードで `scrollIntoView()` を呼び出す必要がある
+  - この演習では、現在アクティブな画像またはリスト自体への参照があれば十分。すべての画像を参照する必要はない。スクロールする前に、flushSync で DOM が更新されているようにする
+  - selectedRef を宣言し、それを条件付きで現在の画像にのみ渡す (selectedRef.current が常に正しい DOM ノードを指す)
+  - スクロールの前に React に DOM を更新させるには、flushSync 呼び出しが必要
+    - それ以外の場合、selectedRef.current は常に以前に選択されたアイテムを指す
 
 ★★TODO: 次：https://beta.reactjs.org/learn/manipulating-the-dom-with-refs#challenges
 

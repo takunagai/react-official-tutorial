@@ -94,6 +94,7 @@ import TodoList2 from './TodoList2'
 import Counter8 from './Counter8'
 import VideoPlayer from './VideoPlayer'
 import Page3 from './Page3'
+import CatFriends3 from './CatFriends3'
 
 const container = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
@@ -197,6 +198,7 @@ root.render(
         <Route path="Counter8" element={<Counter8 />} />
         <Route path="VideoPlayer" element={<VideoPlayer />} />
         <Route path="Page3" element={<Page3 />} />
+        <Route path="CatFriends3" element={<CatFriends3 />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>
