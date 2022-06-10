@@ -92,6 +92,7 @@ import CatFriends2 from './CatFriends2'
 import MyForm from './MyForm'
 import TodoList2 from './TodoList2'
 import Counter8 from './Counter8'
+import VideoPlayer from './VideoPlayer'
 
 const container = document.getElementById('root')
 const root = createRoot(container) // createRoot(container!) if you use TypeScript
@@ -193,6 +194,7 @@ root.render(
         <Route path="MyForm" element={<MyForm />} />
         <Route path="TodoList2" element={<TodoList2 />} />
         <Route path="Counter8" element={<Counter8 />} />
+        <Route path="VideoPlayer" element={<VideoPlayer />} />
         <Route path="*" element={<NotFound />} />{/* Not Found の時*/}
       </Routes>
     </BrowserRouter>
