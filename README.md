@@ -1537,12 +1537,14 @@ export default function ColorSwitch({ onChangeColor }) {
 
 ## Try out some challenges
 
-1. ビデオを再生し、一時停止する
+1. ビデオを再生し、一時停止する (VideoPlayer.jsx)
   - 例：ボタンで状態変数を切り替え → 再生状態/一時停止状態の切り替え
   - ただし、実際に動画を再生または一時停止するには、状態の切り替えだけでは不十分(修正前)
   - また、`<video>` のDOM要素で `play()` と `pause()` を呼び出す必要がある。それに参照(Ref)を追加しボタンを機能させる
   - 追加の課題：ユーザーがビデオを右クリックし組み込みのブラウザーメディアコントロールでビデオを再生した場合でも、再生ボタンをビデオの再生中かどうかと同期させる。そのためには、ビデオで onPlay と onPause を聞くこと
-  - 解決：ref を宣言し、それを <video> 要素に配置。次に、次の状態に応じて、イベントハンドラーで `ref.current.play()` と `ref.current.pause()` 呼び出します。
+  - 解決：ref を宣言し、それを <video> 要素に配置。次に、次の状態に応じて、イベントハンドラーで `ref.current.play()` と `ref.current.pause()` 呼び出す
+2. 検索フィールドにフォーカスさせる (Page3.jsx)
+  - 「検索」ボタンをクリックすると、フィールドにフォーカスが移るようにする
 
 ★★TODO: 次：https://beta.reactjs.org/learn/manipulating-the-dom-with-refs#challenges
 
