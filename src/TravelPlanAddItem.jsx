@@ -1,7 +1,18 @@
+import { useState } from 'react'
+
 export default function TravelPlanAddItem({ onAddItem }) {
+  const [title, setTitle] = useState('')
   return (
     <>
-      <p>TravelPlanAddItem</p>
+      <input
+        placeholder="Add item"
+        value={title}
+        onChange={e => setTitle(e.target.value)}
+      />
+      <button onClick={() => {
+        setTitle('')
+        onAddItem(title)
+      }}>Add</button>
     </>
   )
 }
