@@ -1,21 +1,22 @@
 export default function MailClientLetter({
-  key,
+  // key,
   letter,
-  isHighlighted,
-  onHover,
-  onToggleStar
+  isSelected,
+  onToggle
 }) {
   return (
     <li
       // key={key} // 不要？
-      className={isHighlighted ? 'highlighted' : ''}
-      onFocus={() => onHover(letter.id)}
-      onPointerMove={() => onHover(letter.id)}
+      className={isSelected ? 'selected' : ''}
     >
-      <button onClick={() => onToggleStar(letter.id)}>
-        {letter.isStarred ? 'Unstar' : 'Star'}
-      </button>
-      {' ' + letter.subject}
+      <label>
+        <input
+          type="checkbox"
+          checked={isSelected}
+          onChange={() => onToggle(letter.id)}
+        />
+        {' ' + letter.subject}
+      </label>
     </li>
   )
 }

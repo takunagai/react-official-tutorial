@@ -95,6 +95,7 @@ hr {
 /**
  * MailClient.jsx
  */
-.highlighted {
+.highlighted,
+.selected {
   background-color: #d8e6ff;
 }

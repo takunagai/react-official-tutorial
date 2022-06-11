@@ -1,4 +1,4 @@
-export const initialLetters = [{
+export const letters = [{
   id: 0,
   subject: 'Ready for adventure?',
   isStarred: true,

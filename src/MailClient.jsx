@@ -1,27 +1,27 @@
 import { useState } from 'react'
 import Letter from './MailClientLetter'
-import { initialLetters } from './MailClientData'
+import { letters } from './MailClientData'
 // index.css にスタイル
 
 export default function MailClient() {
-  const [letters, setLetters] = useState(initialLetters)
-  const [highlightedId, setHighlightedId] = useState(null)
+  const [selectedIds, setSelectedIds] = useState([])
 
-  function handleHover(letterId) {
-    setHighlightedId(letterId)
-  }
+  const selectedCount = selectedIds.length
 
-  function handleStar(starredId) {
-    setLetters(letters.map(letter => {
-      if (letter.id === starredId) {
-        return {
-          ...letter,
-          isStarred: !letter.isStarred
-        }
-      } else {
-        return letter
-      }
-    }))
+  function handleToggle(toggledId) {
+    // 以前に選択されていたか？
+    if (selectedIds.includes(toggledId)) {
+      // 次に、この ID をアレイから削除
+      setSelectedIds(selectedIds.filter(id =>
+        id !== toggledId
+      ))
+    } else {
+        // それ以外の場合は、この ID を配列に追加
+        setSelectedIds([
+            ...selectedIds,
+            toggledId
+        ])
+    }
   }
 
   return (
@@ -32,12 +32,13 @@ export default function MailClient() {
           <Letter
             key={letter.id}
             letter={letter}
-            isHighlighted={letter.id === highlightedId}
-            onHover={handleHover}
-            onToggleStar={handleStar}
+            isSelected={selectedIds.includes(letter.id)}
+            onToggle={handleToggle}
           />
         ))}
       </ul>
+      <hr />
+      <p><b>You selected {selectedCount} letters</b></p>
     </>
   )
 }
