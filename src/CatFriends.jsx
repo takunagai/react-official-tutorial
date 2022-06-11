@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+// index.css にスタイル
 
 export default function CatFriends() {
   const firstCatRef = useRef(null)

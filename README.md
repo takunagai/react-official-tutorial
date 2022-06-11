@@ -987,8 +987,10 @@ export default function ColorSwitch({ onChangeColor }) {
     - 場合によっては、ネストされた状態の一部を子コンポーネントに移動することで、状態のネストを減らすこともできる
       - アイテムがホバーされているかどうかなど、"保存する必要のない一時的な UI 状態"に適している
     - Try out some challenges
-      1. ドロップダウンメニューで時計の時間表示の色を変更 (Clock2.jsx ★★TODO: 修正)
+      1. ドロップダウンメニューで時計の時間表示の色を変更 (Timer.jsx)
       2. 壊れた旅行管理リスト(≒ToDoリスト)の修正 (TravelPlan.jsx)
+      3. 消える選択を修正。特定の文字にカーソル/フォーカスでハイライト (Timer.jsx)
+      4. 複数選択の実装。複数選択をサポートする状態構造 (MailClient.jsx 続き)
   3. 状態構造に関する一般的な問題を修正する方法
 * 番外編
   - useEffect を使い API からデータをフェッチするサンプル(FetchAPI.jsx)
@@ -1557,7 +1559,5 @@ export default function ColorSwitch({ onChangeColor }) {
   - onClick プロップ を SearchButton に追加し、SearchButton がそれをブラウザの`<button>`に渡すようにする必要がある。また、refを `<SearchInput>` 
     に渡す。これにより、実際の `<input>` に転送されデータが入力される。最後に、クリックハンドラーで、その参照内に格納されている DOM ノードにフォーカスを呼び出す
   - 解決：onClick プロップを SearchButton に追加し、SearchButton がそれをブラウザの`<button>`に渡すようにする必要がある。また、ref を`<SearchInput>`に渡す。これにより、実際の`<input>`に転送され、データが入力される。最後に、クリックハンドラーで、その参照内に格納されている DOM ノードにフォーカスを呼び出す
-
-★★TODO: 次：https://beta.reactjs.org/learn/manipulating-the-dom-with-refs#challenges
 
 ★★TODO: 未消化：https://beta.reactjs.org/learn/choosing-the-state-structure の Try out some challenges

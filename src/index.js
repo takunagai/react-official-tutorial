@@ -53,8 +53,9 @@ import FeedbackForm2 from './FeedbackForm2'
 import Form9 from './Form9'
 import Menu from './Menu'
 import PlaceTree from './PlaceTree'
-// import Clock2 from './Clock2' // ★★うまくいかないので修正
-// import TravelPlan from './TravelPlan' // ★★うまくいかないので修正
+import Timer from './Timer'
+import TravelPlan from './TravelPlan'
+import MailClient from './MailClient'
 import FetchAPI from './FetchAPI' // このチュートリアルではない
 import FetchAPI2 from './FetchAPI2' // このチュートリアルではない
 import Accordion2 from './Accordion2'
@@ -157,8 +158,9 @@ root.render(
         <Route path="form9" element={<Form9 />} />
         <Route path="menu" element={<Menu />} />
         <Route path="placeTree" element={<PlaceTree />} />
-        {/*<Route path="clock2" element={<Clock2 />} />*/}
-        {/*<Route path="travelPlan" element={<TravelPlan />} />*/}
+        <Route path="Timer" element={<Timer />} />
+        <Route path="TravelPlan" element={<TravelPlan />} />
+        <Route path="MailClient" element={<MailClient />} />
         <Route path="fetchAPI" element={<FetchAPI />} />
         <Route path="fetchAPI2" element={<FetchAPI2 />} />
         <Route path="accordion2" element={<Accordion2 />} />

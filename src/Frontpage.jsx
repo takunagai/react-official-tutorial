@@ -55,8 +55,9 @@ export default function Frontpage() {
           <li><Link to="/form9">Form9</Link></li>
           <li><Link to="/menu">Menu</Link></li>
           <li><Link to="/placeTree">PlaceTree</Link></li>
-          {/*<li><Link to="/clock2">Clock2</Link>*/}
-          {/*<li><Link to="/travelPlan">TravelPlan</Link>*/}
+          <li><Link to="/Timer">Timer</Link></li>
+          <li><Link to="/TravelPlan">TravelPlan</Link></li>
+          <li><Link to="/MailClient">MailClient</Link></li>
           <li><Link to="/fetchAPI">FetchAPI</Link></li>
           <li><Link to="/fetchAPI2">FetchAPI2</Link></li>
           <li><Link to="/accordion2">Accordion</Link></li>
